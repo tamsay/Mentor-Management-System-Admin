@@ -1,0 +1,39 @@
+.supportContainer {
+  gap: 1.75rem;
+
+  .heading {
+    .title {
+      font-size: 1.25rem;
+      font-family: var(--bold);
+      margin: 0;
+      line-height: 1;
+    }
+  }
+
+  .body {
+    .formWrapper {
+      form {
+        .attachmentDiv {
+          gap: 0.5rem;
+          margin: 1rem 0;
+
+          img {
+            cursor: pointer;
+          }
+
+          .fileName {
+            font-size: 0.875rem;
+            font-family: var(--medium);
+            color: var(--primaryColor);
+            line-height: 1.125rem;
+          }
+        }
+
+        .submitBtnDiv {
+          align-items: center;
+          gap: 1rem;
+        }
+      }
+    }
+  }
+}

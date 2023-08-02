@@ -1,0 +1,14 @@
+.sidebar-active-menu {
+  background-color: white;
+
+  & span:nth-child(1) {
+    svg path {
+      stroke: var(--black2TextColor);
+    }
+  }
+
+  & span:nth-child(2) {
+    color: var(--black2TextColor);
+    font-family: var(--semiBold);
+  }
+}

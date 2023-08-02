@@ -1,0 +1,47 @@
+.genericSideBarContainer {
+  background-color: var(--green3Color);
+  background-color: var(--whiteTextColor);
+  z-index: 5;
+  left: 0;
+  // gap: 1rem;
+  height: 100%;
+  overflow-y: auto;
+
+  .genericSideBarHeader {
+    width: 100%;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0 1rem 1rem 1rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    overflow-y: auto;
+
+    li {
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      width: 100%;
+    }
+  }
+
+  .noDataDiv {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@media all and (min-width: 992px) {
+  .genericSideBarContainer {
+    padding: 0;
+    // gap: 0.5rem;
+
+    ul {
+      gap: 0.625rem;
+      padding: 0 0.25rem 0 0;
+    }
+  }
+}

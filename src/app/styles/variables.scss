@@ -1,0 +1,64 @@
+:root {
+  --topNavbarHeight: 4.5rem;
+  --primaryColor: #035d63;
+  --pageBgColor: #058b94;
+  --green2Color: #058b94;
+  --green3Color: #f7feff;
+  --whiteTextColor: #fff;
+  --white1Color: #fff;
+  --taskListBgColor: #fff;
+  --blackTextColor: #141414;
+  --grayTextColor: #808080;
+  --grayText2Color: #666666;
+  --black3TextColor: #4d4d4d;
+  --black1Color: #000000;
+  --black6Color: #999999;
+  --black2TextColor: #333333;
+  --primaryTextColor: #141414;
+  --primaryRedColor: #cc000e;
+  --red2Color: #ff5964;
+  --modalBgColor: #fff;
+  --sectionContainerBorderColor: #cefafd;
+  --dashboardChildrenBgColor: #fff;
+  --dashboardSummaryCardBgColor: #e6fdfe;
+  --profileSocialBackgroundColor: #e6fdfe;
+  --green4Color: #e6fdfe;
+  --green5Color: #cefafd;
+  --green6Color: #06b9c6;
+  --green7Color: #9cf6fc;
+  --green8Color: #023c40;
+  --green9Color: #058a9499;
+  --grayBorderColor: #e6e6e6;
+  --gray4Color: #f2f2f2;
+  --toogleSwitchOnBgColor: #058b94;
+  --toogleSwitchOffBgColor: #b3b3b3;
+  --imageBorderColor: #035d6339;
+
+  // Fonts
+  --bold: MuktaBold;
+  --extraBold: MuktaExtraBold;
+  --extraLight: MuktaExtraLight;
+  --light: MuktaLight;
+  --medium: MuktaMedium;
+  --regular: MuktaRegular;
+  --semiBold: MuktaSemiBold;
+
+  // Primary Button Big
+  --primaryBtnBg: #058b94;
+  --primaryBtnTextColor: #fff;
+  --primaryBtnBorderColor: #058b94;
+  --primaryBtnHoverBg: var(--primaryColor);
+  --primaryBtnHoverTextColor: #fff;
+  --primaryBtnHoverBorderColor: var(--primaryColor);
+
+  // Secondary Button Big
+  --secondaryBtnBg: #fff;
+  --secondaryBtnTextColor: var(--green8Color);
+  --secondaryBtnBorderColor: var(--green2Color);
+  --secondaryBtnHoverBg: var(--green4Color);
+  --secondaryBtnHoverTextColor: var(--green8Color);
+  --secondaryBtnHoverBorderColor: var(--green2Color);
+
+  // Toast
+  --toastify-color-success: var(--green2Color);
+}

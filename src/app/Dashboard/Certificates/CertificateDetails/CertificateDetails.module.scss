@@ -1,0 +1,58 @@
+.certificateDetailsContainer {
+  background-color: var(--green3Color);
+  padding: 2rem 1rem;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  align-items: center;
+  gap: 1.5rem;
+
+  .certificateDiv {
+    width: 90%;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .btnGroup {
+    width: 90%;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+}
+
+@media all and (min-width: 768px) {
+  .certificateDetailsContainer {
+    padding: 2rem 2rem;
+
+    .certificateDiv,
+    .btnGroup {
+      width: 85%;
+    }
+  }
+}
+
+@media all and (min-width: 992px) {
+  .certificateDetailsContainer {
+    padding: 2rem 1rem;
+
+    .certificateDiv,
+    .btnGroup {
+      width: 75%;
+    }
+  }
+}
+
+@media all and (min-width: 1200px) {
+  .certificateDetailsContainer {
+    padding: 3rem 1.5rem;
+
+    .certificateDiv,
+    .btnGroup {
+      width: 55%;
+    }
+  }
+}

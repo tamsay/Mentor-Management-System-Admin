@@ -1,0 +1,129 @@
+.summaryContainer {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+
+  .activeProgramsDiv {
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: var(--pageBgColor);
+    border-radius: 0.5rem;
+    color: var(--whiteTextColor);
+    width: 18rem;
+    justify-content: center;
+
+    button {
+      align-self: flex-end;
+    }
+
+    .body {
+      gap: 0.75rem;
+      width: 100%;
+      align-items: flex-end;
+
+      .value {
+        font-size: 5rem;
+        line-height: 3rem;
+        margin: 0;
+        padding: 0;
+        font-family: var(--semiBold);
+      }
+
+      .heading {
+        font-size: 1.25rem;
+        font-family: var(--bold);
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+        width: 50%;
+      }
+    }
+  }
+
+  .cardsGroup {
+    flex-wrap: wrap;
+    width: 18rem;
+    gap: 1rem;
+    background-color: var(--green3Color);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--sectionContainerBorderColor);
+    justify-content: center;
+  }
+}
+
+@media all and (min-width: 768px) {
+  .summaryContainer {
+    justify-content: space-between;
+    gap: 1rem;
+
+    .activeProgramsDiv {
+      width: auto;
+
+      .body {
+        gap: 0.75rem;
+
+        .value {
+          font-size: 4.5rem;
+        }
+
+        .heading {
+          font-size: 1.25rem;
+        }
+      }
+    }
+
+    .cardsGroup {
+      flex: 1;
+      gap: 1rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media all and (min-width: 992px) {
+  .summaryContainer {
+    gap: 2rem;
+
+    .activeProgramsDiv {
+      .body {
+        gap: 0.75rem;
+
+        .value {
+          font-size: 4.5rem;
+        }
+
+        .heading {
+          font-size: 1.25rem;
+        }
+      }
+    }
+  }
+}
+
+@media all and (min-width: 1200px) {
+  .summaryContainer {
+    gap: 2rem;
+
+    .activeProgramsDiv {
+      width: 15rem;
+
+      .body {
+        gap: 0.75rem;
+
+        .value {
+          font-size: 4.5rem;
+        }
+
+        .heading {
+          font-size: 1.25rem;
+        }
+      }
+    }
+
+    .cardsGroup {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
