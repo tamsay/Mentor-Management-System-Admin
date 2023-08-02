@@ -26,7 +26,7 @@ const Input = forwardRef(
     const [inputType, setInputType] = useState(type);
     const [showPassword, setShowPassword] = useState(false);
 
-    const handleChange = (e) => {
+    const handleChange = (e: any) => {
       const sanitizedValue = DOMPurify.sanitize(e.target.value);
       onChange(sanitizedValue);
     };
