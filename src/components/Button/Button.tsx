@@ -5,6 +5,19 @@ import styled from "styled-components";
 import imageLoader from "@/assets/icons/loading.svg";
 import Image from "next/image";
 
+type ButtonProps = {
+  title: string;
+  checked: boolean;
+  checkedBtn: boolean;
+  prefixIcon: React.ReactElement;
+  suffixIcon: React.ReactElement;
+  disabled: boolean;
+  loading: boolean;
+  onClick: () => void;
+  type: "primary" | "secondary";
+  size: "small" | "big";
+};
+
 const ButtonComponent = styled.button`
   font-size: ${(props) => (props.size === "small" ? "0.75rem" : "0.875rem")};
   font-family: ${(props) => (props.size === "small" ? "var(--regular)" : "var(--semiBold)")};
@@ -48,7 +61,7 @@ const ButtonComponent = styled.button`
   }
 `;
 
-function Button(props) {
+function Button(props: ButtonProps) {
   const { title, checked, checkedBtn, prefixIcon, suffixIcon, disabled = false, loading, onClick, type, size } = props;
 
   return (
@@ -71,29 +84,29 @@ function Button(props) {
   );
 }
 
-Button.defaultProps = {
-  title: "",
-  checked: false,
-  checkedBtn: false,
-  prefixIcon: null,
-  suffixIcon: null,
-  disabled: false,
-  loading: false,
-  onClick: () => {},
-  type: "primary",
-  size: "big"
-};
-Button.propTypes = {
-  title: PropTypes.string,
-  checked: PropTypes.bool,
-  checkedBtn: PropTypes.bool,
-  prefixIcon: PropTypes.element,
-  suffixIcon: PropTypes.element,
-  disabled: PropTypes.bool,
-  loading: PropTypes.bool,
-  onClick: PropTypes.func,
-  type: PropTypes.string,
-  size: PropTypes.string
-};
+// Button.defaultProps = {
+//   title: "",
+//   checked: false,
+//   checkedBtn: false,
+//   prefixIcon: null,
+//   suffixIcon: null,
+//   disabled: false,
+//   loading: false,
+//   onClick: () => {},
+//   type: "primary",
+//   size: "big"
+// };
+// Button.propTypes = {
+//   title: PropTypes.string,
+//   checked: PropTypes.bool,
+//   checkedBtn: PropTypes.bool,
+//   prefixIcon: PropTypes.element,
+//   suffixIcon: PropTypes.element,
+//   disabled: PropTypes.bool,
+//   loading: PropTypes.bool,
+//   onClick: PropTypes.func,
+//   type: PropTypes.string,
+//   size: PropTypes.string
+// };
 
 export default Button;

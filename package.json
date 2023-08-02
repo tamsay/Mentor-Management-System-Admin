@@ -38,18 +38,19 @@
     "@types/dompurify": "^3.0.2",
     "@types/styled-components": "^5.1.26",
     "eslint-config-prettier": "^8.9.0",
+    "eslint-plugin-prettier": "^5.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
-    "prettier": "^2.8.7"
+    "prettier": "3.0.0"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "eslint --fix",
-      "prettier --config ./.prettierrc.js --write",
+      "prettier --write",
       "git add"
     ],
     "**/*.{css,scss,md,html,json}": [
-      "prettier --config ./.prettierrc.js --write",
+      "prettier --write",
       "git add"
     ]
   }
