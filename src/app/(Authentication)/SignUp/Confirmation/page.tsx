@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { useRouter } from "next/navigation";
 import cx from "classnames";
+import { useRouter } from "next/navigation";
 import styles from "./Confirmation.module.scss";
-import Button from "@/components/Button/Button";
+
 import AuthSideHero from "@/components/AuthSideHero/AuthSideHero";
+import Button from "@/components/Button/Button";
+import Loader from "@/components/Loader/Loader";
+
 import successImage from "@/assets/images/activate-user.svg";
 import failureImage from "@/assets/images/deactivate-user.svg";
+
 import { confirmEmail } from "@/redux/Auth/AuthSlice";
-import Loader from "@/components/Loader/Loader";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 function Confirmation() {
   const dispatch = useAppDispatch();

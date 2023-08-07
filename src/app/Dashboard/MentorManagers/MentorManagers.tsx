@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import React, { useEffect,useState } from "react";
 import cx from "classnames";
+import { useRouter } from "next/navigation";
 import styles from "./MentorManagers.module.scss";
+
 import Button from "@/components/Button/Button";
-import Pagination from "@/components/Pagination/Pagination";
 import MiniProfile from "@/components/Cards/MiniProfile/MiniProfile";
+import AddUserModal from "@/components/Modals/AddUser/AddUser";
+import DeleteNotificationModal from "@/components/Modals/DeleteNotification/DeleteNotification";
+import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+import Pagination from "@/components/Pagination/Pagination";
+import Search from "@/components/Search/Search";
+
 import { ReactComponent as GridViewIcon } from "@/assets/icons/grid-view-icon.svg";
 import { ReactComponent as ListViewIcon } from "@/assets/icons/list-view-icon.svg";
-import { useRouter } from "next/navigation";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
-import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
-import DeleteNotificationModal from "@/components/Modals/DeleteNotification/DeleteNotification";
-import AddUserModal from "@/components/Modals/AddUser/AddUser";
-import Search from "@/components/Search/Search";
 import { getAllUserProfiles } from "@/redux/Profile/ProfileSlice";
 
 function MentorManagers() {

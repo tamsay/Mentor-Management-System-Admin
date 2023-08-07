@@ -1,22 +1,24 @@
 "use client";
 
 import React from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { useRouter } from "next/navigation";
+import { Controller,useForm } from "react-hook-form";
 import cx from "classnames";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { useRouter } from "next/navigation";
 import styles from "./ResetPassword.module.scss";
+import { yupResolver } from "@hookform/resolvers/yup";
 
+import AuthSideHero from "@/components/AuthSideHero/AuthSideHero";
 import Button from "@/components/Button/Button";
 import InputField from "@/components/Input/Input";
-import AuthSideHero from "@/components/AuthSideHero/AuthSideHero";
 import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+
 import successImage from "@/assets/images/default-success-notification-image.png";
 
-import { resetPasswordSchema } from "@/helpers/validation";
 import { resetPassword } from "@/redux/Auth/AuthSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
+
+import { resetPasswordSchema } from "@/helpers/validation";
 
 function ResetPassword() {
   const dispatch = useAppDispatch();

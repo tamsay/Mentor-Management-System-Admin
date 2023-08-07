@@ -1,13 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import { createMessageApi, createBroadcastMessageApi, getMessageDetailsApi, getAllMessagesApi } from "../api/messages";
+import { createBroadcastMessageApi, createMessageApi, getAllMessagesApi,getMessageDetailsApi } from "../api/messages";
+import { createSlice } from "@reduxjs/toolkit";
 
 import {
-  createMessageLoading,
   createBroadcastMessageLoading,
-  getMessageDetailsLoading,
-  getAllMessagesLoading
-} from "@/redux/Loading/LoadingSlice";
+  createMessageLoading,
+  getAllMessagesLoading,
+  getMessageDetailsLoading} from "@/redux/Loading/LoadingSlice";
+
 
 const initialState = {
   error: false,

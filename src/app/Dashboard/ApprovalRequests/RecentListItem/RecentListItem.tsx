@@ -1,9 +1,10 @@
 import React from "react";
-import cx from "classnames";
-import styles from "./RecentListItem.module.scss";
-import PropTypes from "prop-types";
-import Button from "@/components/Button/Button";
 import { useParams } from "react-router-dom";
+import cx from "classnames";
+import PropTypes from "prop-types";
+import styles from "./RecentListItem.module.scss";
+
+import Button from "@/components/Button/Button";
 
 function RecentListItem({ data, onClick }) {
   const { id } = useParams();

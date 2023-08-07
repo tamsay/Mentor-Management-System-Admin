@@ -1,9 +1,11 @@
 import React from "react";
-import styles from "./EmptyHistory.module.scss";
 import cx from "classnames";
-import emptyHistoryIcon from "@/assets/icons/empty-message-history-icon.svg";
-import Button from "@/components/Button/Button";
 import { useRouter } from "next/navigation";
+import styles from "./EmptyHistory.module.scss";
+
+import Button from "@/components/Button/Button";
+
+import emptyHistoryIcon from "@/assets/icons/empty-message-history-icon.svg";
 
 const EmptyHistory = () => {
   const router = useRouter();

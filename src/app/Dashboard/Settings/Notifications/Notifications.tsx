@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { Controller,useForm } from "react-hook-form";
 import cx from "classnames";
 import styles from "./Notifications.module.scss";
-import ToggleSwitch from "@/components/ToggleSwitch/ToggleSwitch";
-import { getUserNotifications, editUserNotifications } from "@/redux/Settings/SettingsSlice";
-import Loader from "@/components/Loader/Loader";
-import { titleCase } from "@/helpers/textTransform";
+
 import Button from "@/components/Button/Button";
-import { useForm, Controller } from "react-hook-form";
+import Loader from "@/components/Loader/Loader";
+import ToggleSwitch from "@/components/ToggleSwitch/ToggleSwitch";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { editUserNotifications,getUserNotifications } from "@/redux/Settings/SettingsSlice";
+
+import { titleCase } from "@/helpers/textTransform";
+
+
 
 function Notifications() {
   const dispatch = useAppDispatch();

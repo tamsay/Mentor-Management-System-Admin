@@ -1,9 +1,12 @@
 import React from "react";
-import { useRouter } from "next/navigation";
 import cx from "classnames";
-import styles from "./AuthSideHero.module.scss";
-import logo from "@/assets/images/logo.svg";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import styles from "./AuthSideHero.module.scss";
+
+import logo from "@/assets/images/logo.svg";
+
+
 
 function AuthSideHero() {
   const router = useRouter();

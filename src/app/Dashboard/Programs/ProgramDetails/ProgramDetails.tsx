@@ -1,19 +1,23 @@
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useNavigate,useParams } from "react-router-dom";
 import cx from "classnames";
 import styles from "./ProgramDetails.module.scss";
-import { useParams, useNavigate } from "react-router-dom";
+
 import Button from "@/components/Button/Button";
-import headerIcon from "@/assets/icons/google-filled-icon.svg";
-import calendarIcon from "@/assets/icons/tasks-overview-calendar-icon.svg";
+import DeleteNotificationModal from "@/components/Modals/DeleteNotification/DeleteNotification";
+
+import deleteArchiveIcon from "@/assets/icons/clear-list-reversed.svg";
 import clockIcon from "@/assets/icons/clock-icon.svg";
-import reportIcon from "@/assets/icons/task-report-icon-green.png";
+import headerIcon from "@/assets/icons/google-filled-icon.svg";
 import mentorsIcon from "@/assets/icons/mentor-icon-green.png";
 import mentorManagersIcon from "@/assets/icons/mentor-manager-icon-green.png";
-import deleteArchiveIcon from "@/assets/icons/clear-list-reversed.svg";
-import DeleteNotificationModal from "@/components/Modals/DeleteNotification/DeleteNotification";
+import reportIcon from "@/assets/icons/task-report-icon-green.png";
+import calendarIcon from "@/assets/icons/tasks-overview-calendar-icon.svg";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
 import { getProgramDetails } from "@/redux/Programs/ProgramsSlice";
+
 import formatDate from "@/helpers/formatDate";
 
 function ProgramDetails() {

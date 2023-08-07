@@ -1,12 +1,13 @@
 import React, { Suspense } from "react";
-import PropTypes from "prop-types";
 import cx from "classnames";
-import styles from "./DashboardContainer.module.scss";
-
+import PropTypes from "prop-types";
 import DashboardHeader from "../DashboardHeader/DashboardHeader";
 import DashboardSideBar from "../DashboardSideBar/DashboardSideBar";
+import styles from "./DashboardContainer.module.scss";
+
 import DashboardChildren from "@/components/DashboardChildren/DashboardChildren";
 import Loader from "@/components/Loader/Loader";
+
 
 function DashboardContainer(props) {
   const { children } = props;

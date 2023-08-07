@@ -1,13 +1,16 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useParams } from "react-router-dom";
 import cx from "classnames";
 import styles from "./CertificateDetails.module.scss";
-import { useParams } from "react-router-dom";
+
 import Button from "@/components/Button/Button";
-import certificateImage from "@/assets/images/certificate-full.png";
-import approvedSuccessImage from "@/assets/images/approved.svg";
-import declinedSuccessImage from "@/assets/images/declined.svg";
 import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+
+import approvedSuccessImage from "@/assets/images/approved.svg";
+import certificateImage from "@/assets/images/certificate-full.png";
+import declinedSuccessImage from "@/assets/images/declined.svg";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
 
 function CertificateDetails() {

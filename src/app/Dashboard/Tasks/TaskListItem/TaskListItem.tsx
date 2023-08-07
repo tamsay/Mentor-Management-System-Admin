@@ -1,11 +1,13 @@
 import React from "react";
-import cx from "classnames";
-import styles from "./TaskListItem.module.scss";
-import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
+import cx from "classnames";
+import { formatDistanceToNow } from "date-fns";
+import PropTypes from "prop-types";
+import styles from "./TaskListItem.module.scss";
+
 import calendarIcon from "@/assets/icons/tasks-overview-calendar-icon.svg";
 import cardIcon from "@/assets/icons/tasks-overview-card-icon.svg";
-import { formatDistanceToNow } from "date-fns";
+
 import { capitalizeFirstWord } from "@/helpers/textTransform";
 
 function TaskListItem({ data }) {

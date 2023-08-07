@@ -1,30 +1,29 @@
-import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import {
+  createTaskApi,
   deleteTaskApi,
   editTaskApi,
   getAllTasksApi,
   getCompletedTasksApi,
   getInprogressTasksApi,
-  getWeeklyTasksApi,
   getMonthlyTasksApi,
-  getYearlyTasksApi,
-  createTaskApi,
-  getTaskDetailsApi
-} from "../api/tasks";
+  getTaskDetailsApi,
+  getWeeklyTasksApi,
+  getYearlyTasksApi} from "../api/tasks";
+import { createSlice } from "@reduxjs/toolkit";
 
 import {
+  createTaskLoading,
   deleteTaskLoading,
   editTaskLoading,
   getAllTasksLoading,
   getCompletedTasksLoading,
   getInprogressTasksLoading,
-  getWeeklyTasksLoading,
   getMonthlyTasksLoading,
-  getYearlyTasksLoading,
-  createTaskLoading,
-  getTaskDetailsLoading
-} from "@/redux/Loading/LoadingSlice";
+  getTaskDetailsLoading,
+  getWeeklyTasksLoading,
+  getYearlyTasksLoading} from "@/redux/Loading/LoadingSlice";
+
 
 const initialState = {
   error: false,

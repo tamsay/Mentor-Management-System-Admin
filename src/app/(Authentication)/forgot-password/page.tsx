@@ -1,19 +1,20 @@
 "use client";
 
 import React, { useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { useRouter } from "next/navigation";
+import { Controller,useForm } from "react-hook-form";
 import cx from "classnames";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { useRouter } from "next/navigation";
 import styles from "./ForgotPassword.module.scss";
+import { yupResolver } from "@hookform/resolvers/yup";
 
+import AuthSideHero from "@/components/AuthSideHero/AuthSideHero";
 import Button from "@/components/Button/Button";
 import InputField from "@/components/Input/Input";
-import AuthSideHero from "@/components/AuthSideHero/AuthSideHero";
+
+import { forgotPassword } from "@/redux/Auth/AuthSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 import { forgotPasswordSchema } from "@/helpers/validation";
-import { forgotPassword } from "@/redux/Auth/AuthSlice";
 
 function ForgotPassword() {
   const dispatch = useAppDispatch();

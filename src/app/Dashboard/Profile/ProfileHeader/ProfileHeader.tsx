@@ -1,11 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import cx from "classnames";
-import Button from "@/components/Button/Button";
-import styles from "./Profile.header.module.scss";
 import PropTypes from "prop-types";
+import styles from "./Profile.header.module.scss";
+
+import Button from "@/components/Button/Button";
+
 import { initialsCase } from "@/helpers/textTransform";
+
 
 function ProfileHeader({ data }) {
   const { profilePicture, flagUrl, fullName, role } = data;

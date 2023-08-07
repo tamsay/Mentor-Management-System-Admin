@@ -1,26 +1,28 @@
 import React, { useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import cx from "classnames";
 import { useForm } from "react-hook-form";
+import cx from "classnames";
+import { useRouter } from "next/navigation";
 import styles from "./GenerateCertificate.module.scss";
-
-import Button from "@/components/Button/Button";
-import SelectionSideBar from "@/components/SelectionSideBar/SelectionSideBar";
-import closeIcon from "@/assets/icons/undo-icon.svg";
-import closeIconAlt from "@/assets/icons/close-icon.svg";
-import Search from "@/components/Search/Search";
-import Filter from "@/components/Filter/Filter";
-import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
-
-import { showModal } from "@/redux/Modal/ModalSlice";
-import successImage from "@/assets/images/create-task-success-image.svg";
 import PersonelComponent from "./PersonelComponent/PersonelComponent";
 import ProgramListItem from "./ProgramListItem/ProgramListItem";
 
-import beneficiaryImage from "@/assets/images/sample-profile-image.svg";
+import Button from "@/components/Button/Button";
+import Filter from "@/components/Filter/Filter";
+import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+import Search from "@/components/Search/Search";
+import SelectionSideBar from "@/components/SelectionSideBar/SelectionSideBar";
+
+import closeIconAlt from "@/assets/icons/close-icon.svg";
+import closeIcon from "@/assets/icons/undo-icon.svg";
 import previewImage from "@/assets/images/certificate-full.png";
+import successImage from "@/assets/images/create-task-success-image.svg";
 import programImage from "@/assets/images/program-avatar.svg";
-import { useRouter } from "next/navigation";
+import beneficiaryImage from "@/assets/images/sample-profile-image.svg";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { showModal } from "@/redux/Modal/ModalSlice";
+
+
 
 const GenerateCertificate = () => {
   const router = useRouter();

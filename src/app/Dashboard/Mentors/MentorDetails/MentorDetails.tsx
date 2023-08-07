@@ -1,22 +1,26 @@
-import React, { useState, useEffect } from "react";
-import cx from "classnames";
-import styles from "./MentorDetails.module.scss";
-import profileImage from "@/assets/images/sample-profile-image.svg";
-import GenericSideBar from "@/components/GenericSideBar/GenericSideBar";
-import UserComponent from "../UserComponent/UserComponent";
-import Button from "@/components/Button/Button";
-import backIcon from "@/assets/icons/back-icon.svg";
-import Search from "@/components/Search/Search";
-import useIsMobile from "@/hooks/useIsMobile";
-import Tabs from "@/components/Tabs/Tabs";
+import React, { useEffect,useState } from "react";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { showModal } from "@/redux/Modal/ModalSlice";
+import cx from "classnames";
+import UserComponent from "../UserComponent/UserComponent";
+import styles from "./MentorDetails.module.scss";
+
+import Button from "@/components/Button/Button";
+import GenericSideBar from "@/components/GenericSideBar/GenericSideBar";
+import EditUserRoleModal from "@/components/Modals/EditUserRole/EditUserRole";
+import Search from "@/components/Search/Search";
+import Tabs from "@/components/Tabs/Tabs";
+
+import backIcon from "@/assets/icons/back-icon.svg";
+import editIcon from "@/assets/icons/edit-icon.svg";
 import flagIcon from "@/assets/icons/flag-icon.svg";
 import subMenuIcon from "@/assets/icons/sub-menu-icon.svg";
-import editIcon from "@/assets/icons/edit-icon.svg";
-import EditUserRoleModal from "@/components/Modals/EditUserRole/EditUserRole";
+import profileImage from "@/assets/images/sample-profile-image.svg";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { showModal } from "@/redux/Modal/ModalSlice";
 import { getAllUserProfiles } from "@/redux/Profile/ProfileSlice";
+
+import useIsMobile from "@/hooks/useIsMobile";
 
 const MentorDetails = () => {
   const isMobile = useIsMobile();

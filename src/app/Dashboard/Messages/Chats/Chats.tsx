@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
-import styles from "./Chats.module.scss";
+import React, { useEffect,useState } from "react";
+import { Outlet,useNavigate, useParams } from "react-router-dom";
 import cx from "classnames";
+import ChatListItem from "../ChatListItem/ChatListItem";
+import styles from "./Chats.module.scss";
+import { addSignalRMessageListener,startSignalRConnection } from "@/utils/signalrService";
+
 import Button from "@/components/Button/Button";
-import { useNavigate, useParams, Outlet } from "react-router-dom";
+import GenericSideBar from "@/components/GenericSideBar/GenericSideBar";
+import Search from "@/components/Search/Search";
 
 import emptySelectionIcon from "@/assets/icons/empty-selection-icon.svg";
-import useIsMobile from "@/hooks/useIsMobile";
-import GenericSideBar from "@/components/GenericSideBar/GenericSideBar";
 import cardIcon from "@/assets/images/mentor-manager-thumbnail.svg";
-import ChatListItem from "../ChatListItem/ChatListItem";
-import Search from "@/components/Search/Search";
-import { startSignalRConnection, addSignalRMessageListener } from "@/utils/signalrService";
+
+import useIsMobile from "@/hooks/useIsMobile";
 
 const Chats = () => {
   const router = useRouter();

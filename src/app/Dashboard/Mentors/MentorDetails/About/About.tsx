@@ -1,19 +1,22 @@
 import React, { useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { showModal } from "@/redux/Modal/ModalSlice";
-import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
 import cx from "classnames";
 import styles from "./About.module.scss";
-import arrayToString from "@/helpers/arrayToString";
 
+import Button from "@/components/Button/Button";
+import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+
+import githubIcon from "@/assets/icons/github-icon.svg";
 import instagramIcon from "@/assets/icons/instagram-icon.svg";
 import linkedinIcon from "@/assets/icons/linkedin-icon.svg";
-import githubIcon from "@/assets/icons/github-icon.svg";
-import twitterIcon from "@/assets/icons/twitter-icon.svg";
 import paperIcon from "@/assets/icons/paper-icon.svg";
-import Button from "@/components/Button/Button";
+import twitterIcon from "@/assets/icons/twitter-icon.svg";
 import activateUserImage from "@/assets/images/activate-user.svg";
 import deActivateUserImage from "@/assets/images/deactivate-user.svg";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { showModal } from "@/redux/Modal/ModalSlice";
+
+import arrayToString from "@/helpers/arrayToString";
 
 const About = () => {
   const dispatch = useAppDispatch();

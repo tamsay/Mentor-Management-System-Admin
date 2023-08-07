@@ -1,13 +1,17 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import PropTypes from "prop-types";
+import { toast } from "react-toastify";
 import cx from "classnames";
+import PropTypes from "prop-types";
 import ModalContainer from "../ModalContainer/ModalContainer";
 import styles from "./ShareReport.module.scss";
-import modalImage from "@/assets/images/share-report-modal-image.svg";
+
 import Button from "@/components/Button/Button";
+
+import modalImage from "@/assets/images/share-report-modal-image.svg";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { hideModal } from "@/redux/Modal/ModalSlice";
-import { toast } from "react-toastify";
+
 
 function ShareReport({ show, size, modalName }) {
   const dispatch = useAppDispatch();

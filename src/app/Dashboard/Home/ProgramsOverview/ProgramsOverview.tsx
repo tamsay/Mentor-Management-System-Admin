@@ -1,12 +1,12 @@
 import React from "react";
 import cx from "classnames";
-import styles from "./ProgramsOverview.module.scss";
 import { useRouter } from "next/navigation";
+import styles from "./ProgramsOverview.module.scss";
+
 import Button from "@/components/Button/Button";
+import DashboardProgramsOverviewCard from "@/components/Cards/DashboardProgramsOverview/DashboardProgramsOverview";
 
 import cardIcon from "@/assets/icons/programs-overview-card-icon.svg";
-
-import DashboardProgramsOverviewCard from "@/components/Cards/DashboardProgramsOverview/DashboardProgramsOverview";
 
 function ProgramsOverview() {
   const router = useRouter();

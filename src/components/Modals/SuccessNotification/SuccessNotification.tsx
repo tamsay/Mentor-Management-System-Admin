@@ -1,12 +1,15 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import PropTypes from "prop-types";
 import cx from "classnames";
+import { useRouter } from "next/navigation";
+import PropTypes from "prop-types";
 import ModalContainer from "../ModalContainer/ModalContainer";
 import styles from "./SuccessNotification.module.scss";
+
 import Button from "@/components/Button/Button";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { hideModal } from "@/redux/Modal/ModalSlice";
-import { useRouter } from "next/navigation";
+
 
 function SuccessNotification({ show, size, modalName }) {
   const dispatch = useAppDispatch();

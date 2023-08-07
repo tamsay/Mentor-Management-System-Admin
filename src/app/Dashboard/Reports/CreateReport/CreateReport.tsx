@@ -1,24 +1,30 @@
 import React, { useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { Controller,useForm } from "react-hook-form";
 import cx from "classnames";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import styles from "./CreateReport.module.scss";
-import Button from "@/components/Button/Button";
-import SelectionSideBar from "@/components/SelectionSideBar/SelectionSideBar";
-import InputField from "@/components/Input/Input";
-import TextArea from "@/components/TextArea/TextArea";
-import Search from "@/components/Search/Search";
-import Filter from "@/components/Filter/Filter";
-import closeIcon from "@/assets/icons/undo-icon.svg";
-import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
-import { showModal } from "@/redux/Modal/ModalSlice";
-import { createReportSchema } from "@/helpers/validation";
-import ProgramListItem from "./ProgramListItem/ProgramListItem";
-import mentorImage from "@/assets/images/reports-program-thumbnail.svg";
-import successImage from "@/assets/images/default-success-notification-image.png";
-import closeIconAlt from "@/assets/icons/close-icon.svg";
 import { useRouter } from "next/navigation";
+import styles from "./CreateReport.module.scss";
+import ProgramListItem from "./ProgramListItem/ProgramListItem";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import Button from "@/components/Button/Button";
+import Filter from "@/components/Filter/Filter";
+import InputField from "@/components/Input/Input";
+import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+import Search from "@/components/Search/Search";
+import SelectionSideBar from "@/components/SelectionSideBar/SelectionSideBar";
+import TextArea from "@/components/TextArea/TextArea";
+
+import closeIconAlt from "@/assets/icons/close-icon.svg";
+import closeIcon from "@/assets/icons/undo-icon.svg";
+import successImage from "@/assets/images/default-success-notification-image.png";
+import mentorImage from "@/assets/images/reports-program-thumbnail.svg";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { showModal } from "@/redux/Modal/ModalSlice";
+
+import { createReportSchema } from "@/helpers/validation";
+
+
 
 function CreateReport() {
   const router = useRouter();

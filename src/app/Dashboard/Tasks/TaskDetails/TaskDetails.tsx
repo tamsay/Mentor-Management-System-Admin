@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useNavigate,useParams } from "react-router-dom";
 import cx from "classnames";
+import { formatDistanceToNow } from "date-fns";
 import styles from "./TaskDetails.module.scss";
-import { useParams, useNavigate } from "react-router-dom";
+
 import Button from "@/components/Button/Button";
-import headerIcon from "@/assets/icons/tasks-overview-card-icon.svg";
-import calendarIcon from "@/assets/icons/tasks-overview-calendar-icon.svg";
-import reportIcon from "@/assets/icons/task-report-icon-green.png";
+import DeleteNotificationModal from "@/components/Modals/DeleteNotification/DeleteNotification";
+
+import deleteIcon from "@/assets/icons/delete-icon-red.svg";
 import mentorsIcon from "@/assets/icons/mentor-icon-green.png";
 import mentorManagersIcon from "@/assets/icons/mentor-manager-icon-green.png";
-import deleteIcon from "@/assets/icons/delete-icon-red.svg";
-import DeleteNotificationModal from "@/components/Modals/DeleteNotification/DeleteNotification";
+import reportIcon from "@/assets/icons/task-report-icon-green.png";
+import calendarIcon from "@/assets/icons/tasks-overview-calendar-icon.svg";
+import headerIcon from "@/assets/icons/tasks-overview-card-icon.svg";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
-import { getTaskDetails, deleteTask, getAllTasks } from "@/redux/Tasks/TasksSlice";
-import { formatDistanceToNow } from "date-fns";
-import { capitalizeFirstWord } from "@/helpers/textTransform";
+import { deleteTask, getAllTasks,getTaskDetails } from "@/redux/Tasks/TasksSlice";
+
 import arrayToString from "@/helpers/arrayToString";
+import { capitalizeFirstWord } from "@/helpers/textTransform";
 
 function TaskDetails() {
   const dispatch = useAppDispatch();

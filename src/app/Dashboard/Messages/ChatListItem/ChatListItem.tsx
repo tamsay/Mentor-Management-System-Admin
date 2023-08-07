@@ -1,9 +1,10 @@
 import React from "react";
-import cx from "classnames";
-import styles from "./ChatListItem.module.scss";
-import "./ChatListActiveItem.scss";
-import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
+import cx from "classnames";
+import PropTypes from "prop-types";
+import styles from "./ChatListItem.module.scss";
+
+import "./ChatListActiveItem.scss";
 
 function ChatListItem({ data }) {
   const { id } = useParams();

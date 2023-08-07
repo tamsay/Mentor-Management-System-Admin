@@ -1,28 +1,32 @@
-import React, { useState, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import React, { useEffect,useState } from "react";
+import { Controller,useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
 import cx from "classnames";
+import { useRouter } from "next/navigation";
 import styles from "./EditTask.module.scss";
-import Button from "@/components/Button/Button";
-import { ReactComponent as ClearListIcon } from "@/assets/icons/clear-list-icon.svg";
-import closeIcon from "@/assets/icons/undo-icon.svg";
-import SelectionSideBar from "@/components/SelectionSideBar/SelectionSideBar";
-import InputField from "@/components/Input/Input";
-import TextArea from "@/components/TextArea/TextArea";
-import Search from "@/components/Search/Search";
-import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
-import { showModal } from "@/redux/Modal/ModalSlice";
-import successImage from "@/assets/images/create-task-success-image.svg";
-import { useForm, Controller } from "react-hook-form";
-import { editTaskSchema } from "@/helpers/validation";
-import { yupResolver } from "@hookform/resolvers/yup";
 import PersonelComponent from "@/pages/Dashboard/Tasks/PersonelComponent/PersonelComponent";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import Button from "@/components/Button/Button";
+import InputField from "@/components/Input/Input";
+import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+import Search from "@/components/Search/Search";
+import SelectionSideBar from "@/components/SelectionSideBar/SelectionSideBar";
+import TextArea from "@/components/TextArea/TextArea";
+
+import { ReactComponent as ClearListIcon } from "@/assets/icons/clear-list-icon.svg";
+import closeIconAlt from "@/assets/icons/close-icon.svg";
+import closeIcon from "@/assets/icons/undo-icon.svg";
+import successImage from "@/assets/images/create-task-success-image.svg";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { showModal } from "@/redux/Modal/ModalSlice";
+import { getAllUserProfiles } from "@/redux/Profile/ProfileSlice";
 // import { getAllMentors } from "@/redux/Mentors/MentorsSlice";
 // import { getAllMentorManagers } from "@/redux/MentorManagers/MentorManagersSlice";
-import { getTaskDetails, editTask } from "@/redux/Tasks/TasksSlice";
-import { useParams } from "react-router-dom";
-import closeIconAlt from "@/assets/icons/close-icon.svg";
-import { useRouter } from "next/navigation";
-import { getAllUserProfiles } from "@/redux/Profile/ProfileSlice";
+import { editTask,getTaskDetails } from "@/redux/Tasks/TasksSlice";
+
+import { editTaskSchema } from "@/helpers/validation";
 
 const EditTask = () => {
   const params = useParams();
@@ -141,9 +145,7 @@ const EditTask = () => {
         )}
         <div className={cx(styles.searchWrapper)}>
           <Search
-            inputPlaceholder={
-              openSideBar?.category === "mentor-manager" ? "Search for Mentor Manager" : "Search for Mentor"
-            }
+            inputPlaceholder={openSideBar?.category === "mentor-manager" ? "Search for Mentor Manager" : "Search for Mentor"}
             onChange={handleSearchInput}
             collapseInput={collapseInput}
             setCollapseInput={setCollapseInput}

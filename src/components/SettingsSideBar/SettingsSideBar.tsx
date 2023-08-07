@@ -1,11 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
-import cx from "classnames";
-import styles from "./SettingsSideBar.module.scss";
-import "./SettingsSideBarActiveMenu.scss";
-import PropTypes from "prop-types";
+import React, { useEffect, useRef,useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import cx from "classnames";
+import PropTypes from "prop-types";
+import styles from "./SettingsSideBar.module.scss";
+
 import { ReactComponent as SettingsToggler } from "@/assets/icons/settings-toggler-icon.svg";
+
 import useIsMobile from "@/hooks/useIsMobile";
+
+import "./SettingsSideBarActiveMenu.scss";
 
 function SettingsSideBar({ data }) {
   const location = useLocation();

@@ -1,16 +1,16 @@
-import { configureStore } from "@reduxjs/toolkit";
 import AuthReducer from "./Auth/AuthSlice";
-import ModalReducer from "./Modal/ModalSlice";
-import LoadingReducer from "./Loading/LoadingSlice";
-import SettingsReducer from "./Settings/SettingsSlice";
-import ReportsReducer from "./Reports/ReportsSlice";
 import CriteriaSlice from "./Criteria/CriteriaSlice";
-import MentorsSlice from "./Mentors/MentorsSlice";
+import LoadingReducer from "./Loading/LoadingSlice";
 import MentorManagersSlice from "./MentorManagers/MentorManagersSlice";
-import TasksSlice from "./Tasks/TasksSlice";
-import ProgramsSlice from "./Programs/ProgramsSlice";
-import ProfileSlice from "./Profile/ProfileSlice";
+import MentorsSlice from "./Mentors/MentorsSlice";
 import MessagesSlice from "./Messages/MessagesSlice";
+import ModalReducer from "./Modal/ModalSlice";
+import ProfileSlice from "./Profile/ProfileSlice";
+import ProgramsSlice from "./Programs/ProgramsSlice";
+import ReportsReducer from "./Reports/ReportsSlice";
+import SettingsReducer from "./Settings/SettingsSlice";
+import TasksSlice from "./Tasks/TasksSlice";
+import { configureStore } from "@reduxjs/toolkit";
 
 export const store = configureStore({
   reducer: {

@@ -1,20 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import cx from "classnames";
 import styles from "./Tasks.module.scss";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { showModal } from "@/redux/Modal/ModalSlice";
-import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
-import searchIcon from "@/assets/icons/search-icon.svg";
-import { ReactComponent as TogglerIconUp } from "@/assets/icons/arrow-circle-up.svg";
-import { ReactComponent as TogglerIconDown } from "@/assets/icons/arrow-circle-down.svg";
-import Button from "@/components/Button/Button";
 
-import headerIcon from "@/assets/icons/tasks-overview-card-icon.svg";
-import calendarIcon from "@/assets/icons/tasks-overview-calendar-icon.svg";
+import Button from "@/components/Button/Button";
+import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+
+import { ReactComponent as TogglerIconDown } from "@/assets/icons/arrow-circle-down.svg";
+import { ReactComponent as TogglerIconUp } from "@/assets/icons/arrow-circle-up.svg";
+import searchIcon from "@/assets/icons/search-icon.svg";
 import reportIcon from "@/assets/icons/task-report-icon-green.png";
+import calendarIcon from "@/assets/icons/tasks-overview-calendar-icon.svg";
+import headerIcon from "@/assets/icons/tasks-overview-card-icon.svg";
 import assignSuccessImage from "@/assets/images/create-task-success-image.svg";
 import unAssignSuccessImage from "@/assets/images/deactivate-user.svg";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { showModal } from "@/redux/Modal/ModalSlice";
 import { getAllTasks } from "@/redux/Tasks/TasksSlice";
+
 import formatDate from "@/helpers/formatDate";
 
 const Tasks = () => {

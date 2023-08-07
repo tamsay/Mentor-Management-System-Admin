@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "classnames";
-import styles from "./Loader.module.scss";
 import PropTypes from "prop-types";
+import styles from "./Loader.module.scss";
 
 const Loader = ({ small, fullPage }) => (
   <div className={cx(styles.loaderContainer, fullPage && styles.fullPage, "flexRow-fully-centered")}>

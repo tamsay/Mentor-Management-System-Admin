@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import cx from "classnames";
 import PropTypes from "prop-types";
 import styles from "./ReportListItem.module.scss";
-import "./ReportListActiveItem.scss";
+
 import cardIcon from "@/assets/icons/reports-overview-card-icon.svg";
+
 import formatDate from "@/helpers/formatDate";
+
+import "./ReportListActiveItem.scss";
 
 function ReportListItem({ data, userProfiles }) {
   const [userFullName, setUserFullName] = useState("");

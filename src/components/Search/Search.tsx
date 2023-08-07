@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import cx from "classnames";
-import styles from "./Search.module.scss";
 import PropTypes from "prop-types";
-import searchIcon from "@/assets/icons/search-icon-green.png";
+import styles from "./Search.module.scss";
+
 import closeIcon from "@/assets/icons/close-icon.png";
+import searchIcon from "@/assets/icons/search-icon-green.png";
 // import clearIcon from "@/assets/icons/clear-list-reversed.svg";
 
 const Search = ({

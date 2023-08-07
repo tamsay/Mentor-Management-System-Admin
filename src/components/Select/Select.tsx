@@ -1,7 +1,9 @@
 import React, { forwardRef } from "react";
 import PropTypes from "prop-types";
-import "./Select.scss";
+
 import loadingIcon from "@/assets/icons/loading.gif";
+
+import "./Select.scss";
 
 const Select = forwardRef(
   ({ options, defaultSelect, name, onChange, value, error, border, marginbottom, loading, required }) => {

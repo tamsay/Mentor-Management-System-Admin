@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import cx from "classnames";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import styles from "./FAQ.module.scss";
-import { getGeneralFaq, getTechnicalFaq } from "@/redux/Settings/SettingsSlice";
-import Loader from "@/components/Loader/Loader";
-import emptySelectionIcon from "@/assets/icons/empty-selection-icon.svg";
 
-import { ReactComponent as ExpandIcon } from "@/assets/icons/faq-expand-icon.svg";
+import Loader from "@/components/Loader/Loader";
+
+import emptySelectionIcon from "@/assets/icons/empty-selection-icon.svg";
 import { ReactComponent as CollapseIcon } from "@/assets/icons/faq-collapse-icon.svg";
+import { ReactComponent as ExpandIcon } from "@/assets/icons/faq-expand-icon.svg";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { getGeneralFaq, getTechnicalFaq } from "@/redux/Settings/SettingsSlice";
 
 function FAQ() {
   const dispatch = useAppDispatch();

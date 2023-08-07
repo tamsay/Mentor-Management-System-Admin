@@ -1,8 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import { getAllUserProfilesApi, updateProfileApi, getProfileApi } from "../api/profile";
+import { getAllUserProfilesApi, getProfileApi,updateProfileApi } from "../api/profile";
+import { createSlice } from "@reduxjs/toolkit";
 
-import { getAllUserProfilesLoading, updateProfileLoading, getProfileLoading } from "@/redux/Loading/LoadingSlice";
+import { getAllUserProfilesLoading, getProfileLoading,updateProfileLoading } from "@/redux/Loading/LoadingSlice";
+
 
 const initialState = {
   error: false,

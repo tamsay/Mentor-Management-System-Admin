@@ -1,16 +1,22 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import PropTypes from "prop-types";
+import { useForm } from "react-hook-form";
 import cx from "classnames";
+import PropTypes from "prop-types";
 import ModalContainer from "../ModalContainer/ModalContainer";
 import styles from "./EditUserRole.module.scss";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import Button from "@/components/Button/Button";
-import { hideModal, showModal } from "@/redux/Modal/ModalSlice";
+
 import successImage from "@/assets/images/activate-user.svg";
 
-import { useForm } from "react-hook-form";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { hideModal, showModal } from "@/redux/Modal/ModalSlice";
+
 import { editUserRoleSchema } from "@/helpers/validation";
-import { yupResolver } from "@hookform/resolvers/yup";
+
+
+
 
 function EditUserRole({ show, size, modalName }) {
   const dispatch = useAppDispatch();

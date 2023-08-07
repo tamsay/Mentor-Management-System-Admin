@@ -1,31 +1,36 @@
-import React, { useState, useCallback, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import React, { useCallback, useEffect,useState } from "react";
+import { useDropzone } from "react-dropzone";
+import { Controller,useForm } from "react-hook-form";
 import cx from "classnames";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { useRouter } from "next/navigation";
 import styles from "./CreateProgram.module.scss";
+import PersonelComponent from "./PersonelComponent/PersonelComponent";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import Button from "@/components/Button/Button";
-import { ReactComponent as ClearListIcon } from "@/assets/icons/clear-list-icon.svg";
-import SelectionSideBar from "@/components/SelectionSideBar/SelectionSideBar";
-import closeIcon from "@/assets/icons/undo-icon.svg";
-import closeIconAlt from "@/assets/icons/close-icon.svg";
 import InputField from "@/components/Input/Input";
-import TextArea from "@/components/TextArea/TextArea";
-import Search from "@/components/Search/Search";
 // import Filter from "@/components/Filter/Filter";
 import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+import Search from "@/components/Search/Search";
+import SelectionSideBar from "@/components/SelectionSideBar/SelectionSideBar";
+import TextArea from "@/components/TextArea/TextArea";
 
-import { showModal } from "@/redux/Modal/ModalSlice";
+import { ReactComponent as ClearListIcon } from "@/assets/icons/clear-list-icon.svg";
+import closeIconAlt from "@/assets/icons/close-icon.svg";
+import closeIcon from "@/assets/icons/undo-icon.svg";
 import successImage from "@/assets/images/create-task-success-image.svg";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { showModal } from "@/redux/Modal/ModalSlice";
+import { getAllUserProfiles } from "@/redux/Profile/ProfileSlice";
+import { createProgram } from "@/redux/Programs/ProgramsSlice";
+
 import { createProgramSchema } from "@/helpers/validation";
-import PersonelComponent from "./PersonelComponent/PersonelComponent";
+
 // import { getAllMentors } from "@/redux/Mentors/MentorsSlice";
 // import { getAllMentorManagers } from "@/redux/MentorManagers/MentorManagersSlice";
 // import programAvatar from "@/assets/images/program-avatar.svg";
-import { useDropzone } from "react-dropzone";
-import { useRouter } from "next/navigation";
-import { createProgram } from "@/redux/Programs/ProgramsSlice";
-import { getAllUserProfiles } from "@/redux/Profile/ProfileSlice";
+
 
 function CreateProgram() {
   const router = useRouter();

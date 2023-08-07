@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Player } from "video-react";
+
 import "./VideoPlayer.css";
 import "video-react/dist/video-react.css";
-import { Player } from "video-react";
 
 function VideoPlayer({ url }) {
   return (

@@ -2,12 +2,12 @@ import React from "react";
 import cx from "classnames";
 import { useRouter } from "next/navigation";
 import styles from "./TasksOverview.module.scss";
+
 import Button from "@/components/Button/Button";
-
-import { ReactComponent as CardIcon } from "@/assets/icons/tasks-overview-card-icon.svg";
-import calendarIcon from "@/assets/icons/tasks-overview-calendar-icon.svg";
-
 import DashboardTasksOverviewCard from "@/components/Cards/DashboardTasksOverview/DashboardTasksOverview";
+
+import calendarIcon from "@/assets/icons/tasks-overview-calendar-icon.svg";
+import { ReactComponent as CardIcon } from "@/assets/icons/tasks-overview-card-icon.svg";
 
 function TasksOverview() {
   const router = useRouter();

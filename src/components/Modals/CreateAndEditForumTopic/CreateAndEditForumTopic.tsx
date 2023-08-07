@@ -1,19 +1,23 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import PropTypes from "prop-types";
+import { Controller,useForm } from "react-hook-form";
 import cx from "classnames";
+import PropTypes from "prop-types";
 import ModalContainer from "../ModalContainer/ModalContainer";
 import styles from "./CreateAndEditForumTopic.module.scss";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import Button from "@/components/Button/Button";
-import { hideModal, showModal } from "@/redux/Modal/ModalSlice";
-import closeIcon from "@/assets/icons/close-icon.svg";
 import InputField from "@/components/Input/Input";
 import TextArea from "@/components/TextArea/TextArea";
+
 import attachmentIcon from "@/assets/icons/attachment-icon-green.svg";
+import closeIcon from "@/assets/icons/close-icon.svg";
 import smileyIcon from "@/assets/icons/smiley-icon.svg";
 import successImage from "@/assets/images/default-success-notification-image.png";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { hideModal, showModal } from "@/redux/Modal/ModalSlice";
+
 import { createAndEditForumTopicSchema } from "@/helpers/validation";
 
 function CreateAndEditForumTopic({ show, size, modalName }) {

@@ -1,31 +1,34 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useEffect, useMemo,useState } from "react";
+import { Menu, MenuItem, Sidebar, useProSidebar } from "react-pro-sidebar";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import cx from "classnames";
 import styles from "./DashboardSideBar.module.scss";
-import "./DashboardActiveMenu.scss";
+import { logout } from "@/utils/auth";
 
-import { Sidebar, Menu, MenuItem, useProSidebar } from "react-pro-sidebar";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-
-import { ReactComponent as ProfileIcon } from "@/assets/icons/profile-icon.svg";
-import { ReactComponent as DashboardIcon } from "@/assets/icons/dashboard-icon.svg";
-import { ReactComponent as ProgramsIcon } from "@/assets/icons/programs-icon.svg";
-import { ReactComponent as TasksIcon } from "@/assets/icons/tasks-icon.svg";
-import { ReactComponent as ReportsIcon } from "@/assets/icons/reports-icon.svg";
-import { ReactComponent as MentorsIcon } from "@/assets/icons/mentors-icon.svg";
-import { ReactComponent as MentorManagersIcon } from "@/assets/icons/mentor-managers-icon.svg";
 import { ReactComponent as ApprovalRequestsIcon } from "@/assets/icons/approval-requests-icon.svg";
 import { ReactComponent as CertificatesIcon } from "@/assets/icons/certificates-icon.svg";
-import { ReactComponent as MessagesIcon } from "@/assets/icons/messages-icon.svg";
+import { ReactComponent as DashboardIcon } from "@/assets/icons/dashboard-icon.svg";
 import { ReactComponent as DiscussionForumIcon } from "@/assets/icons/discussion-forum-icon.svg";
-import { ReactComponent as SettingsIcon } from "@/assets/icons/settings-icon.svg";
 import { ReactComponent as LogoutIcon } from "@/assets/icons/logout-icon.svg";
-import userInfo from "@/hooks/useGetUserInfo";
-import arrayToString from "@/helpers/arrayToString";
-import { logout } from "@/utils/auth";
-import { titleCase } from "@/helpers/textTransform";
+import { ReactComponent as MentorManagersIcon } from "@/assets/icons/mentor-managers-icon.svg";
+import { ReactComponent as MentorsIcon } from "@/assets/icons/mentors-icon.svg";
+import { ReactComponent as MessagesIcon } from "@/assets/icons/messages-icon.svg";
+import { ReactComponent as ProfileIcon } from "@/assets/icons/profile-icon.svg";
+import { ReactComponent as ProgramsIcon } from "@/assets/icons/programs-icon.svg";
+import { ReactComponent as ReportsIcon } from "@/assets/icons/reports-icon.svg";
+import { ReactComponent as SettingsIcon } from "@/assets/icons/settings-icon.svg";
+import { ReactComponent as TasksIcon } from "@/assets/icons/tasks-icon.svg";
+
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { getProfile } from "@/redux/Profile/ProfileSlice";
+
+import arrayToString from "@/helpers/arrayToString";
+import { titleCase } from "@/helpers/textTransform";
+
+import userInfo from "@/hooks/useGetUserInfo";
 import useIsMobile from "@/hooks/useIsMobile";
+
+import "./DashboardActiveMenu.scss";
 
 function DashboardSideBar() {
   const location = useLocation();

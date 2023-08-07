@@ -1,19 +1,20 @@
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import PropTypes from "prop-types";
+import { Controller,useFieldArray, useForm } from "react-hook-form";
 import cx from "classnames";
+import { nanoid } from "nanoid";
+import PropTypes from "prop-types";
 import ModalContainer from "../../ModalContainer/ModalContainer";
 import styles from "./YesOrNo.module.scss";
+
 import Button from "@/components/Button/Button";
 import InputField from "@/components/Input/Input";
-import { nanoid } from "nanoid";
 
-import { hideModal } from "@/redux/Modal/ModalSlice";
-import { useFieldArray, useForm, Controller } from "react-hook-form";
-
-import { saveCriteriaToStorage, getCriteriaFromStorage } from "@/redux/Criteria/CriteriaSlice";
 import addIcon from "@/assets/icons/add-icon.svg";
 import removeIcon from "@/assets/icons/minus-icon-thin.svg";
+
+import { getCriteriaFromStorage,saveCriteriaToStorage } from "@/redux/Criteria/CriteriaSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { hideModal } from "@/redux/Modal/ModalSlice";
 function YesOrNo({ show, size, modalName }) {
   const dispatch = useAppDispatch();
 
@@ -92,9 +93,7 @@ function YesOrNo({ show, size, modalName }) {
                         type='text'
                         marginbottom='0rem'
                         border='none'
-                        error={
-                          errors?.criteria && errors?.criteria[index] && errors?.criteria[index]?.question?.message
-                        }
+                        error={errors?.criteria && errors?.criteria[index] && errors?.criteria[index]?.question?.message}
                       />
                     )}
                   />

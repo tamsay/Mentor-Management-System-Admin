@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import cx from "classnames";
 import PropTypes from "prop-types";
 import styles from "./PersonelComponent.module.scss";
+
 import { ReactComponent as AddIcon } from "@/assets/icons/add-icon.svg";
 import { ReactComponent as CheckIcon } from "@/assets/icons/check-icon.svg";
+
 import { initialsCase, titleCase } from "@/helpers/textTransform";
 
 function PersonelComponent({ data, checked, handleChecked }) {

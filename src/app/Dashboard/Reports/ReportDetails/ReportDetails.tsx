@@ -1,18 +1,23 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef,useState } from "react";
+import { useLocation,useNavigate, useParams } from "react-router-dom";
 import cx from "classnames";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import html2pdf from "html2pdf.js";
 import styles from "./ReportDetails.module.scss";
-import reportIcon from "@/assets/icons/reports-overview-card-icon.svg";
-import closeIcon from "@/assets/icons/close-icon.svg";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+
 import Button from "@/components/Button/Button";
 import ShareReportModal from "@/components/Modals/ShareReport/ShareReport";
 import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
-import { showModal } from "@/redux/Modal/ModalSlice";
+
+import closeIcon from "@/assets/icons/close-icon.svg";
+import reportIcon from "@/assets/icons/reports-overview-card-icon.svg";
 import successImage from "@/assets/images/default-success-notification-image.png";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { showModal } from "@/redux/Modal/ModalSlice";
+
 // import { getReportDetails } from "@/redux/Reports/ReportsSlice";
 import formatDate from "@/helpers/formatDate";
-import html2pdf from "html2pdf.js";
+
 
 const ReportDetails = () => {
   const dispatch = useAppDispatch();

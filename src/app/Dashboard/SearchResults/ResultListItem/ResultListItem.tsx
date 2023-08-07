@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "classnames";
-import styles from "./ResultListItem.module.scss";
 import PropTypes from "prop-types";
+import styles from "./ResultListItem.module.scss";
 
 function ResultListItem({ data }) {
   return (

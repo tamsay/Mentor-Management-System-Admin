@@ -1,17 +1,21 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import React, { useEffect,useState } from "react";
+import { useLocation,useParams } from "react-router-dom";
 import cx from "classnames";
 import styles from "./RequestDetails.module.scss";
-import Loader from "@/components/Loader/Loader";
-import paperIcon from "@/assets/icons/paper-icon.svg";
-import arrayToString from "@/helpers/arrayToString";
+
 import Button from "@/components/Button/Button";
-import { showModal } from "@/redux/Modal/ModalSlice";
+import Loader from "@/components/Loader/Loader";
 import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+
+import paperIcon from "@/assets/icons/paper-icon.svg";
 import approvedSuccessImage from "@/assets/images/approved.svg";
 import declinedSuccessImage from "@/assets/images/declined.svg";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { showModal } from "@/redux/Modal/ModalSlice";
+
+import arrayToString from "@/helpers/arrayToString";
 
 const RequestDetails = () => {
   const { id } = useParams();

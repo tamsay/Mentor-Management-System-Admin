@@ -1,22 +1,21 @@
-import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import {
-  getAllReportsApi,
-  getWeeklyReportsApi,
-  getMonthlyReportsApi,
-  getYearlyReportsApi,
   createNewReportApi,
-  getReportDetailsApi
-} from "../api/reports";
+  getAllReportsApi,
+  getMonthlyReportsApi,
+  getReportDetailsApi,
+  getWeeklyReportsApi,
+  getYearlyReportsApi} from "../api/reports";
+import { createSlice } from "@reduxjs/toolkit";
 
 import {
-  getAllReportsLoading,
-  getWeeklyReportsLoading,
-  getMonthlyReportsLoading,
-  getYearlyReportsLoading,
   createNewReportLoading,
-  getReportDetailsLoading
-} from "@/redux/Loading/LoadingSlice";
+  getAllReportsLoading,
+  getMonthlyReportsLoading,
+  getReportDetailsLoading,
+  getWeeklyReportsLoading,
+  getYearlyReportsLoading} from "@/redux/Loading/LoadingSlice";
+
 
 const initialState = {
   error: false,

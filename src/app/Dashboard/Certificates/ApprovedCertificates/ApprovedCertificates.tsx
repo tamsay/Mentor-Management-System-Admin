@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import cx from "classnames";
 import styles from "./ApprovedCertificates.module.scss";
+
+import Button from "@/components/Button/Button";
+import DeleteNotificationModal from "@/components/Modals/DeleteNotification/DeleteNotification";
+
+import { ReactComponent as TogglerIconDown } from "@/assets/icons/arrow-circle-down.svg";
+import { ReactComponent as TogglerIconUp } from "@/assets/icons/arrow-circle-up.svg";
+import { ReactComponent as CertificateIcon } from "@/assets/icons/certificate-thumbnail.svg";
+import emptySelectionIcon from "@/assets/icons/empty-selection-icon.svg";
+import certificate from "@/assets/images/certificate-full.png";
+import successImage from "@/assets/images/task-delete-success.png";
+
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
-import DeleteNotificationModal from "@/components/Modals/DeleteNotification/DeleteNotification";
-import certificate from "@/assets/images/certificate-full.png";
-import { ReactComponent as CertificateIcon } from "@/assets/icons/certificate-thumbnail.svg";
-import { ReactComponent as TogglerIconUp } from "@/assets/icons/arrow-circle-up.svg";
-import { ReactComponent as TogglerIconDown } from "@/assets/icons/arrow-circle-down.svg";
-import Button from "@/components/Button/Button";
-import successImage from "@/assets/images/task-delete-success.png";
-import emptySelectionIcon from "@/assets/icons/empty-selection-icon.svg";
 
 const ApprovedCertificates = () => {
   const dispatch = useAppDispatch();

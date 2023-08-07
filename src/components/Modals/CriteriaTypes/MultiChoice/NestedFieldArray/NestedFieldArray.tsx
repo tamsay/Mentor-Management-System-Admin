@@ -1,12 +1,13 @@
 import React from "react";
+import { Controller,useFieldArray } from "react-hook-form";
 import cx from "classnames";
+import PropTypes from "prop-types";
 import styles from "./NestedFieldArray.module.scss";
+
+import InputField from "@/components/Input/Input";
+
 import addIcon from "@/assets/icons/add-icon-thin.svg";
 import removeIcon from "@/assets/icons/minus-icon-thin.svg";
-
-import PropTypes from "prop-types";
-import { useFieldArray, Controller } from "react-hook-form";
-import InputField from "@/components/Input/Input";
 
 const NestedFieldArray = ({ nestIndex, control, errors }) => {
   const { fields, remove, append } = useFieldArray({
@@ -34,12 +35,10 @@ const NestedFieldArray = ({ nestIndex, control, errors }) => {
                     type='text'
                     marginbottom='0rem'
                     border='none'
-                    error={
-                      errors?.criteria &&
+                    error={errors?.criteria &&
                       errors?.criteria[nestIndex] &&
                       errors?.criteria[nestIndex]?.options &&
-                      errors?.criteria[nestIndex]?.options[optionIndex]?.option?.message
-                    }
+                      errors?.criteria[nestIndex]?.options[optionIndex]?.option?.message}
                   />
                 )}
               />

@@ -1,10 +1,13 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import cx from "classnames";
 import PropTypes from "prop-types";
 import styles from "./UserComponent.module.scss";
+
 import Button from "@/components/Button/Button";
-import { useParams } from "react-router-dom";
+
 import profileImage from "@/assets/images/sample-profile-image.svg";
+
 import formatDate from "@/helpers/formatDate";
 
 function UserComponent({ data, onClick }) {

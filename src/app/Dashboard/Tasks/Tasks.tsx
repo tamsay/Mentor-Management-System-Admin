@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect,useState } from "react";
+import { Outlet,useNavigate, useParams } from "react-router-dom";
 import cx from "classnames";
-import { useNavigate, useParams, Outlet } from "react-router-dom";
-import styles from "./Tasks.module.scss";
-import GenericSideBar from "@/components/GenericSideBar/GenericSideBar";
-import Button from "@/components/Button/Button";
-import backIcon from "@/assets/icons/back-icon.svg";
-import subMenuIcon from "@/assets/icons/sub-menu-icon.svg";
-import emptySelectionIcon from "@/assets/icons/empty-selection-icon.svg";
 import TaskListItem from "./TaskListItem/TaskListItem";
-import useIsMobile from "@/hooks/useIsMobile";
-import Search from "@/components/Search/Search";
+import styles from "./Tasks.module.scss";
+
+import Button from "@/components/Button/Button";
 import Filter from "@/components/Filter/Filter";
-import { getAllTasks, getCompletedTasks, getInprogressTasks } from "@/redux/Tasks/TasksSlice";
+import GenericSideBar from "@/components/GenericSideBar/GenericSideBar";
+import Search from "@/components/Search/Search";
+
+import backIcon from "@/assets/icons/back-icon.svg";
+import emptySelectionIcon from "@/assets/icons/empty-selection-icon.svg";
+import subMenuIcon from "@/assets/icons/sub-menu-icon.svg";
+
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { getAllTasks, getCompletedTasks, getInprogressTasks } from "@/redux/Tasks/TasksSlice";
+
+import useIsMobile from "@/hooks/useIsMobile";
 
 function Tasks() {
   const router = useRouter();

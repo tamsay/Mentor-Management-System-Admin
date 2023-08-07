@@ -1,26 +1,31 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import React, { useCallback,useEffect, useState } from "react";
+import { useDropzone } from "react-dropzone";
+import { Controller,useForm } from "react-hook-form";
 import cx from "classnames";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./General.module.scss";
+import allCountries from "@/utils/countriesAndFlags";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import Button from "@/components/Button/Button";
 import InputField from "@/components/Input/Input";
+import Loader from "@/components/Loader/Loader";
+import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
 import SelectField from "@/components/Select/Select";
 import TextArea from "@/components/TextArea/TextArea";
-import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
-import { showModal } from "@/redux/Modal/ModalSlice";
-import successNotificationImage from "@/assets/images/default-success-notification-image.png";
-import { useDropzone } from "react-dropzone";
+
 import githubIcon from "@/assets/icons/settings-github-icon.svg";
 import instagramIcon from "@/assets/icons/settings-instagram-icon.svg";
 import linkedinIcon from "@/assets/icons/settings-linkedin-icon.svg";
 import twitterIcon from "@/assets/icons/settings-twitter-icon.svg";
-import { updateProfileSchema } from "@/helpers/validation";
-import { updateProfile, getProfile } from "@/redux/Profile/ProfileSlice";
+import successNotificationImage from "@/assets/images/default-success-notification-image.png";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { showModal } from "@/redux/Modal/ModalSlice";
+import { getProfile,updateProfile } from "@/redux/Profile/ProfileSlice";
+
 import { initialsCase } from "@/helpers/textTransform";
-import Loader from "@/components/Loader/Loader";
-import allCountries from "@/utils/countriesAndFlags";
+import { updateProfileSchema } from "@/helpers/validation";
+
 import useGetCountriesAndCities from "@/hooks/useGetCountriesAndCities";
 
 function General() {

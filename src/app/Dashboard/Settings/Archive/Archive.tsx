@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import cx from "classnames";
 import styles from "./Archive.module.scss";
 
-import { ReactComponent as ArchiveCardIcon } from "@/assets/icons/archive-card-icon.svg";
-import { ReactComponent as CalendarIcon } from "@/assets/icons/archive-calendar-icon.svg";
-import { ReactComponent as ClockIcon } from "@/assets/icons/archive-clock-icon.svg";
-import { ReactComponent as TogglerIconUp } from "@/assets/icons/arrow-circle-up.svg";
-import { ReactComponent as TogglerIconDown } from "@/assets/icons/arrow-circle-down.svg";
-
-import { ReactComponent as ReportIcon } from "@/assets/icons/reports-icon.svg";
 import Button from "@/components/Button/Button";
+
+import { ReactComponent as CalendarIcon } from "@/assets/icons/archive-calendar-icon.svg";
+import { ReactComponent as ArchiveCardIcon } from "@/assets/icons/archive-card-icon.svg";
+import { ReactComponent as ClockIcon } from "@/assets/icons/archive-clock-icon.svg";
+import { ReactComponent as TogglerIconDown } from "@/assets/icons/arrow-circle-down.svg";
+import { ReactComponent as TogglerIconUp } from "@/assets/icons/arrow-circle-up.svg";
+import { ReactComponent as ReportIcon } from "@/assets/icons/reports-icon.svg";
 
 function Archive() {
   const [toggle, setToggle] = useState({

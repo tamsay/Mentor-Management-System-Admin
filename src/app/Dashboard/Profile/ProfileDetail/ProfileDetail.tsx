@@ -1,8 +1,8 @@
 import React from "react";
-import cx from "classnames";
 import { Col, Container, Row } from "react-bootstrap";
-import styles from "./Profile.detail.module.scss";
+import cx from "classnames";
 import PropTypes from "prop-types";
+import styles from "./Profile.detail.module.scss";
 
 function ProfileDetail({ data }) {
   const { bio, addressInfoData, socialInfoData } = data;

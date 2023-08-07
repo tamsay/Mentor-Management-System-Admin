@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import cx from "classnames";
+import ResultListItem from "./ResultListItem/ResultListItem";
 import styles from "./SearchResults.module.scss";
 
-import Pagination from "@/components/Pagination/Pagination";
 import BorderlessDropDownList from "@/components/BorderlessDropDownList/BorderlessDropDownList";
-import ResultListItem from "./ResultListItem/ResultListItem";
-import { ReactComponent as taskIcon } from "@/assets/icons/tasks-overview-card-icon.svg";
+import Pagination from "@/components/Pagination/Pagination";
+
+import { ReactComponent as certificateIcon } from "@/assets/icons/certificate-thumbnail.svg";
+import { ReactComponent as ClockIcon } from "@/assets/icons/clock-icon.svg";
 import { ReactComponent as programIcon } from "@/assets/icons/google-filled-icon.svg";
 import { ReactComponent as reportIcon } from "@/assets/icons/reports-overview-card-icon.svg";
-import { ReactComponent as certificateIcon } from "@/assets/icons/certificate-thumbnail.svg";
 import { ReactComponent as CalendarIcon } from "@/assets/icons/tasks-overview-calendar-icon.svg";
-import { ReactComponent as ClockIcon } from "@/assets/icons/clock-icon.svg";
+import { ReactComponent as taskIcon } from "@/assets/icons/tasks-overview-card-icon.svg";
 
 function SearchResults() {
   const dropdownArray = ["All", "All"];

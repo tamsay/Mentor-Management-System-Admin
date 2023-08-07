@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect,useState } from "react";
+import { Outlet,useNavigate, useParams } from "react-router-dom";
 import cx from "classnames";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { useNavigate, useParams, Outlet } from "react-router-dom";
-import styles from "./Programs.module.scss";
-import GenericSideBar from "@/components/GenericSideBar/GenericSideBar";
-import backIcon from "@/assets/icons/back-icon.svg";
-import Search from "@/components/Search/Search";
-import Filter from "@/components/Filter/Filter";
-import Button from "@/components/Button/Button";
-import subMenuIcon from "@/assets/icons/sub-menu-icon.svg";
-import emptySelectionIcon from "@/assets/icons/empty-selection-icon.svg";
 import ProgramListItem from "./ProgramListItem/ProgramListItem";
+import styles from "./Programs.module.scss";
+
+import Button from "@/components/Button/Button";
+import Filter from "@/components/Filter/Filter";
+import GenericSideBar from "@/components/GenericSideBar/GenericSideBar";
+import Search from "@/components/Search/Search";
+
+import backIcon from "@/assets/icons/back-icon.svg";
+import emptySelectionIcon from "@/assets/icons/empty-selection-icon.svg";
+import subMenuIcon from "@/assets/icons/sub-menu-icon.svg";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { getActivePrograms, getAllPrograms, getArchivedPrograms } from "@/redux/Programs/ProgramsSlice";
+
 import useIsMobile from "@/hooks/useIsMobile";
-import { getAllPrograms, getActivePrograms, getArchivedPrograms } from "@/redux/Programs/ProgramsSlice";
 
 function Programs() {
   const router = useRouter();

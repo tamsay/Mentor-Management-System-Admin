@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect,useState } from "react";
 
 const useGetCitiesOfACountry = (country) => {
   const [cities, setCities] = useState([]);

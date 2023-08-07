@@ -1,12 +1,15 @@
 import React from "react";
 import cx from "classnames";
-import styles from "./ProgramListItem.module.scss";
-import "./ProgramListActiveItem.scss";
 import PropTypes from "prop-types";
+import styles from "./ProgramListItem.module.scss";
+
 import { ReactComponent as ClockIcon } from "@/assets/icons/clock-icon.svg";
 import { ReactComponent as CalendarIcon } from "@/assets/icons/tasks-overview-calendar-icon.svg";
 import programsIcon from "@/assets/images/program-avatar.svg";
+
 import formatDate from "@/helpers/formatDate";
+
+import "./ProgramListActiveItem.scss";
 
 function ProgramListItem({ data }) {
   return (

@@ -1,6 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Modal } from "react-bootstrap";
+import PropTypes from "prop-types";
+
 import "./ModalContainer.scss";
 
 function ModalContainer({ children, show, size = "md" }) {

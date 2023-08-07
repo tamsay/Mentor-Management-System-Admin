@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
+import React, { useEffect,useState } from "react";
 import cx from "classnames";
+import PropTypes from "prop-types";
 import styles from "./Filter.module.scss";
+
 import filterIcon from "@/assets/icons/filter-icon.png";
+
 
 const Filter = ({ selectedFilterItem, dropdownItems, closeSearchInput, closeSelectElement, setCloseSelectElement }) => {
   const [showCustomDropdown, setShowCustomDropdown] = useState(false);

@@ -1,8 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import cx from "classnames";
 import styles from "./ProgramRequests.module.scss";
-import { useSelector } from "react-redux";
+
 import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+
 import { ReactComponent as ProgramIcon } from "@/assets/images/program-avatar.svg";
 
 const ProgramRequests = () => {

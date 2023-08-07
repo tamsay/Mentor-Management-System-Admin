@@ -1,13 +1,15 @@
 import React from "react";
+import { useNavigate,useParams } from "react-router-dom";
 import cx from "classnames";
 import styles from "./ChatDetails.module.scss";
-import { useParams, useNavigate } from "react-router-dom";
-import useIsMobile from "@/hooks/useIsMobile";
-import Sent from "./Sent/Sent";
 import Received from "./Received/Received";
-import closeIcon from "@/assets/icons/close-icon.svg";
+import Sent from "./Sent/Sent";
+
 import attachmentIcon from "@/assets/icons/attachment-icon.svg";
+import closeIcon from "@/assets/icons/close-icon.svg";
 import smileyIcon from "@/assets/icons/smiley-icon.svg";
+
+import useIsMobile from "@/hooks/useIsMobile";
 
 const ChatDetails = () => {
   const { id } = useParams();

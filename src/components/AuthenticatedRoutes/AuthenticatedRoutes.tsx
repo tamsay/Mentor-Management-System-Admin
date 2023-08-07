@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import PropTypes from "prop-types";
 import { toast } from "react-toastify";
-import { isAuthenticated, logout } from "@/utils/auth";
+import PropTypes from "prop-types";
+import { isAuthenticated, logout , refreshTokenInterval } from "@/utils/auth";
+
 import { refreshAccessToken } from "@/redux/Auth/AuthSlice";
-import { refreshTokenInterval } from "@/utils/auth";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+
 
 function AuthenticatedRoutes({ children, roles }) {
   const location = useLocation();

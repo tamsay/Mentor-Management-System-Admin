@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import cx from "classnames";
+import PropTypes from "prop-types";
 import styles from "./NotificationsListItem.module.scss";
+
 import caretUp from "@/assets/icons/caret-up-icon.svg";
 import moreIcon from "@/assets/icons/more-horizontal-black.svg";
-import PropTypes from "prop-types";
+
 
 function NotificationsListItem({ data, setItemStatus }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState({

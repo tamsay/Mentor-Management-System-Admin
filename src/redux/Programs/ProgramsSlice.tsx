@@ -1,30 +1,31 @@
-import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import {
+  createProgramApi,
   deleteProgramApi,
   editProgramApi,
+  getActiveProgramsApi,
+  getActiveProgramsByMonthApi,
+  getActiveProgramsByWeekApi,
+  getActiveProgramsByYearApi,
   getAllProgramsApi,
   getArchivedProgramsApi,
-  getActiveProgramsApi,
-  getActiveProgramsByWeekApi,
-  getActiveProgramsByMonthApi,
-  getActiveProgramsByYearApi,
-  createProgramApi,
   getProgramDetailsApi
 } from "../api/programs";
+import { createSlice } from "@reduxjs/toolkit";
 
 import {
+  createProgramLoading,
   deleteProgramLoading,
   editProgramLoading,
+  getActiveProgramsByMonthLoading,
+  getActiveProgramsByWeekLoading,
+  getActiveProgramsByYearLoading,
+  getActiveProgramsLoading,
   getAllProgramsLoading,
   getArchivedProgramsLoading,
-  getActiveProgramsLoading,
-  getActiveProgramsByWeekLoading,
-  getActiveProgramsByMonthLoading,
-  getActiveProgramsByYearLoading,
-  createProgramLoading,
   getProgramDetailsLoading
 } from "@/redux/Loading/LoadingSlice";
+
 
 const initialState = {
   error: false,

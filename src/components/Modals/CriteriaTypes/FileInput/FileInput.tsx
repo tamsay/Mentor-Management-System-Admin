@@ -1,20 +1,21 @@
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import PropTypes from "prop-types";
+import { Controller,useFieldArray, useForm } from "react-hook-form";
 import cx from "classnames";
+import { nanoid } from "nanoid";
+import PropTypes from "prop-types";
 import ModalContainer from "../../ModalContainer/ModalContainer";
 import styles from "./FileInput.module.scss";
+import NestedArray from "./NestedFieldArray/NestedFieldArray";
+
 import Button from "@/components/Button/Button";
 import InputField from "@/components/Input/Input";
-import NestedArray from "./NestedFieldArray/NestedFieldArray";
-import { nanoid } from "nanoid";
 
-import { hideModal } from "@/redux/Modal/ModalSlice";
-import { useFieldArray, useForm, Controller } from "react-hook-form";
-
-import { saveCriteriaToStorage, getCriteriaFromStorage } from "@/redux/Criteria/CriteriaSlice";
 import addIcon from "@/assets/icons/add-icon.svg";
 import removeIcon from "@/assets/icons/minus-icon.svg";
+
+import { getCriteriaFromStorage,saveCriteriaToStorage } from "@/redux/Criteria/CriteriaSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { hideModal } from "@/redux/Modal/ModalSlice";
 function FileInput({ show, size, modalName }) {
   const dispatch = useAppDispatch();
 
@@ -110,9 +111,7 @@ function FileInput({ show, size, modalName }) {
                             placeholder='Enter request here'
                             type='text'
                             marginbottom='1.5rem'
-                            error={
-                              errors?.criteria && errors?.criteria[index] && errors?.criteria[index]?.question?.message
-                            }
+                            error={errors?.criteria && errors?.criteria[index] && errors?.criteria[index]?.question?.message}
                           />
                         )}
                       />

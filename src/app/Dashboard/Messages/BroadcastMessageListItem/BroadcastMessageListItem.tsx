@@ -2,6 +2,7 @@ import React from "react";
 import cx from "classnames";
 import PropTypes from "prop-types";
 import styles from "./BroadcastMessageListItem.module.scss";
+
 import doubleCheckIcon from "@/assets/icons/double-check-icon.svg";
 
 const BroadcastMessageListItem = ({ date, message, receipant, time }) => {

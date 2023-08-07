@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import PropTypes from "prop-types";
 import cx from "classnames";
+import PropTypes from "prop-types";
 import ModalContainer from "../ModalContainer/ModalContainer";
 import styles from "./CriteriaTypes.module.scss";
+
 import Button from "@/components/Button/Button";
+
+import { getCriteriaFromStorage,saveCriteriaToStorage } from "@/redux/Criteria/CriteriaSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { hideModal, showModal } from "@/redux/Modal/ModalSlice";
-import { saveCriteriaToStorage, getCriteriaFromStorage } from "@/redux/Criteria/CriteriaSlice";
 
 function CriteriaTypes({ show, size, modalName }) {
   const dispatch = useAppDispatch();

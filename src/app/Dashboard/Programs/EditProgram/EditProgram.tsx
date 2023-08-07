@@ -1,26 +1,32 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import cx from "classnames";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import styles from "./EditProgram.module.scss";
-import Button from "@/components/Button/Button";
-import { ReactComponent as ClearListIcon } from "@/assets/icons/clear-list-icon.svg";
-import SelectionSideBar from "@/components/SelectionSideBar/SelectionSideBar";
-import { useParams, useNavigate } from "react-router-dom";
-import closeIcon from "@/assets/icons/undo-icon.svg";
-import closeIconAlt from "@/assets/icons/close-icon.svg";
-import InputField from "@/components/Input/Input";
-import TextArea from "@/components/TextArea/TextArea";
-import Search from "@/components/Search/Search";
-import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
-import { showModal } from "@/redux/Modal/ModalSlice";
-import successImage from "@/assets/images/create-task-success-image.svg";
-import { editProgramSchema } from "@/helpers/validation";
-import PersonelComponent from "@/pages/Dashboard/Tasks/PersonelComponent/PersonelComponent";
+import React, { useCallback,useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import { getProgramDetails, editProgram } from "@/redux/Programs/ProgramsSlice";
+import { Controller,useForm } from "react-hook-form";
+import { useNavigate,useParams } from "react-router-dom";
+import cx from "classnames";
+import styles from "./EditProgram.module.scss";
+import PersonelComponent from "@/pages/Dashboard/Tasks/PersonelComponent/PersonelComponent";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import Button from "@/components/Button/Button";
+import InputField from "@/components/Input/Input";
+import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+import Search from "@/components/Search/Search";
+import SelectionSideBar from "@/components/SelectionSideBar/SelectionSideBar";
+import TextArea from "@/components/TextArea/TextArea";
+
+import { ReactComponent as ClearListIcon } from "@/assets/icons/clear-list-icon.svg";
+import closeIconAlt from "@/assets/icons/close-icon.svg";
+import closeIcon from "@/assets/icons/undo-icon.svg";
+import successImage from "@/assets/images/create-task-success-image.svg";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { showModal } from "@/redux/Modal/ModalSlice";
 import { getAllUserProfiles } from "@/redux/Profile/ProfileSlice";
+import { editProgram,getProgramDetails } from "@/redux/Programs/ProgramsSlice";
+
+import { editProgramSchema } from "@/helpers/validation";
+
+
 
 function EditProgram() {
   const dispatch = useAppDispatch();

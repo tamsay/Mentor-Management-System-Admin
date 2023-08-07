@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import cx from "classnames";
 import styles from "./PendingCertificates.module.scss";
+
+import Button from "@/components/Button/Button";
+import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+
+import { ReactComponent as TogglerIconDown } from "@/assets/icons/arrow-circle-down.svg";
+import { ReactComponent as TogglerIconUp } from "@/assets/icons/arrow-circle-up.svg";
+import { ReactComponent as CertificateIcon } from "@/assets/icons/certificate-thumbnail.svg";
+import approvedSuccessImage from "@/assets/images/approved.svg";
+import certificate from "@/assets/images/certificate-full.png";
+import declinedSuccessImage from "@/assets/images/declined.svg";
+
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
-import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
-import certificate from "@/assets/images/certificate-full.png";
-import { ReactComponent as CertificateIcon } from "@/assets/icons/certificate-thumbnail.svg";
-import { ReactComponent as TogglerIconUp } from "@/assets/icons/arrow-circle-up.svg";
-import { ReactComponent as TogglerIconDown } from "@/assets/icons/arrow-circle-down.svg";
-import Button from "@/components/Button/Button";
-import approvedSuccessImage from "@/assets/images/approved.svg";
-import declinedSuccessImage from "@/assets/images/declined.svg";
 const PendingCertificates = () => {
   const dispatch = useAppDispatch();
 

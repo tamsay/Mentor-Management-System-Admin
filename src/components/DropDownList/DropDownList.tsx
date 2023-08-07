@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { ReactComponent as TogglerIcon } from "@/assets/icons/archive-toggler-icon.svg";
-import PropTypes from "prop-types";
 import cx from "classnames";
+import PropTypes from "prop-types";
 import styles from "./DropDownList.module.scss";
+
+import { ReactComponent as TogglerIcon } from "@/assets/icons/archive-toggler-icon.svg";
 
 const DropDownList = ({ menu, selectedReceipent, setSelectedReceipent }) => {
   const [open, setOpen] = useState(false);

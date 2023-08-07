@@ -1,21 +1,24 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { Controller,useForm } from "react-hook-form";
 import cx from "classnames";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./Password.module.scss";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import Button from "@/components/Button/Button";
 import InputField from "@/components/Input/Input";
-
-import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
 import ForgotPasswordModal from "@/components/Modals/ForgotPassword/ForgotPassword";
+import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+
+import successImage from "@/assets/images/default-success-notification-image.png";
+
+import { forgotPassword } from "@/redux/Auth/AuthSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
+import { changePassword } from "@/redux/Settings/SettingsSlice";
 
 import { settingsPasswordSchema } from "@/helpers/validation";
-import { changePassword } from "@/redux/Settings/SettingsSlice";
-import { forgotPassword } from "@/redux/Auth/AuthSlice";
+
 import userInfo from "@/hooks/useGetUserInfo";
-import successImage from "@/assets/images/default-success-notification-image.png";
 
 function Password() {
   const dispatch = useAppDispatch();

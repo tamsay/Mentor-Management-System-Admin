@@ -3,9 +3,10 @@ import cx from "classnames";
 import PropTypes from "prop-types";
 import styles from "./FilterAndSearch.module.scss";
 
-import searchIcon from "@/assets/icons/search-icon-green.png";
-import filterIcon from "@/assets/icons/filter-icon.png";
 import closeIcon from "@/assets/icons/close-icon.png";
+import filterIcon from "@/assets/icons/filter-icon.png";
+import searchIcon from "@/assets/icons/search-icon-green.png";
+
 
 function FilterAndSearch({
   searchData,

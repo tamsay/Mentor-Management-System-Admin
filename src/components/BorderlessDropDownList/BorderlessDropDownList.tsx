@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { ReactComponent as TogglerIcon } from "@/assets/icons/caret-down-icon.svg";
-import PropTypes from "prop-types";
 import cx from "classnames";
+import PropTypes from "prop-types";
 import styles from "./BorderlessDropDownList.module.scss";
+
+import { ReactComponent as TogglerIcon } from "@/assets/icons/caret-down-icon.svg";
 
 const CustomDropDownList = ({ menu, selectedRecipient, setSelectedRecipient }) => {
   const [open, setOpen] = useState(false);

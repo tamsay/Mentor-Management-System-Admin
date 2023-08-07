@@ -1,10 +1,14 @@
-import React, { useState, forwardRef } from "react";
-import { FormGroup } from "./StyledInput";
-import eyeIconShow from "@/assets/icons/eye-password-show.svg";
-import eyeIconHide from "@/assets/icons/eye-password-hide.svg";
-import searchIcon from "@/assets/icons/search-icon.svg";
+"use client";
+
+import React, { forwardRef, useState } from "react";
 import DOMPurify from "dompurify";
 import Image from "next/image";
+
+import { FormGroup } from "./StyledInput";
+
+import eyeIconHide from "@/assets/icons/eye-password-hide.svg";
+import eyeIconShow from "@/assets/icons/eye-password-show.svg";
+import searchIcon from "@/assets/icons/search-icon.svg";
 
 type InputProps = {
   placeholder?: string;

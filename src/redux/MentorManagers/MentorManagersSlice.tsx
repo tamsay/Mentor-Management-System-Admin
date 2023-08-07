@@ -1,12 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import { getAllMentorManagersApi, deleteMentorManagerApi, getMentorManagerDetailsApi } from "../api/mentorManagers";
+import { deleteMentorManagerApi, getAllMentorManagersApi, getMentorManagerDetailsApi } from "../api/mentorManagers";
+import { createSlice } from "@reduxjs/toolkit";
 
 import {
-  getAllMentorManagersLoading,
   deleteMentorManagerLoading,
+  getAllMentorManagersLoading,
   getMentorManagerDetailsLoading
 } from "@/redux/Loading/LoadingSlice";
+
 
 const initialState = {
   error: false,

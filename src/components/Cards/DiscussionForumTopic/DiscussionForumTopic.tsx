@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useRouter } from "next/navigation";
 import cx from "classnames";
-import styles from "./DiscussionForumTopic.module.scss";
+import { useRouter } from "next/navigation";
 import PropTypes from "prop-types";
-import { showModal } from "@/redux/Modal/ModalSlice";
-import commentIcon from "@/assets/icons/comment-icon.svg";
+import styles from "./DiscussionForumTopic.module.scss";
+
 import bookmarkIcon from "@/assets/icons/bookmark-icon.svg";
 import bookmarkIconChecked from "@/assets/icons/bookmark-icon-checked.svg";
-import shareIcon from "@/assets/icons/share-icon.svg";
-import clockIcon from "@/assets/icons/clock-icon.svg";
-import moreIcon from "@/assets/icons/more-horizontal-icon.svg";
 import caretUp from "@/assets/icons/caret-up-icon.svg";
+import clockIcon from "@/assets/icons/clock-icon.svg";
+import commentIcon from "@/assets/icons/comment-icon.svg";
+import moreIcon from "@/assets/icons/more-horizontal-icon.svg";
+import shareIcon from "@/assets/icons/share-icon.svg";
+
+import { showModal } from "@/redux/Modal/ModalSlice";
 
 const DiscussionForumTopic = ({ data, disableNavLink }) => {
   const dispatch = useAppDispatch();

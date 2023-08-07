@@ -1,21 +1,25 @@
-import React from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { useRouter } from "next/navigation";
-import cx from "classnames";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import styles from "./SignUp.module.scss";
-import googleIcon from "@/assets/icons/google-icon.svg";
-import InputField from "@/components/Input/Input";
-import AuthSideHero from "@/components/AuthSideHero/AuthSideHero";
+"use client";
 
-import { signUpSchema } from "@/helpers/validation";
+import React from "react";
+import { Controller, useForm } from "react-hook-form";
+import cx from "classnames";
+import { useRouter } from "next/navigation";
+import styles from "./SignUp.module.scss";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+// import { useGoogleSignUp } from "@react-oauth/google";
+import AuthSideHero from "@/components/AuthSideHero/AuthSideHero";
+import Button from "@/components/Button/Button";
+import InputField from "@/components/Input/Input";
+import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+
+import googleIcon from "@/assets/icons/google-icon.svg";
 
 import { signUp } from "@/redux/Auth/AuthSlice";
-import Button from "@/components/Button/Button";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
-import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
-// import { useGoogleSignUp } from "@react-oauth/google";
+
+import { signUpSchema } from "@/helpers/validation";
 
 function SignUp() {
   const dispatch = useAppDispatch();

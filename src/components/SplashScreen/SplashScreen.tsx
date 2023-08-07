@@ -2,11 +2,13 @@
 
 import React, { useEffect } from "react";
 import cx from "classnames";
-import styles from "./SplashScreen.module.scss";
-import logo from "@/assets/images/logo.png";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import styles from "./SplashScreen.module.scss";
+
+import logo from "@/assets/images/logo.png";
+
 
 const SplashScreen = () => {
   const router = useRouter();

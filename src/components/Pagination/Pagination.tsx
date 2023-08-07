@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect,useState } from "react";
+import ReactPaginate from "react-paginate";
 import cx from "classnames";
+import PropTypes from "prop-types";
 import styles from "./Pagination.module.scss";
 
-import PropTypes from "prop-types";
-import ReactPaginate from "react-paginate";
-
 import navigateFirst from "@/assets/icons/pagination-left-arrow.svg";
-import navigateLast from "@/assets/icons/pagination-right-arrow.svg";
 import nextPage from "@/assets/icons/pagination-next-arrow.svg";
 import previousPage from "@/assets/icons/pagination-previous-arrow.svg";
+import navigateLast from "@/assets/icons/pagination-right-arrow.svg";
 
 function Pagination({
   totalNumberOfPages,

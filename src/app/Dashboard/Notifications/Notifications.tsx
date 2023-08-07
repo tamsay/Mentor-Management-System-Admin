@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import cx from "classnames";
 import styles from "./Notifications.module.scss";
-
-import Pagination from "@/components/Pagination/Pagination";
-import BorderlessDropDownList from "@/components/BorderlessDropDownList/BorderlessDropDownList";
 import NotificationsListItem from "./NotificationsListItem/NotificationsListItem";
+
+import BorderlessDropDownList from "@/components/BorderlessDropDownList/BorderlessDropDownList";
 import Button from "@/components/Button/Button";
+import Pagination from "@/components/Pagination/Pagination";
+
 import { ReactComponent as CheckmarkIcon } from "@/assets/icons/checkmark-circled.svg";
+import Baba from "@/assets/images/baba.svg";
 import Lex from "@/assets/images/lex.svg";
 import Peculiar from "@/assets/images/peculiar.svg";
-import Baba from "@/assets/images/baba.svg";
+
 
 function Notifications() {
   const dropdownArray = ["All", "All"];

@@ -1,18 +1,20 @@
 import React, { useState } from "react";
+import { Outlet,useLocation } from "react-router-dom";
 import cx from "classnames";
-import { useLocation, Outlet } from "react-router-dom";
 import styles from "./Settings.module.scss";
-import SettingsSideBar from "@/components/SettingsSideBar/SettingsSideBar";
+
 import Pagination from "@/components/Pagination/Pagination";
 import Search from "@/components/Search/Search";
+import SettingsSideBar from "@/components/SettingsSideBar/SettingsSideBar";
 
-import { ReactComponent as GeneralIcon } from "@/assets/icons/settings-general-icon.svg";
-import { ReactComponent as PasswordIcon } from "@/assets/icons/settings-password-icon.svg";
-import { ReactComponent as NotificationIcon } from "@/assets/icons/settings-notification-icon.svg";
-import { ReactComponent as PrivacyIcon } from "@/assets/icons/settings-privacy-icon.svg";
 import { ReactComponent as ArchiveIcon } from "@/assets/icons/settings-archive-icon.svg";
-import { ReactComponent as SupportIcon } from "@/assets/icons/settings-support-icon.svg";
 import { ReactComponent as FAQIcon } from "@/assets/icons/settings-faq-icon.svg";
+import { ReactComponent as GeneralIcon } from "@/assets/icons/settings-general-icon.svg";
+import { ReactComponent as NotificationIcon } from "@/assets/icons/settings-notification-icon.svg";
+import { ReactComponent as PasswordIcon } from "@/assets/icons/settings-password-icon.svg";
+import { ReactComponent as PrivacyIcon } from "@/assets/icons/settings-privacy-icon.svg";
+import { ReactComponent as SupportIcon } from "@/assets/icons/settings-support-icon.svg";
+
 import { useIsMobileTablet } from "@/hooks/useIsMobile";
 
 function Settings() {

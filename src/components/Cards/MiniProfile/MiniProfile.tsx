@@ -1,13 +1,15 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import cx from "classnames";
-import styles from "./MiniProfile.module.scss";
-import PropTypes from "prop-types";
-import { ReactComponent as DeleteIcon } from "@/assets/icons/delete-icon-green.svg";
-import { ReactComponent as MessageIcon } from "@/assets/icons/comment-icon.svg";
-import { showModal } from "@/redux/Modal/ModalSlice";
 import { useRouter } from "next/navigation";
+import PropTypes from "prop-types";
+import styles from "./MiniProfile.module.scss";
+
+import { ReactComponent as MessageIcon } from "@/assets/icons/comment-icon.svg";
+import { ReactComponent as DeleteIcon } from "@/assets/icons/delete-icon-green.svg";
 import profileImage from "@/assets/images/sample-profile-image.svg";
+
+import { showModal } from "@/redux/Modal/ModalSlice";
 
 const MiniProfile = ({ data, type, onClick }) => {
   const dispatch = useAppDispatch();

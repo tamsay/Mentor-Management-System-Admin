@@ -1,10 +1,9 @@
 import React from "react";
 import cx from "classnames";
 import styles from "./Home.module.scss";
-
-import Summary from "./Summary/Summary";
 import ProgramsOverview from "./ProgramsOverview/ProgramsOverview";
 import ReportsOverview from "./ReportsOverview/ReportsOverview";
+import Summary from "./Summary/Summary";
 import TasksOverview from "./TasksOverview/TasksOverview";
 
 function Home() {

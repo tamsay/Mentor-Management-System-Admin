@@ -1,21 +1,23 @@
-import React, { useState, useCallback } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import React, { useCallback,useState } from "react";
+import { useDropzone } from "react-dropzone";
+import { Controller,useForm } from "react-hook-form";
 import cx from "classnames";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./Support.module.scss";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import Button from "@/components/Button/Button";
 import InputField from "@/components/Input/Input";
-import TextArea from "@/components/TextArea/TextArea";
-import attachmentIcon from "@/assets/icons/attachment-icon.svg";
-import { useDropzone } from "react-dropzone";
-
 import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+import TextArea from "@/components/TextArea/TextArea";
+
+import attachmentIcon from "@/assets/icons/attachment-icon.svg";
+import successImage from "@/assets/images/default-success-notification-image.png";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
+import { sendSupportMessage } from "@/redux/Settings/SettingsSlice";
 
 import { settingsSupportSchema } from "@/helpers/validation";
-import { sendSupportMessage } from "@/redux/Settings/SettingsSlice";
-import successImage from "@/assets/images/default-success-notification-image.png";
 
 function Support() {
   const dispatch = useAppDispatch();

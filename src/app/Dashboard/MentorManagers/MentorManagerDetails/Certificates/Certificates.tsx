@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import cx from "classnames";
 import styles from "./Certificates.module.scss";
+
+import Button from "@/components/Button/Button";
+import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+
+import { ReactComponent as TogglerIconDown } from "@/assets/icons/arrow-circle-down.svg";
+import { ReactComponent as TogglerIconUp } from "@/assets/icons/arrow-circle-up.svg";
+import downloadSuccessImage from "@/assets/images/certificate-download-success.svg";
+import certificate, { ReactComponent as CertificateIcon } from "@/assets/images/mentor-manager-certificate.svg";
+
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
-import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
-import certificate from "@/assets/images/mentor-manager-certificate.svg";
-import { ReactComponent as CertificateIcon } from "@/assets/images/mentor-manager-certificate.svg";
-import { ReactComponent as TogglerIconUp } from "@/assets/icons/arrow-circle-up.svg";
-import { ReactComponent as TogglerIconDown } from "@/assets/icons/arrow-circle-down.svg";
-import Button from "@/components/Button/Button";
-import downloadSuccessImage from "@/assets/images/certificate-download-success.svg";
 const Certificates = () => {
   const dispatch = useAppDispatch();
 

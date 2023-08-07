@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import React, { useEffect,useState } from "react";
 import cx from "classnames";
-import styles from "./Messages.module.scss";
-import Button from "@/components/Button/Button";
-import EmptyHistory from "./EmptyHistory/EmptyHistory";
 import { useRouter } from "next/navigation";
+import EmptyHistory from "./EmptyHistory/EmptyHistory";
+import styles from "./Messages.module.scss";
+
+import Button from "@/components/Button/Button";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { getAllMessages } from "@/redux/Messages/MessagesSlice";
 
 function Messages() {

@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import cx from "classnames";
-import styles from "./Sent.module.scss";
 import PropTypes from "prop-types";
+import styles from "./Sent.module.scss";
 
-import sentIcon from "@/assets/icons/sent.svg";
-import deliveredIcon from "@/assets/icons/delivered.svg";
-import readIcon from "@/assets/icons/delivered.svg";
 import failedIcon from "@/assets/icons/close-icon.svg";
 import pendingIcon from "@/assets/icons/close-icon.svg";
+import deliveredIcon from "@/assets/icons/delivered.svg";
+import readIcon from "@/assets/icons/delivered.svg";
+import sentIcon from "@/assets/icons/sent.svg";
 
 const Sent = ({ data }) => {
   const [statusIcon, setStatusIcon] = useState("");

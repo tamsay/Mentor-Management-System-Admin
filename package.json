@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint-fix": "next lint --fix",
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx,css,scss,md,json} --config ./.prettierrc"
   },
   "dependencies": {
@@ -19,7 +20,6 @@
     "bootstrap": "^5.3.1",
     "classnames": "^2.3.2",
     "dompurify": "^3.0.5",
-    "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
     "jwt-decode": "^3.1.2",
     "next": "13.4.12",
@@ -37,8 +37,11 @@
   "devDependencies": {
     "@types/dompurify": "^3.0.2",
     "@types/styled-components": "^5.1.26",
+    "eslint": "^8.46.0",
     "eslint-config-prettier": "^8.9.0",
+    "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
     "prettier": "3.0.0"

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import Switch from "react-switch";
+import PropTypes from "prop-types";
+
 import { ReactComponent as ToggleOffIcon } from "@/assets/icons/toggle-off-icon.svg";
 import { ReactComponent as ToggleOnIcon } from "@/assets/icons/toggle-on-icon.svg";
-import PropTypes from "prop-types";
 
 function ToggleSwitch({ onChange, checkedStatus }) {
   const [checked, setChecked] = useState(checkedStatus);
@@ -27,30 +28,26 @@ function ToggleSwitch({ onChange, checkedStatus }) {
       offColor='#b3b3b3'
       checkedIcon={false}
       uncheckedIcon={false}
-      checkedHandleIcon={
-        <div
+      checkedHandleIcon={<div
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             height: "100%"
           }}
-        >
+                         >
           <ToggleOnIcon />
-        </div>
-      }
-      uncheckedHandleIcon={
-        <div
+        </div>}
+      uncheckedHandleIcon={<div
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             height: "100%"
           }}
-        >
+                           >
           <ToggleOffIcon />
-        </div>
-      }
+        </div>}
       className='react-switch'
     />
   );

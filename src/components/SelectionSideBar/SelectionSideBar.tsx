@@ -1,9 +1,10 @@
 import React, { useRef } from "react";
+import { useParams } from "react-router-dom";
 import cx from "classnames";
 import PropTypes from "prop-types";
 import styles from "./SelectionSideBar.module.scss";
+
 import useIsMobile from "@/hooks/useIsMobile";
-import { useParams } from "react-router-dom";
 
 function SelectionSideBar({ data, selectedMenuItem, activeClassName }) {
   const isMobile = useIsMobile();

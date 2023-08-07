@@ -1,13 +1,14 @@
 import React from "react";
+import { Controller,useFieldArray } from "react-hook-form";
 import cx from "classnames";
-import styles from "./NestedFieldArray.module.scss";
-import addIcon from "@/assets/icons/add-icon-thin.svg";
-import removeIcon from "@/assets/icons/minus-icon-thin.svg";
-
 import PropTypes from "prop-types";
-import { useFieldArray, Controller } from "react-hook-form";
+import styles from "./NestedFieldArray.module.scss";
+
 import InputField from "@/components/Input/Input";
 import SelectField from "@/components/Select/Select";
+
+import addIcon from "@/assets/icons/add-icon-thin.svg";
+import removeIcon from "@/assets/icons/minus-icon-thin.svg";
 
 const NestedFieldArray = ({ nestIndex, control, errors }) => {
   const { fields, remove, append } = useFieldArray({
@@ -48,12 +49,10 @@ const NestedFieldArray = ({ nestIndex, control, errors }) => {
                       type='text'
                       marginbottom='1.5rem'
                       border='transparent'
-                      error={
-                        errors?.criteria &&
+                      error={errors?.criteria &&
                         errors?.criteria[nestIndex] &&
                         errors?.criteria[nestIndex]?.options &&
-                        errors?.criteria[nestIndex]?.options[optionIndex]?.fileName?.message
-                      }
+                        errors?.criteria[nestIndex]?.options[optionIndex]?.fileName?.message}
                     />
                   )}
                 />
@@ -70,12 +69,10 @@ const NestedFieldArray = ({ nestIndex, control, errors }) => {
                       defaultSelect='File Type'
                       options={fileTypesOptions}
                       marginbottom='1.5rem'
-                      error={
-                        errors?.criteria &&
+                      error={errors?.criteria &&
                         errors?.criteria[nestIndex] &&
                         errors?.criteria[nestIndex]?.options &&
-                        errors?.criteria[nestIndex]?.options[optionIndex]?.fileType?.message
-                      }
+                        errors?.criteria[nestIndex]?.options[optionIndex]?.fileType?.message}
                       border='#e6e6e6'
                     />
                   )}

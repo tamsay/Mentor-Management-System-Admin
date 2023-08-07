@@ -1,18 +1,20 @@
 import React, { useState } from "react";
-import cx from "classnames";
 import { useSelector } from "react-redux";
-import styles from "./PostDetails.module.scss";
 import { useLocation, useNavigate } from "react-router-dom";
+import cx from "classnames";
+import styles from "./PostDetails.module.scss";
+
 import Button from "@/components/Button/Button";
 import TopicCard from "@/components/Cards/DiscussionForumTopic/DiscussionForumTopic";
-import TextArea from "@/components/TextArea/TextArea";
-import attachmentIcon from "@/assets/icons/attachment-icon-green.svg";
-import smileyIcon from "@/assets/icons/smiley-icon.svg";
-import moreIcon from "@/assets/icons/more-horizontal-icon.svg";
-import caretUp from "@/assets/icons/caret-up-icon.svg";
-import DeleteNotificationModal from "@/components/Modals/DeleteNotification/DeleteNotification";
 import CreateForumTopicModal from "@/components/Modals/CreateAndEditForumTopic/CreateAndEditForumTopic";
+import DeleteNotificationModal from "@/components/Modals/DeleteNotification/DeleteNotification";
 import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+import TextArea from "@/components/TextArea/TextArea";
+
+import attachmentIcon from "@/assets/icons/attachment-icon-green.svg";
+import caretUp from "@/assets/icons/caret-up-icon.svg";
+import moreIcon from "@/assets/icons/more-horizontal-icon.svg";
+import smileyIcon from "@/assets/icons/smiley-icon.svg";
 
 const PostDetails = () => {
   const location = useLocation();

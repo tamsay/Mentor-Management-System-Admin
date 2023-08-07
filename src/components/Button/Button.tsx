@@ -1,9 +1,11 @@
 import React from "react";
-import PropTypes from "prop-types";
 import cx from "classnames";
-import styled from "styled-components";
-import imageLoader from "@/assets/icons/loading.svg";
 import Image from "next/image";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+
+import imageLoader from "@/assets/icons/loading.svg";
+
 
 type ButtonProps = {
   title: string;

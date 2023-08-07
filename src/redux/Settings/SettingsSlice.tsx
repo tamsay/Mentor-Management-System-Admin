@@ -1,26 +1,27 @@
-import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import {
   changePasswordApi,
   editUserNotificationsApi,
-  getUserNotificationsApi,
   editUserPrivacyApi,
-  getUserPrivacyApi,
   getGeneralFaqApi,
   getTechnicalFaqApi,
+  getUserNotificationsApi,
+  getUserPrivacyApi,
   sendSupportMessageApi
 } from "../api/settings";
+import { createSlice } from "@reduxjs/toolkit";
 
 import {
   changePasswordLoading,
   editUserNotificationsLoading,
-  getUserNotificationsLoading,
   editUserPrivacyLoading,
-  getUserPrivacyLoading,
   getGeneralFaqLoading,
   getTechnicalFaqLoading,
+  getUserNotificationsLoading,
+  getUserPrivacyLoading,
   sendSupportMessageLoading
 } from "@/redux/Loading/LoadingSlice";
+
 
 const initialState = {
   error: false,

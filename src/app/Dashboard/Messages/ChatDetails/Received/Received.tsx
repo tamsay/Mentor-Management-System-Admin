@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "classnames";
-import styles from "./Received.module.scss";
 import PropTypes from "prop-types";
+import styles from "./Received.module.scss";
 
 const Received = ({ data }) => {
   return (

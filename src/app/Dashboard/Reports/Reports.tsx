@@ -1,20 +1,23 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import React, { useEffect, useMemo,useState } from "react";
+import { Outlet,useNavigate, useParams } from "react-router-dom";
 import cx from "classnames";
-import styles from "./Reports.module.scss";
-import { useNavigate, useParams, Outlet } from "react-router-dom";
-
-import subMenuIcon from "@/assets/icons/sub-menu-icon.svg";
-import emptySelectionIcon from "@/assets/icons/empty-selection-icon.svg";
-import closeIcon from "@/assets/icons/undo-icon.svg";
-import Search from "@/components/Search/Search";
-import Filter from "@/components/Filter/Filter";
-import SelectionSideBar from "@/components/SelectionSideBar/SelectionSideBar";
-import useIsMobile from "@/hooks/useIsMobile";
-import SwitcherTab from "@/pages/Dashboard/Reports/SwitcherTab/SwitcherTab";
 import ReportListItem from "./ReportListItem/ReportListItem";
-import { getAllReports, getYearlyReports, getMonthlyReports, getWeeklyReports } from "@/redux/Reports/ReportsSlice";
+import styles from "./Reports.module.scss";
+import SwitcherTab from "@/pages/Dashboard/Reports/SwitcherTab/SwitcherTab";
+
+import Filter from "@/components/Filter/Filter";
+import Search from "@/components/Search/Search";
+import SelectionSideBar from "@/components/SelectionSideBar/SelectionSideBar";
+
+import emptySelectionIcon from "@/assets/icons/empty-selection-icon.svg";
+import subMenuIcon from "@/assets/icons/sub-menu-icon.svg";
+import closeIcon from "@/assets/icons/undo-icon.svg";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { getAllUserProfiles } from "@/redux/Profile/ProfileSlice";
+import { getAllReports, getMonthlyReports, getWeeklyReports,getYearlyReports } from "@/redux/Reports/ReportsSlice";
+
+import useIsMobile from "@/hooks/useIsMobile";
 
 function Reports() {
   const router = useRouter();

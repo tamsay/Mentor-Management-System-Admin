@@ -1,11 +1,19 @@
+"use client";
+
+// assets
 import React from "react";
 import cx from "classnames";
-import styles from "./CategorySelector.module.scss";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
+
+import styles from "./CategorySelector.module.scss";
+
 import AuthSideHero from "@/components/AuthSideHero/AuthSideHero";
+
+// components
+import arrowRight from "@/assets/icons/arrow-right-icon.svg";
 import mentorIcon from "@/assets/icons/mentor-icon.svg";
 import mentorManagerIcon from "@/assets/icons/mentor-manager-icon.svg";
-import arrowRight from "@/assets/icons/arrow-right-icon.svg";
 const CategorySelector = () => {
   const router = useRouter();
 
@@ -14,14 +22,14 @@ const CategorySelector = () => {
       id: 1,
       title: "Mentor",
       description: "Oversee and guide learners from the start to finish",
-      path: "",
+      path: "/signup/mentor",
       icon: mentorIcon
     },
     {
       id: 2,
       title: "Mentor Manager",
       description: "Manage mentors and learners across all learning track",
-      path: "/sign-up/mentor-manager",
+      path: "/signup/mentor-manager",
       icon: mentorManagerIcon
     }
   ];
@@ -40,7 +48,7 @@ const CategorySelector = () => {
           {selectorOptions.map((option) => {
             return (
               <div
-                onClick={() => navigate(`${option?.path}`)}
+                onClick={() => router.push(`${option?.path}`)}
                 key={option?.id}
                 className={cx(styles.cardWrapper, "flexRow-align-center")}
               >

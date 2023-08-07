@@ -1,29 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect,useState } from "react";
+import { Outlet, useLocation,useNavigate } from "react-router-dom";
 import cx from "classnames";
-import { useNavigate, Outlet, useLocation } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import styles from "./ApprovalRequests.module.scss";
-import GenericSideBar from "@/components/GenericSideBar/GenericSideBar";
+import CategoryListItem from "./CategoryListItem/CategoryListItem";
+import RecentListItem from "./RecentListItem/RecentListItem";
+
 import Button from "@/components/Button/Button";
-import certificateImage from "@/assets/images/certificate-full.png";
+import GenericSideBar from "@/components/GenericSideBar/GenericSideBar";
+import AddUserModal from "@/components/Modals/AddUser/AddUser";
+import Pagination from "@/components/Pagination/Pagination";
+
+import mentorCardImage from "@/assets/icons/blog-post-icon.svg";
+import backIcon from "@/assets/icons/close-icon.svg";
+import closeIcon from "@/assets/icons/close-icon.svg";
 import mentorIcon from "@/assets/icons/mentor-icon-circle.svg";
 import mentorManagerIcon from "@/assets/icons/mentor-manager-icon-circle.svg";
+import mentorManagerCardImage from "@/assets/icons/new-entries-icon.svg";
 import programIcon from "@/assets/icons/program-icon-circle.svg";
-import mentorImage from "@/assets/images/sample-profile-image.svg";
+import subMenuIcon from "@/assets/icons/sub-menu-icon.svg";
+import programCardImage from "@/assets/icons/timeline-icon.svg";
+import certificateImage from "@/assets/images/certificate-full.png";
 import mentorManagerImage from "@/assets/images/mentor-manager-thumbnail.svg";
 import programImage from "@/assets/images/program-avatar.svg";
-import backIcon from "@/assets/icons/close-icon.svg";
-import subMenuIcon from "@/assets/icons/sub-menu-icon.svg";
-import mentorManagerCardImage from "@/assets/icons/new-entries-icon.svg";
-import closeIcon from "@/assets/icons/close-icon.svg";
-import mentorCardImage from "@/assets/icons/blog-post-icon.svg";
-import programCardImage from "@/assets/icons/timeline-icon.svg";
-import RecentListItem from "./RecentListItem/RecentListItem";
-import CategoryListItem from "./CategoryListItem/CategoryListItem";
-import useIsMobile from "@/hooks/useIsMobile";
-import Pagination from "@/components/Pagination/Pagination";
-import AddUserModal from "@/components/Modals/AddUser/AddUser";
+import mentorImage from "@/assets/images/sample-profile-image.svg";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
+
+import useIsMobile from "@/hooks/useIsMobile";
 
 function ApprovalRequests() {
   const router = useRouter();

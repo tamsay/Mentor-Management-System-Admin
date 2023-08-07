@@ -1,27 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import React, { useEffect,useState } from "react";
+import { useForm } from "react-hook-form";
 import cx from "classnames";
-import styles from "./EditCriteria.module.scss";
 import { useRouter } from "next/navigation";
-import backIcon from "@/assets/icons/close-icon.svg";
+import styles from "./EditCriteria.module.scss";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import Button from "@/components/Button/Button";
 import InputField from "@/components/Input/Input";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { editProgramCriteriaSchema } from "@/helpers/validation";
-import { showModal } from "@/redux/Modal/ModalSlice";
-import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
 import CriteriaTypesModal from "@/components/Modals/CriteriaTypes/CriteriaTypes";
-import SingleInputModal from "@/components/Modals/CriteriaTypes/SingleInput/SingleInput";
-import MultipleInputModal from "@/components/Modals/CriteriaTypes/MultipleInput/MultipleInput";
-import YesOrNoModal from "@/components/Modals/CriteriaTypes/YesOrNo/YesOrNo";
-import MultiChoiceModal from "@/components/Modals/CriteriaTypes/MultiChoice/MultiChoice";
 import FileInputModal from "@/components/Modals/CriteriaTypes/FileInput/FileInput";
-import { getCriteriaFromStorage, saveCriteriaToStorage } from "@/redux/Criteria/CriteriaSlice";
+import MultiChoiceModal from "@/components/Modals/CriteriaTypes/MultiChoice/MultiChoice";
+import MultipleInputModal from "@/components/Modals/CriteriaTypes/MultipleInput/MultipleInput";
+import SingleInputModal from "@/components/Modals/CriteriaTypes/SingleInput/SingleInput";
+import YesOrNoModal from "@/components/Modals/CriteriaTypes/YesOrNo/YesOrNo";
+import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+
+import backIcon from "@/assets/icons/close-icon.svg";
 import editIcon from "@/assets/icons/edit-icon-thin.svg";
 import deleteIcon from "@/assets/icons/minus-icon-thin.svg";
-
 import successImage from "@/assets/images/default-success-notification-image.png";
+
+import { getCriteriaFromStorage, saveCriteriaToStorage } from "@/redux/Criteria/CriteriaSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { showModal } from "@/redux/Modal/ModalSlice";
+
+import { editProgramCriteriaSchema } from "@/helpers/validation";
 
 const EditCriteria = () => {
   const router = useRouter();

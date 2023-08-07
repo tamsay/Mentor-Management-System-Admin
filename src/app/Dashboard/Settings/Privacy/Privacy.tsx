@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { Controller,useForm } from "react-hook-form";
 import cx from "classnames";
 import styles from "./Privacy.module.scss";
-import ToggleSwitch from "@/components/ToggleSwitch/ToggleSwitch";
-import { getUserPrivacy, editUserPrivacy } from "@/redux/Settings/SettingsSlice";
-import Loader from "@/components/Loader/Loader";
+
 import Button from "@/components/Button/Button";
-import { useForm, Controller } from "react-hook-form";
+import Loader from "@/components/Loader/Loader";
+import ToggleSwitch from "@/components/ToggleSwitch/ToggleSwitch";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { editUserPrivacy,getUserPrivacy } from "@/redux/Settings/SettingsSlice";
+
+
 
 function Privacy() {
   const dispatch = useAppDispatch();

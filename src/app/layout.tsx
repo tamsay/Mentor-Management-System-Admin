@@ -1,12 +1,14 @@
 // import './globals.css'
+import type { Metadata } from "next";
+
+import { Providers } from "@/redux/provider";
+
+import StyledComponentsRegistry from "@/lib/registry";
+
 import "./styles/flexAndGrid.scss";
 import "./styles/variables.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/layout.css";
-
-import type { Metadata } from "next";
-import { Providers } from "@/redux/provider";
-import StyledComponentsRegistry from "@/lib/registry";
 
 // import { Inter } from 'next/font/google'
 

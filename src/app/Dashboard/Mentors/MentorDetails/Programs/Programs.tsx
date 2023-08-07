@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import cx from "classnames";
 import styles from "./Programs.module.scss";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { showModal } from "@/redux/Modal/ModalSlice";
-import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
-import searchIcon from "@/assets/icons/search-icon.svg";
-import { ReactComponent as ArchiveCardIcon } from "@/assets/icons/archive-card-icon.svg";
-import { ReactComponent as CalendarIcon } from "@/assets/icons/archive-calendar-icon.svg";
-import { ReactComponent as ClockIcon } from "@/assets/icons/archive-clock-icon.svg";
-import { ReactComponent as TogglerIconUp } from "@/assets/icons/arrow-circle-up.svg";
-import { ReactComponent as TogglerIconDown } from "@/assets/icons/arrow-circle-down.svg";
-import { ReactComponent as ReportIcon } from "@/assets/icons/reports-icon.svg";
+
 import Button from "@/components/Button/Button";
+import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+
+import { ReactComponent as CalendarIcon } from "@/assets/icons/archive-calendar-icon.svg";
+import { ReactComponent as ArchiveCardIcon } from "@/assets/icons/archive-card-icon.svg";
+import { ReactComponent as ClockIcon } from "@/assets/icons/archive-clock-icon.svg";
+import { ReactComponent as TogglerIconDown } from "@/assets/icons/arrow-circle-down.svg";
+import { ReactComponent as TogglerIconUp } from "@/assets/icons/arrow-circle-up.svg";
+import { ReactComponent as ReportIcon } from "@/assets/icons/reports-icon.svg";
+import searchIcon from "@/assets/icons/search-icon.svg";
 import assignSuccessImage from "@/assets/images/activate-user.svg";
 import unAssignSuccessImage from "@/assets/images/deactivate-user.svg";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { showModal } from "@/redux/Modal/ModalSlice";
 
 const Programs = () => {
   const dispatch = useAppDispatch();

@@ -8,9 +8,82 @@
     "prettier"
   ],
   "plugins": [
+    "import",
+    "simple-import-sort",
     "prettier"
   ],
   "rules": {
+    "import/order": "off",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          [
+            "^react",
+            "^[a-z]",
+            "external",
+            "builtin",
+            "internal",
+            "unknown",
+            "^@"
+          ],
+          [
+            "^$"
+          ],
+          [
+            "^@/config/"
+          ],
+          [
+            "^$"
+          ],
+          [
+            "^[./]"
+          ],
+          [
+            "^$"
+          ],
+          [
+            "^@/components/"
+          ],
+          [
+            "^$"
+          ],
+          [
+            "^@/assets/"
+          ],
+          [
+            "^$"
+          ],
+          [
+            "^@/redux/"
+          ],
+          [
+            "^@/lib/"
+          ],
+          [
+            "^$"
+          ],
+          [
+            "^@/helpers/"
+          ],
+          [
+            "^$"
+          ],
+          [
+            "^@/constants/"
+          ],
+          [
+            "^$"
+          ],
+          [
+            "^@/hooks/"
+          ],
+          [
+            "^$"
+          ]
+        ]
+      }
+    ],
     "indent": [
       "off"
     ],

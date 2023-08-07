@@ -1,6 +1,6 @@
+import cardIcon from "@/assets/icons/reports-overview-card-icon.svg";
 import mentorManagerImage from "@/assets/images/mentor-manager-thumbnail.svg";
 import mentorImage from "@/assets/images/sample-profile-image.svg";
-import cardIcon from "@/assets/icons/reports-overview-card-icon.svg";
 
 export const mentorsArray = [
   {

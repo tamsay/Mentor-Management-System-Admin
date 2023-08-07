@@ -1,13 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import PropTypes from "prop-types";
 import cx from "classnames";
 import { useRouter } from "next/navigation";
+import PropTypes from "prop-types";
 import ModalContainer from "../ModalContainer/ModalContainer";
 import styles from "./ResetPassword.module.scss";
 
-import headerImage from "@/assets/images/reset-password-success.png";
 import Button from "@/components/Button/Button";
+
+import headerImage from "@/assets/images/reset-password-success.png";
 
 import { hideModal } from "@/redux/Modal/ModalSlice";
 

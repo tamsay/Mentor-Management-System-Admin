@@ -1,8 +1,8 @@
 import React from "react";
-import cx from "classnames";
-import styles from "./Tabs.module.scss";
-import PropTypes from "prop-types";
 import { useLocation } from "react-router-dom";
+import cx from "classnames";
+import PropTypes from "prop-types";
+import styles from "./Tabs.module.scss";
 
 const Tabs = ({ data, onClick }) => {
   const location = useLocation();

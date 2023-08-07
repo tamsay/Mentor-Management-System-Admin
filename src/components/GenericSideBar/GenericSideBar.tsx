@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef,useState } from "react";
 import cx from "classnames";
 import PropTypes from "prop-types";
 import styles from "./GenericSideBar.module.scss";
-import useIsMobile from "@/hooks/useIsMobile";
+
 import Loader from "@/components/Loader/Loader";
+
+import useIsMobile from "@/hooks/useIsMobile";
 
 function GenericSideBar({ data, selectedMenuItem, closeGenericSideBar, loading }) {
   const isMobile = useIsMobile();

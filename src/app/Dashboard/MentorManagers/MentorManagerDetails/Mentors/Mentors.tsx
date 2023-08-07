@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import cx from "classnames";
 import styles from "./Mentors.module.scss";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { showModal } from "@/redux/Modal/ModalSlice";
-import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
-import searchIcon from "@/assets/icons/search-icon.svg";
-import { ReactComponent as MentorImage } from "@/assets/images/sample-profile-image.svg";
-import { ReactComponent as TogglerIconUp } from "@/assets/icons/arrow-circle-up.svg";
-import { ReactComponent as TogglerIconDown } from "@/assets/icons/arrow-circle-down.svg";
+
 import Button from "@/components/Button/Button";
+import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+
+import { ReactComponent as TogglerIconDown } from "@/assets/icons/arrow-circle-down.svg";
+import { ReactComponent as TogglerIconUp } from "@/assets/icons/arrow-circle-up.svg";
+import paperIcon from "@/assets/icons/paper-icon.svg";
+import searchIcon from "@/assets/icons/search-icon.svg";
 import assignSuccessImage from "@/assets/images/activate-user.svg";
 import unAssignSuccessImage from "@/assets/images/deactivate-user.svg";
-import paperIcon from "@/assets/icons/paper-icon.svg";
+import { ReactComponent as MentorImage } from "@/assets/images/sample-profile-image.svg";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { showModal } from "@/redux/Modal/ModalSlice";
 import { getAllUserProfiles } from "@/redux/Profile/ProfileSlice";
 
 function Mentors() {

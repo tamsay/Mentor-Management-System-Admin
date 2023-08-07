@@ -1,21 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect,useState } from "react";
+import { Outlet, useLocation,useNavigate } from "react-router-dom";
 import cx from "classnames";
-import { useNavigate, Outlet, useLocation } from "react-router-dom";
-import styles from "./Certificates.module.scss";
-import GenericSideBar from "@/components/GenericSideBar/GenericSideBar";
-import Button from "@/components/Button/Button";
-import certificateIcon from "@/assets/icons/certificate-thumbnail.svg";
-import certificateImage from "@/assets/images/certificate-full.png";
-import backIcon from "@/assets/icons/close-icon.svg";
-import subMenuIcon from "@/assets/icons/sub-menu-icon.svg";
-import approvedCertificateIcon from "@/assets/icons/new-entries-icon.svg";
-import generatedCertificateIcon from "@/assets/icons/blog-post-icon.svg";
-import RecentListItem from "./RecentListItem/RecentListItem";
 import CategoryListItem from "./CategoryListItem/CategoryListItem";
-import useIsMobile from "@/hooks/useIsMobile";
-import Search from "@/components/Search/Search";
+import styles from "./Certificates.module.scss";
+import RecentListItem from "./RecentListItem/RecentListItem";
+
+import Button from "@/components/Button/Button";
 import Filter from "@/components/Filter/Filter";
+import GenericSideBar from "@/components/GenericSideBar/GenericSideBar";
 import Pagination from "@/components/Pagination/Pagination";
+import Search from "@/components/Search/Search";
+
+import generatedCertificateIcon from "@/assets/icons/blog-post-icon.svg";
+import certificateIcon from "@/assets/icons/certificate-thumbnail.svg";
+import backIcon from "@/assets/icons/close-icon.svg";
+import approvedCertificateIcon from "@/assets/icons/new-entries-icon.svg";
+import subMenuIcon from "@/assets/icons/sub-menu-icon.svg";
+import certificateImage from "@/assets/images/certificate-full.png";
+
+import useIsMobile from "@/hooks/useIsMobile";
 
 function Certificates() {
   const router = useRouter();

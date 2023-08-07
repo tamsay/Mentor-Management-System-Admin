@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import cx from "classnames";
-import { getProfile } from "@/redux/Profile/ProfileSlice";
-
+import React, { useEffect,useState } from "react";
 import { Container, Row } from "react-bootstrap";
-import ProfileHeader from "./ProfileHeader/ProfileHeader";
-import ProfileDetail from "./ProfileDetail/ProfileDetail";
+import cx from "classnames";
 import styles from "./Profile.module.scss";
+import ProfileDetail from "./ProfileDetail/ProfileDetail";
+import ProfileHeader from "./ProfileHeader/ProfileHeader";
+import countriesAndFlags from "@/utils/countriesAndFlags";
 
+import Loader from "@/components/Loader/Loader";
+
+import githubIcon from "@/assets/icons/github-icon.svg";
 import instagramIcon from "@/assets/icons/instagram-icon.svg";
 import linkedinIcon from "@/assets/icons/linkedin-icon.svg";
-import githubIcon from "@/assets/icons/github-icon.svg";
 import twitterIcon from "@/assets/icons/twitter-icon.svg";
-import countriesAndFlags from "@/utils/countriesAndFlags";
-import formatDate from "@/helpers/formatDate";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { getProfile } from "@/redux/Profile/ProfileSlice";
+
 import arrayToString from "@/helpers/arrayToString";
-import Loader from "@/components/Loader/Loader";
+import formatDate from "@/helpers/formatDate";
 
 function Profile() {
   const dispatch = useAppDispatch();

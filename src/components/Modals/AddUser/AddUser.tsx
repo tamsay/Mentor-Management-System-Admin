@@ -1,18 +1,19 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import PropTypes from "prop-types";
+import { Controller,useForm } from "react-hook-form";
 import cx from "classnames";
+import PropTypes from "prop-types";
 import ModalContainer from "../ModalContainer/ModalContainer";
 import styles from "./AddUser.module.scss";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import Button from "@/components/Button/Button";
 import Input from "@/components/Input/Input";
 
-import { showModal, hideModal } from "@/redux/Modal/ModalSlice";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { addUserSchema } from "@/helpers/validation";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { inviteMentor } from "@/redux/Mentors/MentorsSlice";
+import { hideModal,showModal } from "@/redux/Modal/ModalSlice";
+
+import { addUserSchema } from "@/helpers/validation";
 
 function AddUser({ show, size, modalName }) {
   const dispatch = useAppDispatch();

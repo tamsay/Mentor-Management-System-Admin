@@ -1,13 +1,16 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import cx from "classnames";
 import styles from "./DiscussionForum.module.scss";
+
+import TopicCard from "@/components/Cards/DiscussionForumTopic/DiscussionForumTopic";
+import CreateForumTopicModal from "@/components/Modals/CreateAndEditForumTopic/CreateAndEditForumTopic";
+import DeleteNotificationModal from "@/components/Modals/DeleteNotification/DeleteNotification";
+import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
+
 import addIcon from "@/assets/icons/add-icon.svg";
 import thumbnailImg from "@/assets/images/mentor-manager-thumbnail.svg";
-import TopicCard from "@/components/Cards/DiscussionForumTopic/DiscussionForumTopic";
-import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
-import DeleteNotificationModal from "@/components/Modals/DeleteNotification/DeleteNotification";
-import CreateForumTopicModal from "@/components/Modals/CreateAndEditForumTopic/CreateAndEditForumTopic";
+
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
 
 const DiscussionForum = () => {
@@ -72,8 +75,7 @@ const DiscussionForum = () => {
                   type: "create"
                 }
               })
-            )
-          }
+            )}
           className={cx(styles.addNewTopicDiv, "flexRow-space-between")}
         >
           <span>Add new topic</span>
