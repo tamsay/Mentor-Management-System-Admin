@@ -144,9 +144,7 @@ function CreateProgram() {
       <div className={cx(styles.filterAndSearchDiv, "flexRow-align-center")}>
         <div className={cx(styles.searchWrapper)}>
           <Search
-            inputPlaceholder={
-              openSideBar?.category === "mentor-manager" ? "Search for Mentor Manager" : "Search for Mentor"
-            }
+            inputPlaceholder={openSideBar?.category === "mentor-manager" ? "Search for Mentor Manager" : "Search for Mentor"}
             onChange={handleSearchInput}
             collapseInput={collapseInput}
             setCollapseInput={setCollapseInput}
@@ -281,7 +279,7 @@ function CreateProgram() {
                   {...getRootProps({ onDragOver: handleDragOver, onClick: handleDropzoneClick })}
                   title='Select file'
                   size='small'
-                  type='secondary'
+                  btnType='secondary'
                 />
               </div>
             </div>
@@ -357,7 +355,7 @@ function CreateProgram() {
                 loading={createProgramLoading}
                 disabled={createProgramLoading}
                 title='Create Program'
-                type='primary'
+                btnType='primary'
               />
             </div>
           </form>

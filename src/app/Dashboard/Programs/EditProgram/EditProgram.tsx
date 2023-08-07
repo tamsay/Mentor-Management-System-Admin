@@ -269,13 +269,11 @@ function EditProgram() {
                 {programDetails.programmePicture || uploadedFile?.imagePreviewUrl ? (
                   <Image
                     {...getRootProps({ onDragOver: handleDragOver, onClick: handleDropzoneClick })}
-                    src={
-                      programDetails.programmePicture
+                    src={programDetails.programmePicture
                         ? programDetails.programmePicture
                         : uploadedFile?.imagePreviewUrl
                         ? uploadedFile?.imagePreviewUrl
-                        : null
-                    }
+                        : null}
                     alt='profile-image'
                   />
                 ) : (
@@ -290,7 +288,7 @@ function EditProgram() {
                   {...getRootProps({ onDragOver: handleDragOver, onClick: handleDropzoneClick })}
                   title='Select file'
                   size='small'
-                  type='secondary'
+                  btnType='secondary'
                 />
               </div>
             </div>
@@ -366,7 +364,7 @@ function EditProgram() {
                 loading={editProgramLoading}
                 disabled={editProgramLoading}
                 title='Save Changes'
-                type='primary'
+                btnType='primary'
               />
             </div>
           </form>
