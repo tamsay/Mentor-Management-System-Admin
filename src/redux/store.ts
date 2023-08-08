@@ -1,3 +1,5 @@
+import { configureStore } from "@reduxjs/toolkit";
+
 import AuthReducer from "./Auth/AuthSlice";
 import CriteriaSlice from "./Criteria/CriteriaSlice";
 import LoadingReducer from "./Loading/LoadingSlice";
@@ -10,7 +12,6 @@ import ProgramsSlice from "./Programs/ProgramsSlice";
 import ReportsReducer from "./Reports/ReportsSlice";
 import SettingsReducer from "./Settings/SettingsSlice";
 import TasksSlice from "./Tasks/TasksSlice";
-import { configureStore } from "@reduxjs/toolkit";
 
 export const store = configureStore({
   reducer: {
