@@ -10,11 +10,11 @@ import eyeIconHide from "@/assets/icons/eye-password-hide.svg";
 import eyeIconShow from "@/assets/icons/eye-password-show.svg";
 import searchIcon from "@/assets/icons/search-icon.svg";
 
-type InputProps = {
+export type InputProps = {
   placeholder?: string;
   required?: boolean;
   type?: string;
-  onChange?: (e: any) => string | number;
+  onChange: (data: string | number) => string | number | void;
   error?: string;
   icon?: boolean;
   marginbottom?: string;

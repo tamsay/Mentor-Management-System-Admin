@@ -1,7 +1,9 @@
 import { Form } from "react-bootstrap";
 import styled from "styled-components";
 
-export const FormGroup = styled(Form.Group)`
+import { InputProps } from "./Input";
+
+export const FormGroup = styled(Form.Group)<InputProps>`
   display: block;
   position: relative;
   margin-bottom: ${({ marginbottom }) => marginbottom};
