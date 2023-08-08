@@ -1,6 +1,7 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 import cx from "classnames";
+
 import UserComponent from "../UserComponent/UserComponent";
 import styles from "./MentorDetails.module.scss";
 
@@ -217,7 +218,7 @@ const MentorDetails = () => {
               />
               <Button
                 onClick={() => router.push("/dashboard/mentors")}
-                type='secondary'
+                btnType='secondary'
                 title='Close'
                 size={"small"}
                 className={cx(styles.viewBtn)}

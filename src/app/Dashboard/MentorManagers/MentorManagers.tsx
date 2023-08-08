@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import cx from "classnames";
 import { useRouter } from "next/navigation";
 import styles from "./MentorManagers.module.scss";
@@ -85,7 +85,7 @@ function MentorManagers() {
           <Button
             onClick={() => router.push("/dashboard/messages/broadcast-message")}
             title='Send Broadcast Message'
-            type='secondary'
+            btnType='secondary'
             size='small'
           />
           <Button onClick={() => handleAddMentorManager()} title='Add New Mentor Manager' size='small' />

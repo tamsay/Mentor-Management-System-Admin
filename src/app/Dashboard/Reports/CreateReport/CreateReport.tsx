@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Controller,useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import cx from "classnames";
 import { useRouter } from "next/navigation";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import styles from "./CreateReport.module.scss";
 import ProgramListItem from "./ProgramListItem/ProgramListItem";
-import { yupResolver } from "@hookform/resolvers/yup";
 
 import Button from "@/components/Button/Button";
 import Filter from "@/components/Filter/Filter";
@@ -23,8 +24,6 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
 
 import { createReportSchema } from "@/helpers/validation";
-
-
 
 function CreateReport() {
   const router = useRouter();
@@ -226,7 +225,11 @@ function CreateReport() {
             </select>
 
             <div className={cx(styles.wrapper, "flexRow-align-center")}>
-              <Button title='Select Program' type='secondary' onClick={(e) => handleOpenSideBar(e, true, "program")} />
+              <Button
+                title='Select Program'
+                btnType='secondary'
+                onClick={(e) => handleOpenSideBar(e, true, "program")}
+              />
             </div>
           </div>
         </div>
@@ -295,7 +298,7 @@ function CreateReport() {
                 // loading={loading}
                 // disabled={loading}
                 title='Submit Report'
-                type='primary'
+                btnType='primary'
               />
             </div>
           </form>

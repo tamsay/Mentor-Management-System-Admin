@@ -1,6 +1,7 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import cx from "classnames";
 import { useRouter } from "next/navigation";
+
 import styles from "./Mentors.module.scss";
 
 import Button from "@/components/Button/Button";
@@ -85,7 +86,7 @@ function Mentors() {
           <Button
             onClick={() => router.push("/dashboard/messages/broadcast-message")}
             title='Send Broadcast Message'
-            type='secondary'
+            btnType='secondary'
             size='small'
           />
           <Button onClick={() => handleAddMentor()} title='Add New Mentor' size='small' />

@@ -128,7 +128,7 @@ const ApprovedCertificates = () => {
                         </div>
 
                         <div className={cx(styles.btnGroup, "flexRow-align-center")}>
-                          <Button type='secondary' onClick={() => handleDelete()} title='Delete' />
+                          <Button btnType='secondary' onClick={() => handleDelete()} title='Delete' />
                         </div>
                       </div>
                     </>

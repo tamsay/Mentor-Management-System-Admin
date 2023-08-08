@@ -2,6 +2,7 @@ import React from "react";
 import { toast } from "react-toastify";
 import cx from "classnames";
 import PropTypes from "prop-types";
+
 import ModalContainer from "../ModalContainer/ModalContainer";
 import styles from "./ShareReport.module.scss";
 
@@ -11,7 +12,6 @@ import modalImage from "@/assets/images/share-report-modal-image.svg";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { hideModal } from "@/redux/Modal/ModalSlice";
-
 
 function ShareReport({ show, size, modalName }) {
   const dispatch = useAppDispatch();
@@ -51,7 +51,7 @@ function ShareReport({ show, size, modalName }) {
 
         <div className={cx(styles.modalFooter)}>
           <div className={cx(styles.btnDiv, "flexRow-fully-centered")}>
-            <Button onClick={handleClose} title='Cancel' type='secondary' />
+            <Button onClick={handleClose} title='Cancel' btnType='secondary' />
             <Button onClick={handleShare} title='Open Email App' />
           </div>
         </div>

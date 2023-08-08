@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import cx from "classnames";
 import styles from "./Mentors.module.scss";
 
@@ -207,7 +207,7 @@ function Mentors() {
                           <Button
                             onClick={() => handleSetProgramStatus("unassigned", index)}
                             title='Unassigned from Mentor Manager'
-                            type='secondary'
+                            btnType='secondary'
                           />
                         ) : (
                           <Button

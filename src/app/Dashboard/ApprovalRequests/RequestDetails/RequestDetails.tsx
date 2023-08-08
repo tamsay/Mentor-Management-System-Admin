@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect,useState } from "react";
-import { useLocation,useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import cx from "classnames";
 import styles from "./RequestDetails.module.scss";
 
@@ -159,7 +159,7 @@ const RequestDetails = () => {
               Send Message
             </span>
             <div className={cx(styles.btnGroup, "flexRow-right-centered")}>
-              <Button onClick={() => handleApproval("decline")} title='Decline' type='secondary' />
+              <Button onClick={() => handleApproval("decline")} title='Decline' btnType='secondary' />
               <Button onClick={() => handleApproval("approve")} title='Approve' />
             </div>
           </div>

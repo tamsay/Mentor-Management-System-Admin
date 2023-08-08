@@ -263,7 +263,7 @@ const MentorRequests = () => {
                             Send Message
                           </span>
                           <div className={cx(styles.btnGroup, "flexRow-right-centered")}>
-                            <Button onClick={() => handleApproval("decline")} title='Decline' type='secondary' />
+                            <Button onClick={() => handleApproval("decline")} title='Decline' btnType='secondary' />
                             <Button onClick={() => handleApproval("approve")} title='Approve' />
                           </div>
                         </div>

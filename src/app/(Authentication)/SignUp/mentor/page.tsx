@@ -119,7 +119,7 @@ function SignUp() {
                   loading={loading}
                   disabled={loading}
                   title='Register'
-                  type='primary'
+                  btnType='primary'
                 />
               </div>
             </form>

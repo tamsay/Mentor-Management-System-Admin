@@ -2,6 +2,7 @@ import React from "react";
 import cx from "classnames";
 import { useRouter } from "next/navigation";
 import PropTypes from "prop-types";
+
 import ModalContainer from "../ModalContainer/ModalContainer";
 import styles from "./DeleteNotification.module.scss";
 
@@ -11,8 +12,6 @@ import successImage from "@/assets/images/task-delete-success.png";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { hideModal } from "@/redux/Modal/ModalSlice";
-
-
 
 function DeleteNotification({ show, size, modalName }) {
   const dispatch = useAppDispatch();
@@ -38,7 +37,7 @@ function DeleteNotification({ show, size, modalName }) {
 
         <div className={cx(styles.modalFooter)}>
           <div className={cx(styles.btnDiv, "flexRow-fully-centered")}>
-            {/* <Button onClick={handleClick} title='Undo' type='secondary' /> */}
+            {/* <Button onClick={handleClick} title='Undo' btnType='secondary' /> */}
             <Button onClick={handleClick} title='Done' />
           </div>
         </div>

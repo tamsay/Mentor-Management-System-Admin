@@ -123,7 +123,7 @@ function ResetPassword() {
                   loading={loading}
                   disabled={loading}
                   title='Reset Password'
-                  type='primary'
+                  btnType='primary'
                 />
               </div>
 

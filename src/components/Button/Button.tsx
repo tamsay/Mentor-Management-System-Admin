@@ -14,8 +14,8 @@ type ButtonProps = {
   disabled?: boolean;
   loading?: boolean;
   onClick: () => void;
-  btnType: "primary" | "secondary";
-  size: "small" | "big";
+  btnType?: "primary" | "secondary";
+  size?: "small" | "big";
 };
 
 const ButtonComponent = styled.button<ButtonProps>`

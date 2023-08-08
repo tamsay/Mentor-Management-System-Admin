@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import cx from "classnames";
 import PropTypes from "prop-types";
+
 import styles from "./RecentListItem.module.scss";
 
 import Button from "@/components/Button/Button";
@@ -21,7 +22,7 @@ function RecentListItem({ data, onClick }) {
           <span className={cx(styles.description)}>{data?.description}</span>
         </div>
         <div className={cx(styles.btnDiv, "flexRow")}>
-          <Button title='View' type='primary' size='small' />
+          <Button title='View' btnType='primary' size='small' />
         </div>
       </div>
     </div>

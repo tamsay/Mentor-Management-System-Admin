@@ -104,7 +104,7 @@ function Login() {
                   loading={loading}
                   disabled={loading}
                   title='Login'
-                  type='primary'
+                  btnType='primary'
                 />
               </div>
 

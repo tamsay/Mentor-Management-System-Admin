@@ -1,6 +1,7 @@
 import React from "react";
 import cx from "classnames";
 import { useRouter } from "next/navigation";
+
 import styles from "./TasksOverview.module.scss";
 
 import Button from "@/components/Button/Button";
@@ -56,7 +57,7 @@ function TasksOverview() {
           </div>
         </div>
         <div className={cx(styles.btnDiv, "flexRow")}>
-          <Button onClick={() => router.push("tasks")} title='View All' type='primary' size='small' />
+          <Button onClick={() => router.push("tasks")} title='View All' btnType='primary' size='small' />
         </div>
       </div>
 
@@ -74,7 +75,7 @@ function TasksOverview() {
           </div>
         </div>
         <div className={cx(styles.btnDiv, "flexRow")}>
-          <Button onClick={() => router.push("tasks")} title='View All' type='primary' size='small' />
+          <Button onClick={() => router.push("tasks")} title='View All' btnType='primary' size='small' />
         </div>
       </div>
     </div>

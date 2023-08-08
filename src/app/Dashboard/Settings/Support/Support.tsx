@@ -1,6 +1,6 @@
-import React, { useCallback,useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import { Controller,useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import cx from "classnames";
 import styles from "./Support.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -146,7 +146,7 @@ function Support() {
                 loading={loading}
                 disabled={loading}
                 title='Send'
-                type='primary'
+                btnType='primary'
               />
             </div>
           </form>

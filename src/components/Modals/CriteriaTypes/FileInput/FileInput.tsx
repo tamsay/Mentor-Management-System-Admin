@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { Controller,useFieldArray, useForm } from "react-hook-form";
+import { Controller, useFieldArray, useForm } from "react-hook-form";
 import cx from "classnames";
 import { nanoid } from "nanoid";
 import PropTypes from "prop-types";
+
 import ModalContainer from "../../ModalContainer/ModalContainer";
 import styles from "./FileInput.module.scss";
 import NestedArray from "./NestedFieldArray/NestedFieldArray";
@@ -13,7 +14,7 @@ import InputField from "@/components/Input/Input";
 import addIcon from "@/assets/icons/add-icon.svg";
 import removeIcon from "@/assets/icons/minus-icon.svg";
 
-import { getCriteriaFromStorage,saveCriteriaToStorage } from "@/redux/Criteria/CriteriaSlice";
+import { getCriteriaFromStorage, saveCriteriaToStorage } from "@/redux/Criteria/CriteriaSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { hideModal } from "@/redux/Modal/ModalSlice";
 function FileInput({ show, size, modalName }) {
@@ -111,7 +112,9 @@ function FileInput({ show, size, modalName }) {
                             placeholder='Enter request here'
                             type='text'
                             marginbottom='1.5rem'
-                            error={errors?.criteria && errors?.criteria[index] && errors?.criteria[index]?.question?.message}
+                            error={
+                              errors?.criteria && errors?.criteria[index] && errors?.criteria[index]?.question?.message
+                            }
                           />
                         )}
                       />
@@ -155,8 +158,8 @@ function FileInput({ show, size, modalName }) {
             )}
 
             <div className={cx(styles.btnGroup, "flexRow-space-between")}>
-              <Button onClick={handleClose} title='Cancel' type='secondary' />
-              {!modalData?.edit && <Button type='secondary' onClick={() => reset(defaultValues)} title='Reset' />}
+              <Button onClick={handleClose} title='Cancel' btnType='secondary' />
+              {!modalData?.edit && <Button btnType='secondary' onClick={() => reset(defaultValues)} title='Reset' />}
               <Button onClick={handleSubmit((data) => handleCreateCriteria(data))} title='Done' />
             </div>
           </form>

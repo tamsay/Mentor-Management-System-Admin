@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import cx from "classnames";
 import { useRouter } from "next/navigation";
@@ -310,7 +310,7 @@ const CreateCriteria = () => {
               documents regarding their past experience(s). The criteria setup lets you create input fields for these
               information.
             </p>
-            <Button onClick={() => handleDisplayInstructions()} title='Ok' type='primary' size='small' />
+            <Button onClick={() => handleDisplayInstructions()} title='Ok' btnType='primary' size='small' />
           </div>
         ) : (
           <form
@@ -326,13 +326,13 @@ const CreateCriteria = () => {
                   })}
               </div>
               <div className={cx(styles.addCriteriaBtnDiv, "flexRow")}>
-                <Button onClick={(e) => displayCriteriaTypes(e)} title='Add Criteria' type='primary' size='small' />
+                <Button onClick={(e) => displayCriteriaTypes(e)} title='Add Criteria' btnType='primary' size='small' />
               </div>
               <div className={cx(styles.submitBtnDiv, "flexRow")}>
                 <Button
                   onClick={handleSubmit((data) => handleCreateCriteria(data))}
                   title='Create Criteria'
-                  type='primary'
+                  btnType='primary'
                   disabled={disableCreateBtn}
                 />
               </div>

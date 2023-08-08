@@ -12,7 +12,6 @@ import Baba from "@/assets/images/baba.svg";
 import Lex from "@/assets/images/lex.svg";
 import Peculiar from "@/assets/images/peculiar.svg";
 
-
 function Notifications() {
   const dropdownArray = ["All", "All"];
   const [selected, setSelected] = useState("All");
@@ -79,7 +78,7 @@ function Notifications() {
             <Button
               onClick={handleMarkAllAsRead}
               title={buttonLabel}
-              type='secondary'
+              btnType='secondary'
               size='small'
               suffixIcon={<CheckmarkIcon />}
             />

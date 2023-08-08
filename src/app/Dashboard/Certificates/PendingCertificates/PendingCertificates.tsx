@@ -126,7 +126,7 @@ const PendingCertificates = () => {
                       </div>
 
                       <div className={cx(styles.btnGroup, "flexRow-align-center")}>
-                        <Button onClick={() => handleApproval("decline")} title='Decline' type='secondary' />
+                        <Button onClick={() => handleApproval("decline")} title='Decline' btnType='secondary' />
                         <Button onClick={() => handleApproval("approve")} title='Approve' />
                       </div>
                     </div>

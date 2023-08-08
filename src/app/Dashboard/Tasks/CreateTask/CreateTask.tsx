@@ -1,10 +1,11 @@
-import React, { useEffect,useState } from "react";
-import { Controller,useForm } from "react-hook-form";
+import React, { useEffect, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 import cx from "classnames";
 import { useRouter } from "next/navigation";
-import styles from "./CreateTask.module.scss";
 import PersonelComponent from "@/pages/Dashboard/Tasks/PersonelComponent/PersonelComponent";
 import { yupResolver } from "@hookform/resolvers/yup";
+
+import styles from "./CreateTask.module.scss";
 
 import Button from "@/components/Button/Button";
 import InputField from "@/components/Input/Input";
@@ -27,8 +28,6 @@ import { createTaskSchema } from "@/helpers/validation";
 
 // import { getAllMentors } from "@/redux/Mentors/MentorsSlice";
 // import { getAllMentorManagers } from "@/redux/MentorManagers/MentorManagersSlice";
-
-
 
 function CreateTask() {
   const router = useRouter();
@@ -134,7 +133,9 @@ function CreateTask() {
         )}
         <div className={cx(styles.searchWrapper)}>
           <Search
-            inputPlaceholder={openSideBar?.category === "mentor-manager" ? "Search for Mentor Manager" : "Search for Mentor"}
+            inputPlaceholder={
+              openSideBar?.category === "mentor-manager" ? "Search for Mentor Manager" : "Search for Mentor"
+            }
             onChange={handleSearchInput}
             collapseInput={collapseInput}
             setCollapseInput={setCollapseInput}
@@ -267,7 +268,7 @@ function CreateTask() {
                 loading={createTaskLoading}
                 disabled={createTaskLoading}
                 title='Create Task'
-                type='primary'
+                btnType='primary'
               />
             </div>
           </form>

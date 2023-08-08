@@ -1,5 +1,5 @@
-import React, { useEffect,useState } from "react";
-import { Controller,useForm } from "react-hook-form";
+import React, { useEffect, useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import cx from "classnames";
 import { useRouter } from "next/navigation";
@@ -24,7 +24,7 @@ import { showModal } from "@/redux/Modal/ModalSlice";
 import { getAllUserProfiles } from "@/redux/Profile/ProfileSlice";
 // import { getAllMentors } from "@/redux/Mentors/MentorsSlice";
 // import { getAllMentorManagers } from "@/redux/MentorManagers/MentorManagersSlice";
-import { editTask,getTaskDetails } from "@/redux/Tasks/TasksSlice";
+import { editTask, getTaskDetails } from "@/redux/Tasks/TasksSlice";
 
 import { editTaskSchema } from "@/helpers/validation";
 
@@ -145,7 +145,9 @@ const EditTask = () => {
         )}
         <div className={cx(styles.searchWrapper)}>
           <Search
-            inputPlaceholder={openSideBar?.category === "mentor-manager" ? "Search for Mentor Manager" : "Search for Mentor"}
+            inputPlaceholder={
+              openSideBar?.category === "mentor-manager" ? "Search for Mentor Manager" : "Search for Mentor"
+            }
             onChange={handleSearchInput}
             collapseInput={collapseInput}
             setCollapseInput={setCollapseInput}
@@ -282,7 +284,7 @@ const EditTask = () => {
                 loading={editTaskLoading}
                 disabled={editTaskLoading}
                 title='Update Task'
-                type='primary'
+                btnType='primary'
               />
             </div>
           </form>

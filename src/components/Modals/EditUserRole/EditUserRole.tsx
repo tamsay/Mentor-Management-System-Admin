@@ -2,9 +2,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import cx from "classnames";
 import PropTypes from "prop-types";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import ModalContainer from "../ModalContainer/ModalContainer";
 import styles from "./EditUserRole.module.scss";
-import { yupResolver } from "@hookform/resolvers/yup";
 
 import Button from "@/components/Button/Button";
 
@@ -14,9 +15,6 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { hideModal, showModal } from "@/redux/Modal/ModalSlice";
 
 import { editUserRoleSchema } from "@/helpers/validation";
-
-
-
 
 function EditUserRole({ show, size, modalName }) {
   const dispatch = useAppDispatch();
@@ -93,7 +91,7 @@ function EditUserRole({ show, size, modalName }) {
             <div className={cx(styles.errorDiv)}>{errors?.role?.message}</div>
 
             <div className={cx(styles.btnGroup, "flexRow-fully-centered")}>
-              <Button onClick={handleClose} title='Cancel' type='secondary' />
+              <Button onClick={handleClose} title='Cancel' btnType='secondary' />
               <Button onClick={handleSubmit((data) => handleEditUserRole(data))} title='Save' />
             </div>
           </form>

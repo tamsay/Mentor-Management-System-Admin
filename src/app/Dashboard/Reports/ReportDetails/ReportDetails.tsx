@@ -1,7 +1,8 @@
-import React, { useEffect, useRef,useState } from "react";
-import { useLocation,useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import cx from "classnames";
 import html2pdf from "html2pdf.js";
+
 import styles from "./ReportDetails.module.scss";
 
 import Button from "@/components/Button/Button";
@@ -17,7 +18,6 @@ import { showModal } from "@/redux/Modal/ModalSlice";
 
 // import { getReportDetails } from "@/redux/Reports/ReportsSlice";
 import formatDate from "@/helpers/formatDate";
-
 
 const ReportDetails = () => {
   const dispatch = useAppDispatch();
@@ -135,7 +135,7 @@ const ReportDetails = () => {
         })}
 
         <div ref={btnGroupRef} className={cx(styles.btnGroup, "flexRow-space-between", "exclude")}>
-          <Button onClick={() => handleShareReport()} title='Share' type='secondary' />
+          <Button onClick={() => handleShareReport()} title='Share' btnType='secondary' />
           <Button onClick={() => handleDownloadReport()} title='Download' />
         </div>
       </div>

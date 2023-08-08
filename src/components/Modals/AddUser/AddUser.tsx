@@ -1,17 +1,18 @@
 import React from "react";
-import { Controller,useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import cx from "classnames";
 import PropTypes from "prop-types";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import ModalContainer from "../ModalContainer/ModalContainer";
 import styles from "./AddUser.module.scss";
-import { yupResolver } from "@hookform/resolvers/yup";
 
 import Button from "@/components/Button/Button";
 import Input from "@/components/Input/Input";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { inviteMentor } from "@/redux/Mentors/MentorsSlice";
-import { hideModal,showModal } from "@/redux/Modal/ModalSlice";
+import { hideModal, showModal } from "@/redux/Modal/ModalSlice";
 
 import { addUserSchema } from "@/helpers/validation";
 
@@ -83,7 +84,7 @@ function AddUser({ show, size, modalName }) {
 
           <div className={cx(styles.modalFooter)}>
             <div className={cx(styles.btnDiv, "flexRow-fully-centered")}>
-              <Button onClick={() => handleCloseModal()} title='Cancel' type='secondary' />
+              <Button onClick={() => handleCloseModal()} title='Cancel' btnType='secondary' />
               <Button
                 loading={userCategory === "mentor" ? inviteMentorLoading : false}
                 disabled={userCategory === "mentor" ? inviteMentorLoading : false}

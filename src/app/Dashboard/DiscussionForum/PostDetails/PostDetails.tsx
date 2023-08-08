@@ -118,7 +118,7 @@ const PostDetails = () => {
               <Image src={attachmentIcon} alt='attachment-icon' />
               <Image src={smileyIcon} alt='smiley-icon' />
             </div>
-            <Button title='Post Comment' type='primary' />
+            <Button title='Post Comment' btnType='primary' />
           </div>
         </div>
 

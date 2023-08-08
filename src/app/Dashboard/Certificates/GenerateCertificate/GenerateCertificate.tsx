@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import cx from "classnames";
 import { useRouter } from "next/navigation";
+
 import styles from "./GenerateCertificate.module.scss";
 import PersonelComponent from "./PersonelComponent/PersonelComponent";
 import ProgramListItem from "./ProgramListItem/ProgramListItem";
@@ -21,8 +22,6 @@ import beneficiaryImage from "@/assets/images/sample-profile-image.svg";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
-
-
 
 const GenerateCertificate = () => {
   const router = useRouter();
@@ -353,7 +352,7 @@ const GenerateCertificate = () => {
                 // loading={loading}
                 disabled={!(beneficiary && program)}
                 title='Generate'
-                type='primary'
+                btnType='primary'
               />
             </div>
           </form>

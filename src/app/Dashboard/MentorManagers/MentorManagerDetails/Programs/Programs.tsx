@@ -200,7 +200,7 @@ const Programs = () => {
                         <Button
                           onClick={() => handleSetProgramStatus("unassigned", index)}
                           title='Unassign from Program'
-                          type='secondary'
+                          btnType='secondary'
                         />
                       ) : (
                         <Button onClick={() => handleSetProgramStatus("assigned", index)} title='Assign To Program' />

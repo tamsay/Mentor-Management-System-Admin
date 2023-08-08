@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import { Controller,useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import cx from "classnames";
 import { useRouter } from "next/navigation";
-import styles from "./ForgotPassword.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
+
+import styles from "./ForgotPassword.module.scss";
 
 import AuthSideHero from "@/components/AuthSideHero/AuthSideHero";
 import Button from "@/components/Button/Button";
@@ -59,7 +60,7 @@ function ForgotPassword() {
                 </p>
 
                 <div className={cx(styles.btnDiv, "flexRow")}>
-                  <Button onClick={() => router.push("/login")} title='Done' type='primary' />
+                  <Button onClick={() => router.push("/login")} title='Done' btnType='primary' />
                 </div>
               </div>
             )}
@@ -86,7 +87,7 @@ function ForgotPassword() {
                     loading={loading}
                     disabled={loading}
                     title='Get Reset Link'
-                    type='primary'
+                    btnType='primary'
                   />
                 </div>
 

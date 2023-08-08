@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import cx from "classnames";
 import PropTypes from "prop-types";
+
 import ModalContainer from "../ModalContainer/ModalContainer";
 import styles from "./CriteriaTypes.module.scss";
 
 import Button from "@/components/Button/Button";
 
-import { getCriteriaFromStorage,saveCriteriaToStorage } from "@/redux/Criteria/CriteriaSlice";
+import { getCriteriaFromStorage, saveCriteriaToStorage } from "@/redux/Criteria/CriteriaSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { hideModal, showModal } from "@/redux/Modal/ModalSlice";
 
@@ -73,7 +74,7 @@ function CriteriaTypes({ show, size, modalName }) {
           </div>
 
           <div className={cx(styles.btnGroup, "flexRow-align-left")}>
-            <Button onClick={handleClose} title='Cancel' type='secondary' />
+            <Button onClick={handleClose} title='Cancel' btnType='secondary' />
           </div>
         </div>
       </div>

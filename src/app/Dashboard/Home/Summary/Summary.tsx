@@ -2,6 +2,7 @@ import React from "react";
 import cx from "classnames";
 // import PropTypes from "prop-types";
 import { useRouter } from "next/navigation";
+
 import styles from "./Summary.module.scss";
 
 import Button from "@/components/Button/Button";
@@ -49,7 +50,7 @@ function Summary() {
   return (
     <div className={cx(styles.summaryContainer, "flexRow")}>
       <div className={cx(styles.activeProgramsDiv, "flexCol")}>
-        <Button onClick={() => router.push("programs")} title='View All' type='secondary' size='small' />
+        <Button onClick={() => router.push("programs")} title='View All' btnType='secondary' size='small' />
         <div className={cx(styles.body, "flexRow")}>
           <span className={cx(styles.value)}>60</span>
           <h6 className={cx(styles.heading)}>Active Programs</h6>

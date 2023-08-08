@@ -1,5 +1,5 @@
 import React from "react";
-import { Controller,useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import cx from "classnames";
 import PropTypes from "prop-types";
 import ModalContainer from "../ModalContainer/ModalContainer";
@@ -108,7 +108,7 @@ function CreateAndEditForumTopic({ show, size, modalName }) {
                     // loading={loading}
                     // disabled={loading}
                     title='Post to forum'
-                    type='primary'
+                    btnType='primary'
                   />
                 ) : (
                   <Button
@@ -116,7 +116,7 @@ function CreateAndEditForumTopic({ show, size, modalName }) {
                     // loading={loading}
                     // disabled={loading}
                     title='Save changes'
-                    type='primary'
+                    btnType='primary'
                   />
                 )}
               </div>

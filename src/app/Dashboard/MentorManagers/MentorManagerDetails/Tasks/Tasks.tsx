@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import cx from "classnames";
 import styles from "./Tasks.module.scss";
 
@@ -145,7 +145,7 @@ const Tasks = () => {
                           <Button
                             onClick={() => handleSetTaskStatus("unassigned", index)}
                             title='Unassign from Task'
-                            type='secondary'
+                            btnType='secondary'
                           />
                         ) : (
                           <Button onClick={() => handleSetTaskStatus("assigned", index)} title='Assign To Task' />

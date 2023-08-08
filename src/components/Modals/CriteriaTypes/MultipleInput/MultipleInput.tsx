@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { Controller,useFieldArray, useForm } from "react-hook-form";
+import { Controller, useFieldArray, useForm } from "react-hook-form";
 import cx from "classnames";
 import { nanoid } from "nanoid";
 import PropTypes from "prop-types";
+
 import ModalContainer from "../../ModalContainer/ModalContainer";
 import styles from "./MultipleInput.module.scss";
 
@@ -12,7 +13,7 @@ import InputField from "@/components/Input/Input";
 import addIcon from "@/assets/icons/add-icon.svg";
 import removeIcon from "@/assets/icons/minus-icon.svg";
 
-import { getCriteriaFromStorage,saveCriteriaToStorage } from "@/redux/Criteria/CriteriaSlice";
+import { getCriteriaFromStorage, saveCriteriaToStorage } from "@/redux/Criteria/CriteriaSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { hideModal } from "@/redux/Modal/ModalSlice";
 function MultipleInput({ show, size, modalName }) {
@@ -91,7 +92,9 @@ function MultipleInput({ show, size, modalName }) {
                         placeholder='Enter question here'
                         type='text'
                         marginbottom='1.5rem'
-                        error={errors?.criteria && errors?.criteria[index] && errors?.criteria[index]?.question?.message}
+                        error={
+                          errors?.criteria && errors?.criteria[index] && errors?.criteria[index]?.question?.message
+                        }
                       />
                     )}
                   />
@@ -112,9 +115,11 @@ function MultipleInput({ show, size, modalName }) {
                         placeholder='Number of Inputs'
                         type='number'
                         marginbottom='1.5rem'
-                        error={errors?.criteria &&
+                        error={
+                          errors?.criteria &&
                           errors?.criteria[index] &&
-                          errors?.criteria[index]?.numberOfInputs?.message}
+                          errors?.criteria[index]?.numberOfInputs?.message
+                        }
                       />
                     )}
                   />
@@ -150,7 +155,7 @@ function MultipleInput({ show, size, modalName }) {
             )}
 
             <div className={cx(styles.btnGroup, "flexRow-space-between")}>
-              <Button onClick={handleClose} title='Cancel' type='secondary' />
+              <Button onClick={handleClose} title='Cancel' btnType='secondary' />
               <Button onClick={handleSubmit((data) => handleCreateCriteria(data))} title='Done' />
             </div>
           </form>

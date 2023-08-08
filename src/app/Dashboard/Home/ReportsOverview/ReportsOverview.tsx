@@ -48,7 +48,7 @@ function ReportsOverview() {
       </div>
 
       <div className={cx(styles.btnDiv, "flexRow")}>
-        <Button onClick={() => router.push("reports")} title='View All' type='primary' size='small' />
+        <Button onClick={() => router.push("reports")} title='View All' btnType='primary' size='small' />
       </div>
     </div>
   );

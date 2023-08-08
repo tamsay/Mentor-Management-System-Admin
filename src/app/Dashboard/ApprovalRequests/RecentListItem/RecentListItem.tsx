@@ -27,7 +27,7 @@ function RecentListItem({ data, onClick }) {
           data?.count && <span className={cx(styles.count, "flexRow-fully-centered")}>{data?.count}</span>
         ) : (
           <div className={cx(styles.btnDiv, "flexRow")}>
-            <Button title='View' type='primary' size='small' />
+            <Button title='View' btnType='primary' size='small' />
           </div>
         )}
       </div>
