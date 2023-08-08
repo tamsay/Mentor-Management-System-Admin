@@ -17,13 +17,17 @@ import failureImage from "@/assets/images/deactivate-user.svg";
 import { confirmEmail } from "@/redux/Auth/AuthSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
+interface IConfirmationResponse {
+  success: boolean;
+}
+
 function Confirmation() {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const urlParams = useSearchParams();
   const token = urlParams.get("token");
   const email = urlParams.get("email");
-  const [confirmationResponse, setConfirmationResponse] = useState(null);
+  const [confirmationResponse, setConfirmationResponse] = useState<IConfirmationResponse | null>(null);
 
   const loading = useAppSelector((state) => state?.loading?.confirmEmailLoading);
 

@@ -1,9 +1,9 @@
 import { toast } from "react-toastify";
-import { getAllUserProfilesApi, getProfileApi,updateProfileApi } from "../api/profile";
 import { createSlice } from "@reduxjs/toolkit";
 
-import { getAllUserProfilesLoading, getProfileLoading,updateProfileLoading } from "@/redux/Loading/LoadingSlice";
+import { getAllUserProfilesApi, getProfileApi, updateProfileApi } from "../api/profile";
 
+import { getAllUserProfilesLoading, getProfileLoading, updateProfileLoading } from "@/redux/Loading/LoadingSlice";
 
 const initialState = {
   error: false,
@@ -71,11 +71,11 @@ export const updateProfile = (data) => async (dispatch) => {
   }
 };
 
-export const getProfile = (data) => async (dispatch) => {
+export const getProfile = () => async (dispatch) => {
   dispatch(getProfileLoading(true));
 
   try {
-    const response = await getProfileApi(data);
+    const response = await getProfileApi();
     dispatch(getProfileLoading(false));
     dispatch(getProfileAction(response?.data?.data));
     return { success: true };

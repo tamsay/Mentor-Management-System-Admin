@@ -24,6 +24,11 @@ import { loginSchema } from "@/helpers/validation";
 // import axios from "axios";
 // import { useGoogleLogin } from "@react-oauth/google";
 
+interface ILoginData {
+  email: string;
+  password: string;
+}
+
 function Login() {
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -33,7 +38,7 @@ function Login() {
   // useEffect(() => {
   // }, []);
 
-  const signIn = async (data) => {
+  const signIn = async (data: ILoginData) => {
     const response = await dispatch(login(data));
     if (response?.success) {
       dispatch(getProfile());

@@ -10,7 +10,7 @@ import eyeIconHide from "@/assets/icons/eye-password-hide.svg";
 import eyeIconShow from "@/assets/icons/eye-password-show.svg";
 import searchIcon from "@/assets/icons/search-icon.svg";
 
-export type InputProps = {
+type InputProps = {
   placeholder?: string;
   required?: boolean;
   type?: string;

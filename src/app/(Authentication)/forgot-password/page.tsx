@@ -24,7 +24,7 @@ function ForgotPassword() {
   const loading = useAppSelector((state) => state?.loading?.forgotPasswordLoading);
   const [showOutcome, setShowOutcome] = useState(false);
 
-  const handleForgotPassword = async (data) => {
+  const handleForgotPassword = async (data: string) => {
     const response = await dispatch(forgotPassword(data));
     response?.success && setShowOutcome(true);
   };

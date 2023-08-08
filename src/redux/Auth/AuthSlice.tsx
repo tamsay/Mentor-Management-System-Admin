@@ -1,22 +1,23 @@
 import { toast } from "react-toastify";
+import { getRefreshToken, getToken, setRefreshToken, setToken } from "@/utils/auth";
+import { createSlice } from "@reduxjs/toolkit";
+
 import {
   confirmEmailApi,
   forgotPasswordApi,
   loginApi,
   refreshAccessTokenApi,
   resetPasswordApi,
-  signUpApi} from "../api/auth";
-import { getRefreshToken,getToken, setRefreshToken, setToken } from "@/utils/auth";
-import { createSlice } from "@reduxjs/toolkit";
+  signUpApi
+} from "../api/auth";
 
 import {
   confirmEmailLoading,
   forgotPasswordLoading,
   loginLoading,
   resetPasswordLoading,
-  signUpLoading} from "@/redux/Loading/LoadingSlice";
-
-
+  signUpLoading
+} from "@/redux/Loading/LoadingSlice";
 
 const initialState = {
   error: false,

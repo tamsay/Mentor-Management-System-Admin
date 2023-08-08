@@ -23,6 +23,12 @@ import { showModal } from "@/redux/Modal/ModalSlice";
 import { signUpSchema } from "@/helpers/validation";
 // import { useGoogleSignUp } from "@react-oauth/google";
 
+interface ISignUpData {
+  name: string;
+  email: string;
+  password: string;
+}
+
 function SignUp() {
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -31,7 +37,7 @@ function SignUp() {
   const displayModal = useAppSelector((state) => state.modal.show);
   const modalName = useAppSelector((state) => state.modal.modalName);
 
-  const handleSignUp = async (data) => {
+  const handleSignUp = async (data: ISignUpData) => {
     const response = await dispatch(signUp(data));
 
     if (response?.success) {
