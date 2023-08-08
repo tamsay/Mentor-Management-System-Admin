@@ -1,33 +1,32 @@
 import React from "react";
 import cx from "classnames";
 import Image from "next/image";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import imageLoader from "@/assets/icons/loading.svg";
 
 type ButtonProps = {
   title: string;
-  checked: boolean;
-  checkedBtn: boolean;
-  prefixIcon: React.ReactElement;
-  suffixIcon: React.ReactElement;
-  disabled: boolean;
-  loading: boolean;
+  checked?: boolean;
+  checkedBtn?: boolean;
+  prefixIcon?: React.ReactElement;
+  suffixIcon?: React.ReactElement;
+  disabled?: boolean;
+  loading?: boolean;
   onClick: () => void;
-  type: "primary" | "secondary";
+  btnType: "primary" | "secondary";
   size: "small" | "big";
 };
 
-const ButtonComponent = styled.button`
+const ButtonComponent = styled.button<ButtonProps>`
   font-size: ${(props) => (props.size === "small" ? "0.75rem" : "0.875rem")};
   font-family: ${(props) => (props.size === "small" ? "var(--muktaRegular)" : "var(--muktaSemiBold)")};
   padding: ${(props) => (props.size === "small" ? "0.5rem 0.5rem" : "0.75rem 1rem")};
   border-radius: ${(props) => (props.size === "small" ? "5px" : "10px")};
-  background-color: ${(props) => (props.type === "primary" ? "var(--primaryBtnBg)" : "var(--secondaryBtnBg)")};
-  color: ${(props) => (props.type === "primary" ? "var(--primaryBtnTextColor)" : "var(--secondaryBtnTextColor)")};
+  background-color: ${(props) => (props.btnType === "primary" ? "var(--primaryBtnBg)" : "var(--secondaryBtnBg)")};
+  color: ${(props) => (props.btnType === "primary" ? "var(--primaryBtnTextColor)" : "var(--secondaryBtnTextColor)")};
   border: 1px solid
-    ${(props) => (props.type === "primary" ? "var(--primaryBtnBorderColor)" : "var(--secondaryBtnBorderColor)")};
+    ${(props) => (props.btnType === "primary" ? "var(--primaryBtnBorderColor)" : "var(--secondaryBtnBorderColor)")};
   width: fit-content;
   white-space: nowrap;
   align-items: center;
@@ -48,12 +47,12 @@ const ButtonComponent = styled.button`
   }
   &:hover {
     background-color: ${(props) =>
-      props.type === "primary" ? "var(--primaryBtnHoverBg)" : "var(--secondaryBtnHoverBg)"};
+      props.btnType === "primary" ? "var(--primaryBtnHoverBg)" : "var(--secondaryBtnHoverBg)"};
     color: ${(props) =>
-      props.type === "primary" ? "var(--primaryBtnHoverTextColor)" : "var(--secondaryBtnHoverTextColor)"};
+      props.btnType === "primary" ? "var(--primaryBtnHoverTextColor)" : "var(--secondaryBtnHoverTextColor)"};
     border: 1px solid
       ${(props) =>
-        props.type === "primary" ? "var(--primaryBtnHoverBorderColor)" : "var(--secondaryBtnHoverBorderColor)"};
+        props.btnType === "primary" ? "var(--primaryBtnHoverBorderColor)" : "var(--secondaryBtnHoverBorderColor)"};
   }
 
   @media all and (min-width: 992px) {
@@ -63,10 +62,28 @@ const ButtonComponent = styled.button`
 `;
 
 function Button(props: ButtonProps) {
-  const { title, checked, checkedBtn, prefixIcon, suffixIcon, disabled = false, loading, onClick, type, size } = props;
+  const {
+    title,
+    checked,
+    checkedBtn,
+    prefixIcon,
+    suffixIcon,
+    disabled = false,
+    loading,
+    onClick,
+    btnType = "primary",
+    size = "big"
+  } = props;
 
   return (
-    <ButtonComponent size={size} type={type} onClick={onClick} disabled={disabled} className={cx("flexRow")}>
+    <ButtonComponent
+      title={title}
+      size={size}
+      btnType={btnType}
+      onClick={onClick}
+      disabled={disabled}
+      className={cx("flexRow")}
+    >
       {loading ? (
         <Image src={imageLoader} height='16' width='60' alt='loading' />
       ) : (
@@ -84,30 +101,5 @@ function Button(props: ButtonProps) {
     </ButtonComponent>
   );
 }
-
-// Button.defaultProps = {
-//   title: "",
-//   checked: false,
-//   checkedBtn: false,
-//   prefixIcon: null,
-//   suffixIcon: null,
-//   disabled: false,
-//   loading: false,
-//   onClick: () => {},
-//   type: "primary",
-//   size: "big"
-// };
-// Button.propTypes = {
-//   title: PropTypes.string,
-//   checked: PropTypes.bool,
-//   checkedBtn: PropTypes.bool,
-//   prefixIcon: PropTypes.element,
-//   suffixIcon: PropTypes.element,
-//   disabled: PropTypes.bool,
-//   loading: PropTypes.bool,
-//   onClick: PropTypes.func,
-//   type: PropTypes.string,
-//   size: PropTypes.string
-// };
 
 export default Button;

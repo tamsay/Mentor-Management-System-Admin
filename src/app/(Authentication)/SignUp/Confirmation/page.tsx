@@ -1,6 +1,10 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import cx from "classnames";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
+
 import styles from "./Confirmation.module.scss";
 
 import AuthSideHero from "@/components/AuthSideHero/AuthSideHero";
@@ -16,7 +20,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 function Confirmation() {
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const urlParams = new URLSearchParams(window.location.search);
+  const urlParams = useSearchParams();
   const token = urlParams.get("token");
   const email = urlParams.get("email");
   const [confirmationResponse, setConfirmationResponse] = useState(null);
@@ -60,7 +64,7 @@ function Confirmation() {
             </div>
             <h3 className={cx(styles.heading)}>Email Confirmation Failed</h3>
             <p className={cx(styles.subHeading)}>Your email confirmation failed. Please try again.</p>
-            <Button title='Try Again' onClick={() => router.push("/sign-up-category-selector")} />
+            <Button title='Try Again' onClick={() => router.push("/signup/category-selector")} />
           </div>
         )}
       </div>

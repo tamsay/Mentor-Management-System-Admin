@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
-import { Controller,useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import cx from "classnames";
-import { useRouter } from "next/navigation";
-import styles from "./ResetPassword.module.scss";
+import { useRouter, useSearchParams } from "next/navigation";
 import { yupResolver } from "@hookform/resolvers/yup";
+
+import styles from "./ResetPassword.module.scss";
 
 import AuthSideHero from "@/components/AuthSideHero/AuthSideHero";
 import Button from "@/components/Button/Button";
@@ -28,11 +29,16 @@ function ResetPassword() {
   const displayModal = useAppSelector((state) => state.modal.show);
   const modalName = useAppSelector((state) => state.modal.modalName);
 
-  const urlParams = new URLSearchParams(window.location.search);
+  const urlParams = useSearchParams();
   const token = urlParams.get("token");
   const email = urlParams.get("email");
 
-  const handleResetPassword = async (data) => {
+  type ResetPasswordData = {
+    password: string;
+    confirmPassword: string;
+  };
+
+  const handleResetPassword = async (data: ResetPasswordData) => {
     const response = await dispatch(
       resetPassword({
         Password: data.password,
