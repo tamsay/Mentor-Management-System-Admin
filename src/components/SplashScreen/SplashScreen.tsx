@@ -5,10 +5,10 @@ import cx from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+
 import styles from "./SplashScreen.module.scss";
 
 import logo from "@/assets/images/logo.png";
-
 
 const SplashScreen = () => {
   const router = useRouter();

@@ -9,7 +9,7 @@
     color: var(--green3Color);
     padding: 0.25rem 1rem;
     border-radius: 0.25rem;
-    font-family: var(--regular);
+    font-family: var(--muktaRegular);
     font-size: 1.125rem;
     cursor: pointer;
   }
@@ -17,6 +17,6 @@
   .activeTab {
     background-color: var(--green3Color);
     color: var(--green2Color);
-    font-family: var(--semiBold);
+    font-family: var(--muktaSemiBold);
   }
 }

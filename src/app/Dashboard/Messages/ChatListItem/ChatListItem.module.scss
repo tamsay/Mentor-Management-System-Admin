@@ -29,7 +29,7 @@
       .name {
         font-size: 1.125rem;
         color: var(--blackTextColor);
-        font-family: var(--semiBold);
+        font-family: var(--muktaSemiBold);
         margin: 0;
         line-height: 1;
       }
@@ -37,7 +37,7 @@
       .messagePreview {
         font-size: 0.875rem;
         color: var(--black3TextColor);
-        font-family: var(--regular);
+        font-family: var(--muktaRegular);
         line-height: 1;
       }
 
@@ -69,7 +69,7 @@
       .time {
         font-size: 0.875rem;
         color: var(--black3TextColor);
-        font-family: var(--regular);
+        font-family: var(--muktaRegular);
         line-height: 1;
       }
 
@@ -80,7 +80,7 @@
         text-align: center;
         border-radius: 0.25rem;
         color: var(--whiteTextColor);
-        font-family: var(--regular);
+        font-family: var(--muktaRegular);
         background-color: var(--red2Color);
       }
     }

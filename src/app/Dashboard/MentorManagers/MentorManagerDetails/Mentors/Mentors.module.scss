@@ -18,7 +18,7 @@
         padding: 0.125rem 0.25rem;
         font-size: 0.875rem;
         color: var(--blackTextColor);
-        font-family: var(--regular);
+        font-family: var(--muktaRegular);
         line-height: 1;
         background-color: transparent;
         cursor: pointer;
@@ -40,7 +40,7 @@
       input {
         font-size: 0.875rem;
         color: var(--blackTextColor);
-        font-family: var(--regular);
+        font-family: var(--muktaRegular);
         line-height: 1;
         border: none;
         outline: none;
@@ -83,14 +83,14 @@
           .metaData {
             .metaDataTitle {
               font-size: 1.125rem;
-              font-family: var(--semiBold);
+              font-family: var(--muktaSemiBold);
               color: var(--black2TextColor);
               margin: 0;
             }
 
             .dateTime {
               gap: 1.5rem;
-              font-family: var(--regular);
+              font-family: var(--muktaRegular);
               color: var(--grayTextColor);
 
               .infoWrapper {
@@ -137,7 +137,7 @@
 
           .title {
             font-size: 1.125rem;
-            font-family: var(--semiBold);
+            font-family: var(--muktaSemiBold);
             color: var(--black2TextColor);
             line-height: 1;
             margin: 0;
@@ -145,7 +145,7 @@
 
           .description {
             font-size: 0.875rem;
-            font-family: var(--regular);
+            font-family: var(--muktaRegular);
             color: var(--grayTextColor);
             background-color: var(--green4Color);
             border: 1px solid var(--green5Color);
@@ -161,13 +161,13 @@
 
               .infoTitle {
                 margin: 0;
-                font-family: var(--semiBold);
+                font-family: var(--muktaSemiBold);
                 font-size: 1.25rem;
               }
 
               .infoAnswer {
                 margin: 0;
-                font-family: var(--regular);
+                font-family: var(--muktaRegular);
                 font-size: 1rem;
               }
             }
@@ -177,7 +177,7 @@
 
               .documentTitle {
                 margin: 0;
-                font-family: var(--semiBold);
+                font-family: var(--muktaSemiBold);
                 font-size: 1.25rem;
               }
 

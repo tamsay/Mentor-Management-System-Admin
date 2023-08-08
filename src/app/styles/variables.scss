@@ -35,13 +35,13 @@
   --imageBorderColor: #035d6339;
 
   // Fonts
-  --bold: MuktaBold;
-  --extraBold: MuktaExtraBold;
-  --extraLight: MuktaExtraLight;
-  --light: MuktaLight;
-  --medium: MuktaMedium;
-  --regular: MuktaRegular;
-  --semiBold: MuktaSemiBold;
+  --muktaBold: var(--muktaBold);
+  --muktaExtraBold: var(--muktaExtraBold);
+  --muktaExtraLight: var(--muktaExtraLight);
+  --muktaLight: var(--muktaLight);
+  --muktaMedium: var(--muktaMedium);
+  --muktaRegular: var(--muktaRegular);
+  --muktaSemiBold: var(--muktaSemiBold);
 
   // Primary Button Big
   --primaryBtnBg: #058b94;

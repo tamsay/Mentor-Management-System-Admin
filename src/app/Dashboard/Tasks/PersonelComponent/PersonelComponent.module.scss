@@ -25,7 +25,7 @@
     border-radius: 50%;
     background-color: var(--green4Color);
     font-size: 1.125rem;
-    font-family: var(--semiBold);
+    font-family: var(--muktaSemiBold);
   }
 
   .userInfo {
@@ -35,7 +35,7 @@
     .name {
       font-size: 1rem;
       color: var(--blackTextColor);
-      font-family: var(--bold);
+      font-family: var(--muktaBold);
       margin: 0;
       line-height: 1;
       overflow: hidden;
@@ -60,7 +60,7 @@
     .designation {
       font-size: 0.75rem;
       color: var(--grayTextColor);
-      font-family: var(--regular);
+      font-family: var(--muktaRegular);
       line-height: 1.25;
       margin: 0;
       overflow: hidden;
@@ -88,7 +88,7 @@
       span {
         font-size: 0.75rem;
         color: var(--black3TextColor);
-        font-family: var(--regular);
+        font-family: var(--muktaRegular);
         line-height: 1;
         padding: 0.25rem 0.5rem;
         border-radius: 5px;

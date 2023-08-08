@@ -23,7 +23,7 @@
 
       .name {
         color: var(--blackTextColor);
-        font-family: var(--bold);
+        font-family: var(--muktaBold);
       }
 
       .role {
@@ -40,11 +40,11 @@
       padding: 0.25rem 1rem;
       height: auto;
       color: var(--grayTextColor);
-      font-family: var(--regular);
+      font-family: var(--muktaRegular);
       font-size: 1rem !important;
 
       .count {
-        font-family: var(--regular);
+        font-family: var(--muktaRegular);
         color: #fff;
         font-size: clamp(0.5rem, 0.5rem + 0.5vw, 0.625rem);
         width: 1rem;
@@ -65,7 +65,7 @@
         background-color: #fff;
 
         &:nth-child(1) {
-          font-family: var(--semiBold);
+          font-family: var(--muktaSemiBold);
           color: var(--black2TextColor);
 
           svg path {

@@ -28,7 +28,7 @@
           margin: 0;
           padding: 0;
           line-height: 1;
-          font-family: var(--regular);
+          font-family: var(--muktaRegular);
           text-align: center;
         }
 
@@ -87,7 +87,7 @@
                   .name {
                     font-size: 1.25rem;
                     color: var(--blackTextColor);
-                    font-family: var(--bold);
+                    font-family: var(--muktaBold);
                     margin: 0;
                     line-height: 1;
                   }
@@ -95,7 +95,7 @@
                   .designation {
                     font-size: 0.75rem;
                     color: var(--grayTextColor);
-                    font-family: var(--regular);
+                    font-family: var(--muktaRegular);
                     line-height: 1.25;
                     margin: 0;
                   }
@@ -107,7 +107,7 @@
                   span {
                     font-size: 0.75rem;
                     color: var(--black3TextColor);
-                    font-family: var(--regular);
+                    font-family: var(--muktaRegular);
                     line-height: 1;
                     padding: 0.25rem 0.5rem;
                     border-radius: 5px;
@@ -139,7 +139,7 @@
 
             .title {
               font-size: 1.25rem;
-              font-family: var(--semiBold);
+              font-family: var(--muktaSemiBold);
               color: var(--black2TextColor);
               margin: 0;
               line-height: 1;
@@ -147,7 +147,7 @@
 
             .info {
               font-size: 1rem;
-              font-family: var(--regular);
+              font-family: var(--muktaRegular);
               color: var(--grayTextColor);
               flex-wrap: wrap;
               gap: 0.5rem;
@@ -162,7 +162,7 @@
           .bio {
             background-color: var(--green4Color);
             font-size: 1rem;
-            font-family: var(--regular);
+            font-family: var(--muktaRegular);
             color: var(--black3TextColor);
             padding: 0.5rem;
             line-height: 1.5rem;
@@ -195,7 +195,7 @@
 
                 .socialUserName {
                   font-size: 1.25rem;
-                  font-family: var(--semiBold);
+                  font-family: var(--muktaSemiBold);
                   color: var(--black3TextColor);
                   margin: 0;
                   line-height: 1;
@@ -213,7 +213,7 @@
               margin: 0;
               padding: 0;
               font-size: 0.875rem;
-              font-family: var(--semiBold);
+              font-family: var(--muktaSemiBold);
               cursor: pointer;
               color: var(--green8Color);
               text-decoration: underline;

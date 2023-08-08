@@ -13,7 +13,7 @@
     .emptyImage {
       font-size: 1.25rem;
       color: var(--whiteTextColor);
-      font-family: var(--regular);
+      font-family: var(--muktaRegular);
       display: inline-block;
       border-radius: 50%;
       width: 3rem;
@@ -36,7 +36,7 @@
     .chatMessage {
       color: var(--black2TextColor);
       font-size: 1rem;
-      font-family: var(--regular);
+      font-family: var(--muktaRegular);
       line-height: 1.125;
     }
 

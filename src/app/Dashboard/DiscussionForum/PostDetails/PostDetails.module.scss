@@ -11,7 +11,7 @@
 
     .title {
       font-size: 1.375rem;
-      font-family: var(--semiBold);
+      font-family: var(--muktaSemiBold);
       color: var(--black2TextColor);
       line-height: 1;
       margin: 0;
@@ -64,7 +64,7 @@
           align-items: center;
 
           .name {
-            font-family: var(--semiBold);
+            font-family: var(--muktaSemiBold);
             color: var(--black2TextColor);
             font-size: 1rem;
             line-height: 1;
@@ -123,13 +123,13 @@
         }
 
         p {
-          font-family: var(--regular);
+          font-family: var(--muktaRegular);
           color: var(--grayTextColor);
           margin: 0;
         }
 
         span {
-          font-family: var(--regular);
+          font-family: var(--muktaRegular);
           color: var(--grayTextColor);
           text-align: right;
           font-size: 0.875rem;

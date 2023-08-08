@@ -10,7 +10,7 @@
 
     .headerTitle {
       font-size: 1.25rem;
-      font-family: var(--bold);
+      font-family: var(--muktaBold);
       color: var(--blackTextColor);
     }
   }
@@ -34,7 +34,7 @@
 
         span {
           font-size: 1rem;
-          font-family: var(--regular);
+          font-family: var(--muktaRegular);
           color: var(--grayTextColor);
         }
       }
@@ -59,7 +59,7 @@
 
       .rootError {
         font-size: 0.875rem;
-        font-family: var(--regular);
+        font-family: var(--muktaRegular);
         color: var(--red2Color);
       }
 

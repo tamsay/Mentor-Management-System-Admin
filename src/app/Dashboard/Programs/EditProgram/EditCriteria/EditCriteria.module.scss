@@ -17,7 +17,7 @@
 
     .title {
       margin: 0;
-      font-family: var(--bold);
+      font-family: var(--muktaBold);
       color: var(--blackTextColor);
       font-size: 1.25rem;
     }
@@ -36,7 +36,7 @@
 
       p {
         margin: 0;
-        font-family: var(--regular);
+        font-family: var(--muktaRegular);
         color: var(--grayText2Color);
         font-size: 1rem;
         text-align: justify;
@@ -64,7 +64,7 @@
           font-size: 1rem;
 
           .title {
-            font-family: var(--regular);
+            font-family: var(--muktaRegular);
             color: var(--grayTextColor);
             font-size: 1.125rem;
             margin-bottom: 0.5rem;

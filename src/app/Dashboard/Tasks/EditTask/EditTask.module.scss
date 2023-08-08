@@ -14,7 +14,7 @@
       min-height: 3rem;
 
       .title {
-        font-family: var(--semiBold);
+        font-family: var(--muktaSemiBold);
         font-size: 1rem;
         color: var(--black2TextColor);
         margin: 0;
@@ -43,7 +43,7 @@
 
       .title {
         margin: 0;
-        font-family: var(--semiBold);
+        font-family: var(--muktaSemiBold);
         color: var(--blackTextColor);
         font-size: 1.5rem;
         line-height: 1rem;
@@ -57,7 +57,7 @@
     .formWrapper {
       form {
         label {
-          font-family: var(--bold);
+          font-family: var(--muktaBold);
           font-size: 1.125rem;
           color: var(--black2TextColor);
         }
@@ -77,7 +77,7 @@
               flex-grow: 1;
 
               .title {
-                font-family: var(--semiBold);
+                font-family: var(--muktaSemiBold);
                 font-size: 1.125rem;
                 color: var(--black2TextColor);
                 line-height: 1rem;
@@ -92,7 +92,7 @@
                 border-radius: 0.25rem;
 
                 .stats {
-                  font-family: var(--regular);
+                  font-family: var(--muktaRegular);
                   font-size: 1rem;
                   color: var(--black2TextColor);
                 }

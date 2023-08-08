@@ -8,7 +8,7 @@
     border-radius: 0.3125rem;
 
     .dateText {
-      font-family: var(--semiBold);
+      font-family: var(--muktaSemiBold);
       font-size: 0.75rem;
       color: var(--grayTextColor);
       margin: 0;
@@ -22,7 +22,7 @@
 
     p {
       font-size: 1.25rem;
-      font-family: var(--regular);
+      font-family: var(--muktaRegular);
       color: var(--black3TextColor);
     }
 
@@ -30,7 +30,7 @@
       align-items: center;
 
       .receipentText {
-        font-family: var(--bold);
+        font-family: var(--muktaBold);
         font-size: 0.75rem;
         text-decoration: underline;
         margin: 0;
@@ -42,7 +42,7 @@
 
         .timeText {
           margin: 0;
-          font-family: var(--regular);
+          font-family: var(--muktaRegular);
           font-size: 0.75rem;
           color: var(--black3TextColor);
         }

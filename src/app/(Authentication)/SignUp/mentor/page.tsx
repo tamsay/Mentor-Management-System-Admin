@@ -3,9 +3,11 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import cx from "classnames";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
-import styles from "./SignUp.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
+
+import styles from "./SignUp.module.scss";
 
 // import { useGoogleSignUp } from "@react-oauth/google";
 import AuthSideHero from "@/components/AuthSideHero/AuthSideHero";

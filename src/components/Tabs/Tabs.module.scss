@@ -12,14 +12,14 @@
   .tab {
     font-size: 1rem;
     cursor: pointer;
-    font-family: var(--regular);
+    font-family: var(--muktaRegular);
     color: var(--grayTextColor);
     padding-bottom: 0.125rem;
   }
 
   .active {
     color: var(--primaryColor);
-    font-family: var(--bold);
+    font-family: var(--muktaBold);
     border-bottom: 2px solid var(--primaryColor);
   }
 

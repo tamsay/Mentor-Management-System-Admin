@@ -1,5 +1,6 @@
 import React from "react";
 import cx from "classnames";
+
 import styles from "./page.module.scss";
 
 import SplashScreen from "@/components/SplashScreen/SplashScreen";

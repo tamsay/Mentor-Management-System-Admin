@@ -14,7 +14,7 @@
     .profileImageText {
       font-size: 1.25rem;
       color: var(--whiteTextColor);
-      font-family: var(--regular);
+      font-family: var(--muktaRegular);
       display: inline-block;
       border-radius: 50%;
       width: 5.5rem;
@@ -48,7 +48,7 @@
 
     .userName {
       font-size: 1.2rem;
-      font-family: var(--semiBold);
+      font-family: var(--muktaSemiBold);
       color: var(--black2TextColor);
       display: inline-block;
       padding: 0;
@@ -57,7 +57,7 @@
 
     .userRole {
       font-size: 1rem;
-      font-family: var(--regular);
+      font-family: var(--muktaRegular);
       color: var(--grayTextColor);
     }
   }

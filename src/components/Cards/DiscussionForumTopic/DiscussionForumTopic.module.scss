@@ -28,7 +28,7 @@
 
         .name {
           font-size: 1.125rem;
-          font-family: var(--semiBold);
+          font-family: var(--muktaSemiBold);
           color: var(--black2TextColor);
           line-height: 1;
           margin: 0;
@@ -36,7 +36,7 @@
 
         .designation {
           font-size: 0.875rem;
-          font-family: var(--regular);
+          font-family: var(--muktaRegular);
           color: var(--grayTextColor);
           line-height: 1;
           margin: 0;
@@ -96,7 +96,7 @@
 
     .title {
       font-size: 1.125rem;
-      font-family: var(--semiBold);
+      font-family: var(--muktaSemiBold);
       color: var(--black2TextColor);
       line-height: 1;
       margin: 0;
@@ -105,7 +105,7 @@
 
     .description {
       font-size: 1rem;
-      font-family: var(--regular);
+      font-family: var(--muktaRegular);
       color: var(--grayTextColor);
       line-height: 1.5;
       margin: 0;
@@ -124,7 +124,7 @@
 
       span {
         font-size: 0.875rem;
-        font-family: var(--regular);
+        font-family: var(--muktaRegular);
         color: var(--grayTextColor);
         line-height: 1;
         margin: 0;

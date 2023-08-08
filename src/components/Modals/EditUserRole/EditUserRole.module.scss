@@ -10,7 +10,7 @@
 
     .headerTitle {
       font-size: 1.25rem;
-      font-family: var(--semiBold);
+      font-family: var(--muktaSemiBold);
       color: var(--blackTextColor);
     }
   }
@@ -33,7 +33,7 @@
 
         .radioLabel {
           font-size: 1rem;
-          font-family: var(--regular);
+          font-family: var(--muktaRegular);
           color: var(--black2TextColor);
           cursor: pointer;
         }
@@ -41,7 +41,7 @@
 
       .errorDiv {
         font-size: 0.875rem;
-        font-family: var(--regular);
+        font-family: var(--muktaRegular);
         color: var(--red2Color);
         position: absolute;
         left: 0;

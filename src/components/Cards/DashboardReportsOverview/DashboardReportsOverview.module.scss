@@ -38,7 +38,7 @@
 
       .title {
         font-size: 1.25rem;
-        font-family: var(--regular);
+        font-family: var(--muktaRegular);
         color: var(--blackTextColor);
         margin: 0;
         line-height: 1;
@@ -48,11 +48,11 @@
         font-size: 0.875rem;
         gap: 0.25rem;
         color: var(--grayTextColor);
-        font-family: var(--regular);
+        font-family: var(--muktaRegular);
         white-space: nowrap;
 
         .name {
-          font-family: var(--semiBold);
+          font-family: var(--muktaSemiBold);
           width: fit-content;
         }
       }

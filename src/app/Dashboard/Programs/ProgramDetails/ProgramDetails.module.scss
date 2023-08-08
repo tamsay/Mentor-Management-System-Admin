@@ -29,7 +29,7 @@
         .title {
           font-size: 1.25rem;
           color: var(--blackTextColor);
-          font-family: var(--semiBold);
+          font-family: var(--muktaSemiBold);
           margin: 0;
           line-height: 1;
         }
@@ -38,7 +38,7 @@
           gap: 1.5rem;
           font-size: 0.875rem;
           color: var(--grayTextColor);
-          font-family: var(--regular);
+          font-family: var(--muktaRegular);
 
           .info {
             align-items: center;
@@ -66,7 +66,7 @@
 
     .subHeading {
       color: var(--blackTextColor);
-      font-family: var(--semiBold);
+      font-family: var(--muktaSemiBold);
       margin: 0;
       line-height: 1;
     }
@@ -74,7 +74,7 @@
     .description {
       font-size: 0.875rem;
       color: var(--grayTextColor);
-      font-family: var(--regular);
+      font-family: var(--muktaRegular);
       line-height: 1.5;
       margin: 0;
       padding: 0;
@@ -96,7 +96,7 @@
         width: 85%;
         gap: 0.5rem;
         color: var(--black2TextColor);
-        font-family: var(--semiBold);
+        font-family: var(--muktaSemiBold);
         font-size: 1rem;
         align-items: center;
 
@@ -107,13 +107,13 @@
 
         .summaryValue {
           font-size: 1.25rem;
-          font-family: var(--bold);
+          font-family: var(--muktaBold);
           color: var(--black2TextColor);
         }
 
         .caption {
           font-size: 0.875rem;
-          font-family: var(--semiBold);
+          font-family: var(--muktaSemiBold);
           color: var(--black2TextColor);
           white-space: wrap;
         }
@@ -124,7 +124,7 @@
           width: 1.5rem;
           line-height: 1.5rem;
           border-radius: 50%;
-          font-family: var(--semiBold);
+          font-family: var(--muktaSemiBold);
           color: var(--whiteTextColor);
           background-color: var(--primaryRedColor);
           margin-left: 0.5rem;
@@ -148,7 +148,7 @@
       border: none;
       outline: none;
       color: var(--primaryRedColor);
-      font-family: var(--regular);
+      font-family: var(--muktaRegular);
       gap: 0.5rem;
       cursor: pointer;
     }

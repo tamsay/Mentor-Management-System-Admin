@@ -16,7 +16,7 @@
 
       .headerTitle {
         font-size: 2rem;
-        font-family: var(--bold);
+        font-family: var(--muktaBold);
         color: var(--blackTextColor);
       }
 
@@ -57,7 +57,7 @@
 
           .title {
             font-size: 1.25rem;
-            font-family: var(--regular);
+            font-family: var(--muktaRegular);
             color: var(--black1Color);
             line-height: 1;
             margin: 0;
@@ -65,7 +65,7 @@
 
           .description {
             font-size: 1rem;
-            font-family: var(--regular);
+            font-family: var(--muktaRegular);
             color: var(--black6Color);
             margin: 0;
             line-height: 1.5;
@@ -86,7 +86,7 @@
       .caption,
       span {
         font-size: 1rem;
-        font-family: var(--semiBold);
+        font-family: var(--muktaSemiBold);
         color: var(--primaryTextColor);
       }
 

@@ -6,7 +6,6 @@ import styled from "styled-components";
 
 import imageLoader from "@/assets/icons/loading.svg";
 
-
 type ButtonProps = {
   title: string;
   checked: boolean;
@@ -22,7 +21,7 @@ type ButtonProps = {
 
 const ButtonComponent = styled.button`
   font-size: ${(props) => (props.size === "small" ? "0.75rem" : "0.875rem")};
-  font-family: ${(props) => (props.size === "small" ? "var(--regular)" : "var(--semiBold)")};
+  font-family: ${(props) => (props.size === "small" ? "var(--muktaRegular)" : "var(--muktaSemiBold)")};
   padding: ${(props) => (props.size === "small" ? "0.5rem 0.5rem" : "0.75rem 1rem")};
   border-radius: ${(props) => (props.size === "small" ? "5px" : "10px")};
   background-color: ${(props) => (props.type === "primary" ? "var(--primaryBtnBg)" : "var(--secondaryBtnBg)")};

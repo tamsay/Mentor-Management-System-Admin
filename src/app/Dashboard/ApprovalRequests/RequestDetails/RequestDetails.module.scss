@@ -10,7 +10,7 @@
 
       .title {
         font-size: 1.25rem;
-        font-family: var(--semiBold);
+        font-family: var(--muktaSemiBold);
         color: var(--black2TextColor);
         margin: 0;
         line-height: 1;
@@ -18,7 +18,7 @@
 
       .info {
         font-size: 1rem;
-        font-family: var(--regular);
+        font-family: var(--muktaRegular);
         color: var(--grayTextColor);
         flex-wrap: wrap;
         gap: 0.5rem;
@@ -33,7 +33,7 @@
     .bio {
       background-color: var(--green4Color);
       font-size: 1rem;
-      font-family: var(--regular);
+      font-family: var(--muktaRegular);
       color: var(--black3TextColor);
       padding: 0.5rem;
       line-height: 1.5rem;
@@ -66,7 +66,7 @@
 
           .socialUserName {
             font-size: 1.25rem;
-            font-family: var(--semiBold);
+            font-family: var(--muktaSemiBold);
             color: var(--black3TextColor);
             margin: 0;
             line-height: 1;
@@ -84,7 +84,7 @@
         margin: 0;
         padding: 0;
         font-size: 0.875rem;
-        font-family: var(--semiBold);
+        font-family: var(--muktaSemiBold);
         cursor: pointer;
         color: var(--green8Color);
         text-decoration: underline;
