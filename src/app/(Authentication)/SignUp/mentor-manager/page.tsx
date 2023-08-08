@@ -14,6 +14,7 @@ import Button from "@/components/Button/Button";
 import InputField from "@/components/Input/Input";
 import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
 
+import arrowLeft from "@/assets/icons/arrow-left-icon.svg";
 import googleIcon from "@/assets/icons/google-icon.svg";
 
 import { signUp } from "@/redux/Auth/AuthSlice";
@@ -135,9 +136,13 @@ function SignUp() {
             <span>Signup with Google</span>
           </div>
 
-          <div className={cx(styles.signInDiv, "flexRow-fully-centered")}>
+          <div className={cx(styles.signInDiv, "flexCol-fully-centered")}>
             <p className={cx(styles.caption)}>
               Already a User? <span onClick={() => router.push("/login")}>Signin</span>
+            </p>
+            <p onClick={() => router.back()} className={cx(styles.caption)}>
+              <Image src={arrowLeft} alt='arrow-left' className={cx(styles.icon)} />
+              <span style={{ marginLeft: "8px" }}>Go Back</span>
             </p>
           </div>
         </div>

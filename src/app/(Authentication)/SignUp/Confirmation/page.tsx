@@ -28,8 +28,7 @@ function Confirmation() {
   const token = urlParams.get("token");
   const email = urlParams.get("email");
   const [confirmationResponse, setConfirmationResponse] = useState<IConfirmationResponse | null>(null);
-
-  const loading = useAppSelector((state) => state?.loading?.confirmEmailLoading);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const handleConfirmation = async () => {
@@ -39,6 +38,7 @@ function Confirmation() {
           email
         })
       );
+      setLoading(false);
       setConfirmationResponse(response);
     };
     handleConfirmation();
