@@ -21,7 +21,7 @@ function DeleteNotification({ show, size, modalName }) {
 
   const handleClick = () => {
     dispatch(hideModal({ name: "taskDeleteNotification" }));
-    modalData?.redirectUrl && navigate(modalData?.redirectUrl);
+    modalData?.redirectUrl && router.push(modalData?.redirectUrl);
   };
 
   return (

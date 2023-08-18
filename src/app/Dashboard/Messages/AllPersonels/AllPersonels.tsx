@@ -10,7 +10,6 @@ import Search from "@/components/Search/Search";
 import backIcon from "@/assets/icons/back-icon.svg";
 import mentorImage from "@/assets/images/reports-program-thumbnail.svg";
 
-
 const AllPersonels = () => {
   const router = useRouter();
 
@@ -112,7 +111,7 @@ const AllPersonels = () => {
     <div className={cx(styles.allPersonelsContainer, "flexCol")}>
       <div className={cx(styles.heading, "flexRow-align-center")}>
         <h3 className={cx(styles.title)}>
-          <Image onClick={() => navigate(-1)} src={backIcon} alt='back-icon' />
+          <Image onClick={() => router.push(-1)} src={backIcon} alt='back-icon' />
           Select someone to start a conversation
         </h3>
 
@@ -142,7 +141,7 @@ const AllPersonels = () => {
       <div className={cx(styles.body, "flexCol")}>
         {personelsArray.map((data) => (
           <div
-            onClick={() => navigate(`/dashboard/messages/chats/${data?.id}`)}
+            onClick={() => router.push(`/dashboard/messages/chats/${data?.id}`)}
             key={data?.id}
             className={cx(styles.card, "flexRow")}
           >

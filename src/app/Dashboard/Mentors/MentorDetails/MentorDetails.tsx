@@ -80,7 +80,7 @@ const MentorDetails = () => {
 
   const handleViewUser = (user) => {
     setSelectedUser(user);
-    navigate(`/dashboard/mentors/mentor-details/${user?.id}`);
+    router.push(`/dashboard/mentors/mentor-details/${user?.id}`);
 
     if (isMobile) {
       setOpenSideBar(false);
@@ -172,7 +172,7 @@ const MentorDetails = () => {
   };
 
   const handleTabMenuClick = (tab) => {
-    navigate(tab.path);
+    router.push(tab.path);
   };
 
   console.log(selectedUser, "selected user");

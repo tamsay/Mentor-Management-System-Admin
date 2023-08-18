@@ -1,4 +1,4 @@
-import React, { useEffect, useRef,useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import cx from "classnames";
 import PropTypes from "prop-types";
@@ -87,7 +87,7 @@ function SettingsSideBar({ data }) {
           >
             {isMobile && !open && <span onClick={handleSidebarToggle}>{item?.icon}</span>}
             {(open || !isMobile) && (
-              <Link to={`${item?.link}`} key={index}>
+              <Link href={`${item?.link}`} key={index}>
                 {" "}
                 {item?.name}
               </Link>

@@ -1,9 +1,9 @@
-import React, { useEffect,useState } from "react";
-import { Outlet,useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import cx from "classnames";
 import ChatListItem from "../ChatListItem/ChatListItem";
 import styles from "./Chats.module.scss";
-import { addSignalRMessageListener,startSignalRConnection } from "@/utils/signalrService";
+import { addSignalRMessageListener, startSignalRConnection } from "@/utils/signalrService";
 
 import Button from "@/components/Button/Button";
 import GenericSideBar from "@/components/GenericSideBar/GenericSideBar";
@@ -218,7 +218,7 @@ const Chats = () => {
 
   const handleSelectedMenuItem = (id) => {
     setSelectedMenuId(id);
-    navigate(`${id}`);
+    router.push(`${id}`);
     if (isMobile) {
       setOpenSideBar(false);
     } else {

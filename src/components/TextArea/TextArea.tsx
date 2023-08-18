@@ -1,11 +1,22 @@
 import React, { forwardRef } from "react";
 import DOMPurify from "dompurify";
-import PropTypes from "prop-types";
+
+type Props = {
+  placeholder?: string;
+  required?: boolean;
+  onChange: (value: string) => void;
+  error?: string;
+  marginbottom?: string;
+  minHeight?: string;
+  borderColor?: string;
+  bgColor?: string;
+};
+
 import { FormGroup, StyledTextArea } from "./StyledTextArea";
 
-const TextArea = forwardRef(
+const TextArea: React.FC<Props> = forwardRef(
   ({ placeholder, required, onChange, error, marginbottom, minHeight, borderColor, bgColor, ...props }) => {
-    const handleChange = (e) => {
+    const handleChange = (e: any) => {
       const sanitizedValue = DOMPurify.sanitize(e.target.value);
       onChange(sanitizedValue);
     };
@@ -27,16 +38,5 @@ const TextArea = forwardRef(
 );
 
 TextArea.displayName = "TextArea";
-
-TextArea.propTypes = {
-  placeholder: PropTypes.string,
-  required: PropTypes.bool,
-  onChange: PropTypes.func,
-  marginbottom: PropTypes.string,
-  minHeight: PropTypes.string,
-  error: PropTypes.string,
-  borderColor: PropTypes.string,
-  bgColor: PropTypes.string
-};
 
 export default TextArea;

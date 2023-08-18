@@ -39,7 +39,10 @@ const MiniProfile = ({ data, type, onClick }) => {
           alt='user-image'
         />
         <div className={cx(styles.btnGroup, "flexCol")}>
-          <MessageIcon onClick={() => navigate(`/dashboard/messages/chats/${data?.id}`)} className={cx(styles.icon)} />
+          <MessageIcon
+            onClick={() => router.push(`/dashboard/messages/chats/${data?.id}`)}
+            className={cx(styles.icon)}
+          />
           <DeleteIcon onClick={() => handleDelete(data?.id)} className={cx(styles.icon)} />
         </div>
       </div>
@@ -61,7 +64,10 @@ const MiniProfile = ({ data, type, onClick }) => {
         </div>
 
         <div className={cx(styles.btnGroup, "flexCol")}>
-          <MessageIcon onClick={() => navigate(`/dashboard/messages/chats/${data?.id}`)} className={cx(styles.icon)} />
+          <MessageIcon
+            onClick={() => router.push(`/dashboard/messages/chats/${data?.id}`)}
+            className={cx(styles.icon)}
+          />
           <DeleteIcon onClick={() => handleDelete(data?.id)} className={cx(styles.icon)} />
         </div>
       </div>

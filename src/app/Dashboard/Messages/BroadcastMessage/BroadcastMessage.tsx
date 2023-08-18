@@ -10,7 +10,6 @@ import DropDownList from "@/components/DropDownList/DropDownList";
 import attachmentIcon from "@/assets/icons/attachment-icon.svg";
 import emojiIcon from "@/assets/icons/emoji-icon.svg";
 
-
 const BroadcastMessage = () => {
   const router = useRouter();
 
@@ -63,7 +62,7 @@ const BroadcastMessage = () => {
     <div className={cx(styles.broadcastMessageContainer, "flexCol")}>
       <section className={cx(styles.heading, "flexRow-space-between")}>
         <h3 className={cx(styles.title)}>Broadcast Message</h3>
-        <Button onClick={() => navigate(-1)} title='Close' />
+        <Button onClick={() => router.push(-1)} title='Close' />
       </section>
       <section className={cx(styles.body, "flexCol")}>
         <DropDownList

@@ -1,3 +1,6 @@
+"use client";
+
+import { ProSidebarProvider } from "react-pro-sidebar";
 import cx from "classnames";
 import type { Metadata } from "next";
 
@@ -40,7 +43,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             `${muktaLight.variable}`
           )}
         >
-          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          <ProSidebarProvider>
+            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          </ProSidebarProvider>
         </body>
       </Providers>
     </html>

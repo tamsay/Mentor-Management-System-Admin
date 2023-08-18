@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
-import { useParams } from "react-router-dom";
 import cx from "classnames";
+import { useParams } from "next/navigation";
 import PropTypes from "prop-types";
+
 import styles from "./SelectionSideBar.module.scss";
 
 import useIsMobile from "@/hooks/useIsMobile";

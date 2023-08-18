@@ -1,15 +1,13 @@
-import React, { Suspense } from "react";
+import React from "react";
 import cx from "classnames";
-import PropTypes from "prop-types";
+
 import DashboardHeader from "../DashboardHeader/DashboardHeader";
 import DashboardSideBar from "../DashboardSideBar/DashboardSideBar";
 import styles from "./DashboardContainer.module.scss";
 
 import DashboardChildren from "@/components/DashboardChildren/DashboardChildren";
-import Loader from "@/components/Loader/Loader";
 
-
-function DashboardContainer(props) {
+const DashboardContainer: React.FC<{ children: React.ReactNode }> = (props) => {
   const { children } = props;
 
   return (
@@ -22,17 +20,11 @@ function DashboardContainer(props) {
           <DashboardSideBar />
         </div>
         <div className={cx(styles.children, "flexCol")}>
-          <Suspense fallback={<Loader fullPage={true} />}>
-            <DashboardChildren> {children} </DashboardChildren>
-          </Suspense>
+          <DashboardChildren> {children} </DashboardChildren>
         </div>
       </section>
     </div>
   );
-}
-
-DashboardContainer.propTypes = {
-  children: PropTypes.element.isRequired
 };
 
 export default DashboardContainer;

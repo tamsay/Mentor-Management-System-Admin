@@ -1,6 +1,8 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import cx from "classnames";
+import Image from "next/image";
 import PropTypes from "prop-types";
+
 import styles from "./Search.module.scss";
 
 import closeIcon from "@/assets/icons/close-icon.png";

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate,useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import cx from "classnames";
 import { formatDistanceToNow } from "date-fns";
+
 import styles from "./TaskDetails.module.scss";
 
 import Button from "@/components/Button/Button";
@@ -16,7 +17,7 @@ import headerIcon from "@/assets/icons/tasks-overview-card-icon.svg";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
-import { deleteTask, getAllTasks,getTaskDetails } from "@/redux/Tasks/TasksSlice";
+import { deleteTask, getAllTasks, getTaskDetails } from "@/redux/Tasks/TasksSlice";
 
 import arrayToString from "@/helpers/arrayToString";
 import { capitalizeFirstWord } from "@/helpers/textTransform";
@@ -164,7 +165,7 @@ function TaskDetails() {
                 <Image src={deleteIcon} alt='delete-icon' /> <span>Delete</span>
               </button>
             )}
-            <Button title='Edit Task' onClick={() => navigate(`/dashboard/tasks/edit-task/${taskId}`)} />
+            <Button title='Edit Task' onClick={() => router.push(`/dashboard/tasks/edit-task/${taskId}`)} />
           </div>
         </>
       ) : (

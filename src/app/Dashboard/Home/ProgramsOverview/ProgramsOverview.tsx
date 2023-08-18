@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import cx from "classnames";
 import { useRouter } from "next/navigation";
+
 import styles from "./ProgramsOverview.module.scss";
 
 import Button from "@/components/Button/Button";

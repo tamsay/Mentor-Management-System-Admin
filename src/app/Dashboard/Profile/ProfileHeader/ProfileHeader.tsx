@@ -1,17 +1,23 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import cx from "classnames";
+import Image from "next/image";
+import Link from "next/link";
 import PropTypes from "prop-types";
+
 import styles from "./Profile.header.module.scss";
 
 import Button from "@/components/Button/Button";
 
 import { initialsCase } from "@/helpers/textTransform";
 
-
 function ProfileHeader({ data }) {
+  console.log(data);
   const { profilePicture, flagUrl, fullName, role } = data;
+
+  const handleEdit = () => {
+    console.log("edit");
+  };
 
   return (
     <Container className={cx(styles.profileHeaderContainer)}>
@@ -41,8 +47,8 @@ function ProfileHeader({ data }) {
           </Container>
         </Col>
         <Col className='d-flex justify-content-end align-items-center pe-0'>
-          <Link to='/dashboard/settings'>
-            <Button title='Edit Profile' />
+          <Link href='/dashboard/settings'>
+            <Button onClick={() => handleEdit()} title='Edit Profile' />
           </Link>
         </Col>
       </Row>

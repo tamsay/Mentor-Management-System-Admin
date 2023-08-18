@@ -10,7 +10,6 @@ import Button from "@/components/Button/Button";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { hideModal } from "@/redux/Modal/ModalSlice";
 
-
 function SuccessNotification({ show, size, modalName }) {
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -18,7 +17,7 @@ function SuccessNotification({ show, size, modalName }) {
 
   const handleClick = () => {
     dispatch(hideModal({ name: "successNotification" }));
-    modalData?.redirectUrl && navigate(modalData?.redirectUrl);
+    modalData?.redirectUrl && router.push(modalData?.redirectUrl);
   };
 
   return (

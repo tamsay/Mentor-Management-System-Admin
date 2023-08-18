@@ -1,9 +1,13 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import cx from "classnames";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
-import styles from "./EditCriteria.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
+
+import styles from "./EditCriteria.module.scss";
 
 import Button from "@/components/Button/Button";
 import InputField from "@/components/Input/Input";

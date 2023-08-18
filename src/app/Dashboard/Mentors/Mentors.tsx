@@ -114,7 +114,7 @@ function Mentors() {
         {mentorsArray.length > 0 ? (
           mentorsArray.map((mentor, index) => (
             <MiniProfile
-              onClick={() => navigate(`mentor-details/${mentor?.id}`)}
+              onClick={() => router.push(`mentor-details/${mentor?.id}`)}
               key={index}
               data={mentor}
               type={view}

@@ -13,7 +13,9 @@ type ButtonProps = {
   suffixIcon?: React.ReactElement;
   disabled?: boolean;
   loading?: boolean;
-  onClick: () => void;
+  // onClick?: () => void;
+  onClick?: (value: any) => void;
+
   btnType?: "primary" | "secondary";
   size?: "small" | "big";
 };
@@ -72,7 +74,8 @@ function Button(props: ButtonProps) {
     loading,
     onClick,
     btnType = "primary",
-    size = "big"
+    size = "big",
+    ...rest
   } = props;
 
   return (

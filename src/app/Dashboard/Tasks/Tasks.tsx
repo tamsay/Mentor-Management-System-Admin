@@ -1,6 +1,7 @@
-import React, { useEffect,useState } from "react";
-import { Outlet,useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import cx from "classnames";
+
 import TaskListItem from "./TaskListItem/TaskListItem";
 import styles from "./Tasks.module.scss";
 
@@ -147,7 +148,7 @@ function Tasks() {
 
   const handleSelectedMenuItem = (id) => {
     setSelectedMenuId(id);
-    navigate(`task-details/${id}`);
+    router.push(`task-details/${id}`);
   };
 
   return (

@@ -214,7 +214,7 @@ function CreateReport() {
         <div className={cx(styles.heading, "flexCol")}>
           <div className={cx(styles.header, "flexRow-space-between")}>
             <h3 className={cx(styles.title)}>Compose Report</h3>
-            <Image onClick={() => navigate(-1)} src={closeIconAlt} alt='close-icon' />
+            <Image onClick={() => router.push(-1)} src={closeIconAlt} alt='close-icon' />
           </div>
 
           <div className={cx(styles.selectionDiv, "flexRow-space-between")}>

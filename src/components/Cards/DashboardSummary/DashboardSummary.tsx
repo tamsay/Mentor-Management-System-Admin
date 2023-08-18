@@ -1,6 +1,7 @@
 import React from "react";
 import cx from "classnames";
 import PropTypes from "prop-types";
+
 import styles from "./DashboardSummary.module.scss";
 
 function DashboardSummaryCard({ data, onClick }) {
@@ -13,7 +14,6 @@ function DashboardSummaryCard({ data, onClick }) {
           <span className={cx(styles.percentChange)}>{data.percentChange}</span>
         </p>
       </div>
-      {/* <Image className={cx(styles.icon)} src={data.icon} alt='icon' /> */}
       <data.icon className={cx(styles.icon)} alt='icon' />
     </div>
   );

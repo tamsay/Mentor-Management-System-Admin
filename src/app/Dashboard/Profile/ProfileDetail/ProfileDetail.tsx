@@ -1,7 +1,9 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import cx from "classnames";
+import Image from "next/image";
 import PropTypes from "prop-types";
+
 import styles from "./Profile.detail.module.scss";
 
 function ProfileDetail({ data }) {

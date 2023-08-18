@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import cx from "classnames";
 // import PropTypes from "prop-types";
@@ -8,10 +10,10 @@ import styles from "./Summary.module.scss";
 import Button from "@/components/Button/Button";
 import SummaryCard from "@/components/Cards/DashboardSummary/DashboardSummary";
 
-import { ReactComponent as MentorManagersIcon } from "@/assets/icons/summary-card-mentor-managers-icon.svg";
-import { ReactComponent as MentorsIcon } from "@/assets/icons/summary-card-mentors-icon.svg";
-import { ReactComponent as ReportsIcon } from "@/assets/icons/summary-card-reports-icon.svg";
-import { ReactComponent as TasksIcon } from "@/assets/icons/summary-card-tasks-icon.svg";
+import MentorManagersIcon from "@/assets/icons/summary-card-mentor-managers-icon.svg";
+import MentorsIcon from "@/assets/icons/summary-card-mentors-icon.svg";
+import ReportsIcon from "@/assets/icons/summary-card-reports-icon.svg";
+import TasksIcon from "@/assets/icons/summary-card-tasks-icon.svg";
 
 function Summary() {
   const router = useRouter();
@@ -58,7 +60,7 @@ function Summary() {
       </div>
       <div className={cx(styles.cardsGroup, "flexRow")}>
         {summaryCardsData.map((item, index) => (
-          <SummaryCard onClick={() => navigate(`${item?.path}`)} key={index} data={item} />
+          <SummaryCard onClick={() => router.push(`${item?.path}`)} key={index} data={item} />
         ))}
       </div>
     </div>

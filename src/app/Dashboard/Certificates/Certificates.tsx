@@ -1,6 +1,7 @@
-import React, { useEffect,useState } from "react";
-import { Outlet, useLocation,useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import cx from "classnames";
+
 import CategoryListItem from "./CategoryListItem/CategoryListItem";
 import styles from "./Certificates.module.scss";
 import RecentListItem from "./RecentListItem/RecentListItem";
@@ -102,7 +103,7 @@ function Certificates() {
   const handleCategoryClick = (item) => {
     setOutletTitle(item.title);
     setShowGenerateButton(true);
-    navigate(item.path);
+    router.push(item.path);
   };
 
   const handlePendingClick = () => {
@@ -114,7 +115,7 @@ function Certificates() {
 
   const handleRecentListClick = (item) => {
     setOutletTitle("Certificate Details");
-    navigate(`/dashboard/certificates/certificate-details/${item.id}`);
+    router.push(`/dashboard/certificates/certificate-details/${item.id}`);
   };
 
   const getSideBarData = () => {

@@ -1,12 +1,16 @@
+"use client";
+
 import React from "react";
 import cx from "classnames";
 import { useRouter } from "next/navigation";
+
 import styles from "./ReportsOverview.module.scss";
 
 import Button from "@/components/Button/Button";
 import DashboardReportsOverviewCard from "@/components/Cards/DashboardReportsOverview/DashboardReportsOverview";
 
-import { ReactComponent as CardIcon } from "@/assets/icons/reports-overview-card-icon.svg";
+// import { ReactComponent as CardIcon } from "@/assets/icons/reports-overview-card-icon.svg";
+import CardIcon from "@/assets/icons/reports-overview-card-icon.svg";
 function ReportsOverview() {
   const router = useRouter();
 

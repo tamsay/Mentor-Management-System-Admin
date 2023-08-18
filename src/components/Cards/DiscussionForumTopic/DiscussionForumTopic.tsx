@@ -72,7 +72,7 @@ const DiscussionForumTopic = ({ data, disableNavLink }) => {
   };
 
   const handleShowDetails = () => {
-    !disableNavLink && navigate(`post-details/${data?.id}`, { state: { data: data } });
+    !disableNavLink && router.push(`post-details/${data?.id}`, { state: { data: data } });
   };
 
   return (

@@ -1,11 +1,13 @@
-import React, { useCallback,useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
-import { Controller,useForm } from "react-hook-form";
-import { useNavigate,useParams } from "react-router-dom";
+import { Controller, useForm } from "react-hook-form";
+import { useNavigate, useParams } from "react-router-dom";
 import cx from "classnames";
-import styles from "./EditProgram.module.scss";
+import Image from "next/image";
 import PersonelComponent from "@/pages/Dashboard/Tasks/PersonelComponent/PersonelComponent";
 import { yupResolver } from "@hookform/resolvers/yup";
+
+import styles from "./EditProgram.module.scss";
 
 import Button from "@/components/Button/Button";
 import InputField from "@/components/Input/Input";
@@ -14,7 +16,7 @@ import Search from "@/components/Search/Search";
 import SelectionSideBar from "@/components/SelectionSideBar/SelectionSideBar";
 import TextArea from "@/components/TextArea/TextArea";
 
-import { ReactComponent as ClearListIcon } from "@/assets/icons/clear-list-icon.svg";
+import ClearListIcon from "@/assets/icons/clear-list-icon.svg";
 import closeIconAlt from "@/assets/icons/close-icon.svg";
 import closeIcon from "@/assets/icons/undo-icon.svg";
 import successImage from "@/assets/images/create-task-success-image.svg";
@@ -22,11 +24,9 @@ import successImage from "@/assets/images/create-task-success-image.svg";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
 import { getAllUserProfiles } from "@/redux/Profile/ProfileSlice";
-import { editProgram,getProgramDetails } from "@/redux/Programs/ProgramsSlice";
+import { editProgram, getProgramDetails } from "@/redux/Programs/ProgramsSlice";
 
 import { editProgramSchema } from "@/helpers/validation";
-
-
 
 function EditProgram() {
   const dispatch = useAppDispatch();
@@ -275,11 +275,13 @@ function EditProgram() {
                 {programDetails.programmePicture || uploadedFile?.imagePreviewUrl ? (
                   <Image
                     {...getRootProps({ onDragOver: handleDragOver, onClick: handleDropzoneClick })}
-                    src={programDetails.programmePicture
+                    src={
+                      programDetails.programmePicture
                         ? programDetails.programmePicture
                         : uploadedFile?.imagePreviewUrl
                         ? uploadedFile?.imagePreviewUrl
-                        : null}
+                        : null
+                    }
                     alt='profile-image'
                   />
                 ) : (

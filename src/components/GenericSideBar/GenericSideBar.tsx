@@ -1,6 +1,9 @@
-import React, { useEffect, useRef,useState } from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 import cx from "classnames";
 import PropTypes from "prop-types";
+
 import styles from "./GenericSideBar.module.scss";
 
 import Loader from "@/components/Loader/Loader";

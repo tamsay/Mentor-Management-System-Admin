@@ -1,23 +1,29 @@
-import React, { useEffect, useMemo,useState } from "react";
+"use client";
+
+import React, { useEffect, useMemo, useState } from "react";
 import { Menu, MenuItem, Sidebar, useProSidebar } from "react-pro-sidebar";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+// import { useLocation, useNavigate } from "react-router-dom";
 import cx from "classnames";
-import styles from "./DashboardSideBar.module.scss";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { logout } from "@/utils/auth";
 
-import { ReactComponent as ApprovalRequestsIcon } from "@/assets/icons/approval-requests-icon.svg";
-import { ReactComponent as CertificatesIcon } from "@/assets/icons/certificates-icon.svg";
-import { ReactComponent as DashboardIcon } from "@/assets/icons/dashboard-icon.svg";
-import { ReactComponent as DiscussionForumIcon } from "@/assets/icons/discussion-forum-icon.svg";
-import { ReactComponent as LogoutIcon } from "@/assets/icons/logout-icon.svg";
-import { ReactComponent as MentorManagersIcon } from "@/assets/icons/mentor-managers-icon.svg";
-import { ReactComponent as MentorsIcon } from "@/assets/icons/mentors-icon.svg";
-import { ReactComponent as MessagesIcon } from "@/assets/icons/messages-icon.svg";
-import { ReactComponent as ProfileIcon } from "@/assets/icons/profile-icon.svg";
-import { ReactComponent as ProgramsIcon } from "@/assets/icons/programs-icon.svg";
-import { ReactComponent as ReportsIcon } from "@/assets/icons/reports-icon.svg";
-import { ReactComponent as SettingsIcon } from "@/assets/icons/settings-icon.svg";
-import { ReactComponent as TasksIcon } from "@/assets/icons/tasks-icon.svg";
+import styles from "./DashboardSideBar.module.scss";
+
+import ApprovalRequestsIcon from "@/assets/icons/approval-requests-icon.svg";
+import CertificatesIcon from "@/assets/icons/certificates-icon.svg";
+import DashboardIcon from "@/assets/icons/dashboard-icon.svg";
+import DiscussionForumIcon from "@/assets/icons/discussion-forum-icon.svg";
+import LogoutIcon from "@/assets/icons/logout-icon.svg";
+import MentorManagersIcon from "@/assets/icons/mentor-managers-icon.svg";
+import MentorsIcon from "@/assets/icons/mentors-icon.svg";
+import MessagesIcon from "@/assets/icons/messages-icon.svg";
+import ProfileIcon from "@/assets/icons/profile-icon.svg";
+import ProgramsIcon from "@/assets/icons/programs-icon.svg";
+import ReportsIcon from "@/assets/icons/reports-icon.svg";
+import SettingsIcon from "@/assets/icons/settings-icon.svg";
+import TasksIcon from "@/assets/icons/tasks-icon.svg";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { getProfile } from "@/redux/Profile/ProfileSlice";
@@ -31,13 +37,13 @@ import useIsMobile from "@/hooks/useIsMobile";
 import "./DashboardActiveMenu.scss";
 
 function DashboardSideBar() {
-  const location = useLocation();
+  const location = usePathname();
   const dispatch = useAppDispatch();
   const router = useRouter();
   const isMobile = useIsMobile();
   const { toggleSidebar } = useProSidebar();
   const userData = userInfo();
-  const currentPage = location.pathname.split("/")[2] || "";
+  const currentPage = location.split("/")[2] || "";
   const userProfile = useAppSelector((state) => state.profile.getProfileData);
 
   const menuItemsArray = useMemo(
@@ -45,68 +51,68 @@ function DashboardSideBar() {
       {
         name: "Profile",
         link: "profile",
-        icon: <ProfileIcon />
+        icon: ProfileIcon
       },
       {
         name: "Dashboard",
-        link: "",
-        icon: <DashboardIcon />
+        link: "/home",
+        icon: DashboardIcon
       },
       {
         name: "Programs",
         link: "programs",
-        icon: <ProgramsIcon />
+        icon: ProgramsIcon
       },
       {
         name: "Tasks",
         link: "tasks",
-        icon: <TasksIcon />
+        icon: TasksIcon
       },
       {
         name: "Reports",
         link: "reports",
-        icon: <ReportsIcon />
+        icon: ReportsIcon
       },
       {
         name: "Mentors",
         link: "mentors",
-        icon: <MentorsIcon />
+        icon: MentorsIcon
       },
       {
         name: "Mentor Managers",
         link: "mentor-managers",
-        icon: <MentorManagersIcon />
+        icon: MentorManagersIcon
       },
       {
         name: "Approval Requests",
         link: "approval-requests",
-        icon: <ApprovalRequestsIcon />
+        icon: ApprovalRequestsIcon
       },
       {
         name: "Certificates",
         link: "certificates",
-        icon: <CertificatesIcon />
+        icon: CertificatesIcon
       },
       {
         name: "Messages",
         link: "messages",
-        icon: <MessagesIcon />,
+        icon: MessagesIcon,
         count: 11
       },
       {
         name: "Discussion Forum",
         link: "discussion-forum",
-        icon: <DiscussionForumIcon />
+        icon: DiscussionForumIcon
       },
       {
         name: "Settings",
         link: "settings",
-        icon: <SettingsIcon />
+        icon: SettingsIcon
       },
       {
         name: "Logout",
         link: "/login",
-        icon: <LogoutIcon />
+        icon: LogoutIcon
       }
     ],
     []
@@ -154,9 +160,9 @@ function DashboardSideBar() {
                 className={cx(activeIndex === index && "sidebar-active-menu")}
                 active={activeIndex === index}
                 onClick={() => handleMenuClick(index, item.name)}
-                icon={item.icon}
+                icon={<item.icon />}
                 prefix={item.count ? <span className={cx(styles.count)}>{item.count}</span> : null}
-                component={<Link to={item?.link} />}
+                component={<Link href={`/dashboard/${item?.link}`} />}
               >
                 {" "}
                 {item.name}

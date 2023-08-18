@@ -1,9 +1,10 @@
-import React, { useEffect, useMemo,useState } from "react";
-import { Outlet,useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useMemo, useState } from "react";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import cx from "classnames";
+import SwitcherTab from "@/pages/Dashboard/Reports/SwitcherTab/SwitcherTab";
+
 import ReportListItem from "./ReportListItem/ReportListItem";
 import styles from "./Reports.module.scss";
-import SwitcherTab from "@/pages/Dashboard/Reports/SwitcherTab/SwitcherTab";
 
 import Filter from "@/components/Filter/Filter";
 import Search from "@/components/Search/Search";
@@ -15,7 +16,7 @@ import closeIcon from "@/assets/icons/undo-icon.svg";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { getAllUserProfiles } from "@/redux/Profile/ProfileSlice";
-import { getAllReports, getMonthlyReports, getWeeklyReports,getYearlyReports } from "@/redux/Reports/ReportsSlice";
+import { getAllReports, getMonthlyReports, getWeeklyReports, getYearlyReports } from "@/redux/Reports/ReportsSlice";
 
 import useIsMobile from "@/hooks/useIsMobile";
 
@@ -213,7 +214,7 @@ function Reports() {
 
     // temporary fix for the report details
     let reportData = reportDataArray.find((report) => report.id === item);
-    navigate(`report-details/${item}`, { state: { data: reportData } });
+    router.push(`report-details/${item}`, { state: { data: reportData } });
   };
 
   return (
