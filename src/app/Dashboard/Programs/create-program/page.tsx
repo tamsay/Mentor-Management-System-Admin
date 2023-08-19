@@ -258,6 +258,8 @@ function CreateProgram() {
     }
   };
 
+  console.log(uploadedFile, "uploaded file");
+
   return (
     <div className={cx(styles.createProgramContainer, "flexRow")}>
       <div className={cx(styles.mainSection, "flexCol")}>
@@ -273,8 +275,10 @@ function CreateProgram() {
                 {uploadedFile?.imagePreviewUrl ? (
                   <Image
                     {...getRootProps({ onDragOver: handleDragOver, onClick: handleDropzoneClick })}
-                    src={uploadedFile?.imagePreviewUrl ? uploadedFile?.imagePreviewUrl : ""}
+                    src={uploadedFile?.imagePreviewUrl}
                     alt='profile-image'
+                    width={100}
+                    height={100}
                   />
                 ) : (
                   <span {...getRootProps({ onDragOver: handleDragOver, onClick: handleDropzoneClick })}>
@@ -284,6 +288,8 @@ function CreateProgram() {
               </div>
               <div className={cx(styles.rightSection, "flexCol")}>
                 <h5 className={cx(styles.title)}>Set Program Avatar</h5>
+                <img src='' alt='' />
+
                 <Button
                   {...getRootProps({ onDragOver: handleDragOver, onClick: handleDropzoneClick })}
                   title='Select file'
