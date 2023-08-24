@@ -1,4 +1,4 @@
-.container {
+.home {
   overflow-y: auto;
   height: fit-content;
   border: 1px solid #e6e6e6;
@@ -12,8 +12,8 @@
     padding: 1rem;
 
     svg {
-      width: 5rem;
-      height: 5rem;
+      width: 7.5rem;
+      height: auto;
       object-fit: contain;
     }
 

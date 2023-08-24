@@ -177,17 +177,7 @@ const Layout = ({ children }) => {
           <Button title='Create New Program' onClick={() => router.push("programs/create-program")} />
         </section>
 
-        <div className={cx(styles.content)}>
-          {selectedMenuId ? (
-            <>{children}</>
-          ) : (
-            <div className={cx(styles.emptySelectionDiv, "flexCol-fully-centered")}>
-              <EmptySelectionIcon alt='empty-selection-icon' />
-              <p>No item selected yet </p>
-              <p>Select an item from the list to view program details</p>
-            </div>
-          )}
-        </div>
+        <div className={cx(styles.content)}>{children}</div>
       </section>
     </div>
   );

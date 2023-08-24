@@ -20,10 +20,10 @@ const Programs = () => {
   }, [pathname, router, selectedMenuId]);
 
   return (
-    <div className={cx(styles.container)}>
+    <div className={cx(styles.home)}>
       {selectedMenuId ? null : (
         <div className={cx(styles.emptySelectionDiv, "flexCol-fully-centered")}>
-          <EmptySelectionIcon alt='empty-selection-icon' />
+          <EmptySelectionIcon alt='empty-selection-icon' viewBox='0 0 51 51' />
           <p>No item selected yet </p>
           <p>Select an item from the list to view program details</p>
         </div>
