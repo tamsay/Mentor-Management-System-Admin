@@ -109,6 +109,7 @@
     "react/jsx-closing-bracket-location": [
       2,
       "tag-aligned"
-    ]
+    ],
+    "@next/next/no-img-element": "off"
   }
 }

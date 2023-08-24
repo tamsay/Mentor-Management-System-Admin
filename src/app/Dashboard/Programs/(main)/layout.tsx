@@ -1,12 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-// import { Outlet, useParams } from "react-router-dom";
 import cx from "classnames";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
-import ProgramListItem from "./ProgramListItem/ProgramListItem";
+import ProgramListItem from "../ProgramListItem/ProgramListItem";
 import styles from "./Programs.module.scss";
 
 import Button from "@/components/Button/Button";
@@ -14,25 +13,29 @@ import Filter from "@/components/Filter/Filter";
 import GenericSideBar from "@/components/GenericSideBar/GenericSideBar";
 import Search from "@/components/Search/Search";
 
-import backIcon from "@/assets/icons/back-icon.svg";
-import emptySelectionIcon from "@/assets/icons/empty-selection-icon.svg";
-import subMenuIcon from "@/assets/icons/sub-menu-icon.svg";
+import backIcon from "@/assets/icons/back-icon.svg?url";
+import EmptySelectionIcon from "@/assets/icons/empty-selection-icon.svg";
+import SubMenuIcon from "@/assets/icons/sub-menu-icon.svg";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { getActivePrograms, getAllPrograms, getArchivedPrograms } from "@/redux/Programs/ProgramsSlice";
 
+import { programsListArray } from "@/constants/testData";
+
 import useIsMobile from "@/hooks/useIsMobile";
 
-const Programs = ({ children }) => {
+const Layout = ({ children }) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const params = usePathname();
+  const pathname: string = usePathname();
   const isMobile = useIsMobile();
   const [selectedMenuId, setSelectedMenuId] = useState(params.id);
   const [openSideBar, setOpenSideBar] = useState(false);
   const [programsArray, setProgramsArray] = useState([]);
 
-  const allProgramsData = useAppSelector((state) => state.programs.getAllProgramsData);
+  // const allProgramsData = useAppSelector((state) => state.programs.getAllProgramsData);
+  const allProgramsData = programsListArray;
   const allActiveProgramsData = useAppSelector((state) => state.programs.getActiveProgramsData);
   const allArchivedProgramsData = useAppSelector((state) => state.programs.getArchivedProgramsData);
 
@@ -147,8 +150,10 @@ const Programs = ({ children }) => {
   // };
 
   const handleSelectedMenuItem = (id) => {
+    let currentPathArray = [...pathname.split("/")];
+    let currentPath = currentPathArray.slice(0, currentPathArray.length - 1).join("/");
     setSelectedMenuId(id);
-    router.push(`program-details/${id}`);
+    router.push(`${currentPath}/${id}`);
   };
 
   return (
@@ -167,12 +172,7 @@ const Programs = ({ children }) => {
         <section className={cx(styles.heading, "flexRow-space-between")}>
           <div className={cx(styles.titleAndToggler, "flexRow")}>
             <div className={cx(styles.togglerDiv, "flexCol-fully-centered")}>
-              <Image
-                className={cx(styles.toggler)}
-                src={subMenuIcon}
-                alt='toggler'
-                onClick={() => setOpenSideBar(!openSideBar)}
-              />
+              <SubMenuIcon className={cx(styles.toggler)} alt='toggler' onClick={() => setOpenSideBar(!openSideBar)} />
               <small className={cx(styles.togglerText)}>MENU</small>
             </div>
             <h3 className={cx(styles.title)}>Programs</h3>
@@ -181,11 +181,11 @@ const Programs = ({ children }) => {
         </section>
 
         <div className={cx(styles.content)}>
-          {!selectedMenuId ? (
-            <div>hello</div>
+          {selectedMenuId ? (
+            <div>{children}</div>
           ) : (
             <div className={cx(styles.emptySelectionDiv, "flexCol-fully-centered")}>
-              <Image src={emptySelectionIcon} alt='empty-selection-icon' />
+              <EmptySelectionIcon alt='empty-selection-icon' />
               <p>No item selected yet </p>
               <p>Select an item from the list to view program details</p>
             </div>
@@ -196,4 +196,4 @@ const Programs = ({ children }) => {
   );
 };
 
-export default Programs;
+export default Layout;

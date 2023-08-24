@@ -22,7 +22,7 @@ import TextArea from "@/components/TextArea/TextArea";
 import ClearListIcon from "@/assets/icons/clear-list-icon.svg";
 import CloseIconAlt from "@/assets/icons/close-icon.svg";
 import CloseIcon from "@/assets/icons/undo-icon.svg";
-import successImage from "@/assets/images/create-task-success-image.svg?url";
+import SuccessImage from "@/assets/images/create-task-success-image.svg";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
@@ -102,7 +102,7 @@ function CreateProgram() {
           name: "successNotification",
           modalData: {
             title: "Program Created Successfully!",
-            image: successImage,
+            image: SuccessImage,
             redirectUrl: "/dashboard/programs"
           }
         })
@@ -288,8 +288,6 @@ function CreateProgram() {
               </div>
               <div className={cx(styles.rightSection, "flexCol")}>
                 <h5 className={cx(styles.title)}>Set Program Avatar</h5>
-                <img src='' alt='' />
-
                 <Button
                   {...getRootProps({ onDragOver: handleDragOver, onClick: handleDropzoneClick })}
                   title='Select file'

@@ -1,7 +1,7 @@
 "use client";
 
 const useGetUserInfo = () => {
-  let userData = JSON.parse(localStorage.getItem("userData"));
+  let userData: string | null = JSON.parse(localStorage.getItem("userData"));
   console.log(userData, "userData");
   return userData;
 };

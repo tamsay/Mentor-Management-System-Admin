@@ -56,6 +56,7 @@ export const FormGroup = styled(Form.Group)`
   }
   .eye-icon {
     cursor: pointer;
+    width: 1.625rem;
   }
   position: relative;
 `;

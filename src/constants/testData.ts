@@ -1,6 +1,9 @@
 import cardIcon from "@/assets/icons/reports-overview-card-icon.svg";
 import mentorManagerImage from "@/assets/images/mentor-manager-thumbnail.svg";
+// import programsIcon from "@/assets/images/program-avatar.svg?url";
 import mentorImage from "@/assets/images/sample-profile-image.svg";
+
+const programsIcon = "https://picsum.photos/200/300?random=1";
 
 export const mentorsArray = [
   {
@@ -186,61 +189,61 @@ export const programsListArray = [
   {
     id: 1,
     title: "Google Africa Scholarship Program",
-    date: "Dec 12, 2022",
-    time: "6:00pm"
+    createdAt: "Dec 12, 2022"
+    // image: programsIcon
   },
   {
     id: 2,
     title: "Google Africa Scholarship Program",
-    date: "Dec 12, 2022",
-    time: "6:00pm"
+    createdAt: "Dec 12, 2022",
+    image: programsIcon
   },
   {
     id: 3,
     title: "Google Africa Scholarship Program",
-    date: "Dec 12, 2022",
-    time: "6:00pm"
+    createdAt: "Dec 12, 2022",
+    image: programsIcon
   },
   {
     id: 4,
     title: "Google Africa Scholarship Program",
-    date: "Dec 12, 2022",
-    time: "6:00pm"
+    createdAt: "Dec 12, 2022",
+    image: programsIcon
   },
   {
     id: 5,
     title: "Google Africa Scholarship Program",
-    date: "Dec 12, 2022",
-    time: "6:00pm"
+    createdAt: "Dec 12, 2022",
+    image: programsIcon
   },
   {
     id: 6,
     title: "Google Africa Scholarship Program",
-    date: "Dec 12, 2022",
-    time: "6:00pm"
+    createdAt: "Dec 12, 2022",
+    image: programsIcon
   },
   {
     id: 7,
     title: "Google Africa Scholarship Program",
-    date: "Dec 12, 2022",
-    time: "6:00pm"
+    createdAt: "Dec 12, 2022",
+    image: programsIcon
   },
   {
     id: 8,
     title: "Google Africa Scholarship Program",
-    date: "Dec 12, 2022",
-    time: "6:00pm"
+    createdAt: "Dec 12, 2022",
+    image: programsIcon
   },
   {
     id: 9,
     title: "Google Africa Scholarship Program",
-    date: "Dec 12, 2022",
-    time: "6:00pm"
+    createdAt: "Dec 12, 2022",
+    image: programsIcon
   },
   {
     id: 10,
     title: "Google Africa Scholarship Program",
-    date: "Dec 12, 2022",
-    time: "6:00pm"
+    createdAt: "Dec 12, 2022",
+    image: programsIcon
   }
 ];

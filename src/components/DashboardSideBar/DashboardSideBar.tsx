@@ -4,7 +4,6 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Menu, MenuItem, Sidebar, useProSidebar } from "react-pro-sidebar";
 // import { useLocation, useNavigate } from "react-router-dom";
 import cx from "classnames";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { logout } from "@/utils/auth";

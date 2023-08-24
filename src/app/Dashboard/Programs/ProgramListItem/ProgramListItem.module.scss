@@ -15,11 +15,28 @@
   .body {
     gap: 0.5rem;
 
-    .icon {
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 50%;
-      object-fit: cover;
+    .iconDiv {
+      .icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .initials {
+        font-size: 1.25rem;
+        color: var(--primaryTextColor);
+        font-family: var(--muktaRegular);
+        display: inline-block;
+        border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+        line-height: 2.5rem;
+        text-align: center;
+        margin: 0;
+        background-color: var(--green4Color);
+        cursor: pointer;
+      }
     }
 
     .mainContent {
@@ -62,7 +79,7 @@
           align-items: center;
 
           svg {
-            width: 1rem;
+            width: auto;
           }
 
           .value {
@@ -83,9 +100,18 @@
     .body {
       gap: 1rem;
 
-      .icon {
-        width: 1.75rem;
-        height: 1.75rem;
+      .iconDiv {
+        .icon {
+          width: 2rem;
+          height: 2rem;
+        }
+
+        .initials {
+          font-size: 1.125rem;
+          width: 2rem;
+          height: 2rem;
+          line-height: 2rem;
+        }
       }
 
       .mainContent {
@@ -125,10 +151,6 @@
           .info {
             align-items: center;
             gap: 0.25rem;
-
-            svg {
-              width: 1rem;
-            }
 
             .value {
               line-height: 1;

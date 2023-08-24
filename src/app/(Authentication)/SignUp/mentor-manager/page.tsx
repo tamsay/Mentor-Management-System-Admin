@@ -3,7 +3,6 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import cx from "classnames";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -14,8 +13,8 @@ import Button from "@/components/Button/Button";
 import InputField from "@/components/Input/Input";
 import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
 
-import arrowLeft from "@/assets/icons/arrow-left-icon.svg";
-import googleIcon from "@/assets/icons/google-icon.svg";
+import ArrowLeft from "@/assets/icons/arrow-left-icon.svg";
+import GoogleIcon from "@/assets/icons/google-icon.svg";
 
 import { signUp } from "@/redux/Auth/AuthSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -132,7 +131,7 @@ function SignUp() {
             </form>
           </div>
           <div className={cx(styles.googleSignUpDiv, "flexRow-fully-centered")}>
-            <Image src={googleIcon} alt='google-icon' />
+            <GoogleIcon alt='google-icon' />
             <span>Signup with Google</span>
           </div>
 
@@ -141,7 +140,7 @@ function SignUp() {
               Already a User? <span onClick={() => router.push("/login")}>Signin</span>
             </p>
             <p onClick={() => router.back()} className={cx(styles.caption)}>
-              <Image src={arrowLeft} alt='arrow-left' className={cx(styles.icon)} />
+              <ArrowLeft alt='arrow-left' className={cx(styles.icon)} />
               <span style={{ marginLeft: "8px" }}>Go Back</span>
             </p>
           </div>

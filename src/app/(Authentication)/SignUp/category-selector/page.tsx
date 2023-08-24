@@ -11,9 +11,9 @@ import styles from "./CategorySelector.module.scss";
 import AuthSideHero from "@/components/AuthSideHero/AuthSideHero";
 
 // components
-import arrowRight from "@/assets/icons/arrow-right-icon.svg";
-import mentorIcon from "@/assets/icons/mentor-icon.svg";
-import mentorManagerIcon from "@/assets/icons/mentor-manager-icon.svg";
+import ArrowRight from "@/assets/icons/arrow-right-icon.svg";
+import MentorIcon from "@/assets/icons/mentor-icon.svg";
+import MentorManagerIcon from "@/assets/icons/mentor-manager-icon.svg";
 const CategorySelector = () => {
   const router = useRouter();
 
@@ -23,14 +23,14 @@ const CategorySelector = () => {
       title: "Mentor",
       description: "Oversee and guide learners from the start to finish",
       path: "/signup/mentor",
-      icon: mentorIcon
+      icon: <MentorIcon alt='category-icon' />
     },
     {
       id: 2,
       title: "Mentor Manager",
       description: "Manage mentors and learners across all learning track",
       path: "/signup/mentor-manager",
-      icon: mentorManagerIcon
+      icon: <MentorManagerIcon alt='category-icon' />
     }
   ];
 
@@ -52,14 +52,14 @@ const CategorySelector = () => {
                 key={option?.id}
                 className={cx(styles.cardWrapper, "flexRow-align-center")}
               >
-                <div className={cx(styles.iconDiv, "flexRow-fully-centered")}>
-                  <Image className={cx(styles.categoryIcon)} src={option?.icon} alt='category-icon' />
-                </div>
+                <div className={cx(styles.iconDiv, "flexRow-fully-centered")}>{option?.icon}</div>
                 <div className={cx(styles.content, "flexCol")}>
                   <h3 className={cx(styles.title)}>{option?.title}</h3>
                   <p className={cx(styles.description)}>{option?.description}</p>
                 </div>
-                <Image src={arrowRight} alt='arrow-right' className={cx(styles.icon)} />
+                <div className={cx(styles.arrowDiv)}>
+                  <ArrowRight alt='arrow-right' className={cx(styles.icon)} />
+                </div>
               </div>
             );
           })}

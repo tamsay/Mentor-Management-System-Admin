@@ -3,7 +3,6 @@
 import React, { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import cx from "classnames";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -13,7 +12,7 @@ import AuthSideHero from "@/components/AuthSideHero/AuthSideHero";
 import Button from "@/components/Button/Button";
 import InputField from "@/components/Input/Input";
 
-import googleIcon from "@/assets/icons/google-icon.svg";
+import GoogleIcon from "@/assets/icons/google-icon.svg";
 
 import { login } from "@/redux/Auth/AuthSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -119,7 +118,7 @@ function Login() {
             </form>
           </div>
           <div className={cx(styles.googleLoginDiv, "flexRow-fully-centered")}>
-            <Image src={googleIcon} alt='google-icon' />
+            <GoogleIcon alt='google-icon' />
             <span>Sign in with Google</span>
           </div>
 
