@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from "react";
 import cx from "classnames";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 import ProgramListItem from "../ProgramListItem/ProgramListItem";
-import styles from "./Programs.module.scss";
+import styles from "./layout.module.scss";
 
 import Button from "@/components/Button/Button";
 import Filter from "@/components/Filter/Filter";
@@ -27,8 +27,7 @@ import useIsMobile from "@/hooks/useIsMobile";
 const Layout = ({ children }) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const params = usePathname();
-  const pathname: string = usePathname();
+  const params = useParams();
   const isMobile = useIsMobile();
   const [selectedMenuId, setSelectedMenuId] = useState(params.id);
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -150,10 +149,8 @@ const Layout = ({ children }) => {
   // };
 
   const handleSelectedMenuItem = (id) => {
-    let currentPathArray = [...pathname.split("/")];
-    let currentPath = currentPathArray.slice(0, currentPathArray.length - 1).join("/");
     setSelectedMenuId(id);
-    router.push(`${currentPath}/${id}`);
+    router.push(`/dashboard/programs/program-details/${id}`);
   };
 
   return (
@@ -182,7 +179,7 @@ const Layout = ({ children }) => {
 
         <div className={cx(styles.content)}>
           {selectedMenuId ? (
-            <div>{children}</div>
+            <>{children}</>
           ) : (
             <div className={cx(styles.emptySelectionDiv, "flexCol-fully-centered")}>
               <EmptySelectionIcon alt='empty-selection-icon' />

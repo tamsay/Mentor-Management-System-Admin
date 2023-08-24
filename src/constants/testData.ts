@@ -140,7 +140,7 @@ export const programReportArrayOld = [
   }
 ];
 
-export const taskReportArrayOld = [
+export const taskReportArray = [
   {
     id: 1,
     title: "Google Africa Scholarship",
@@ -188,62 +188,85 @@ export const taskReportArrayOld = [
 export const programsListArray = [
   {
     id: 1,
-    title: "Google Africa Scholarship Program",
-    createdAt: "Dec 12, 2022"
-    // image: programsIcon
+    name: "Google Africa Scholarship Program 1",
+    createdAt: "Dec 12, 2022",
+    image: programsIcon,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!",
+    mentors: mentorsArray,
+    reports: taskReportArray,
+    mentorManagers: mentorManagersArray
   },
   {
     id: 2,
-    title: "Google Africa Scholarship Program",
+    name: "Google Africa Scholarship Program 2",
     createdAt: "Dec 12, 2022",
-    image: programsIcon
+    image: programsIcon,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!"
   },
   {
     id: 3,
-    title: "Google Africa Scholarship Program",
+    name: "Google Africa Scholarship Program 3",
     createdAt: "Dec 12, 2022",
-    image: programsIcon
+    image: programsIcon,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!"
   },
   {
     id: 4,
-    title: "Google Africa Scholarship Program",
+    name: "Google Africa Scholarship Program 4",
     createdAt: "Dec 12, 2022",
-    image: programsIcon
+    image: programsIcon,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!"
   },
   {
     id: 5,
-    title: "Google Africa Scholarship Program",
+    name: "Google Africa Scholarship Program 5",
     createdAt: "Dec 12, 2022",
-    image: programsIcon
+    image: programsIcon,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!"
   },
   {
     id: 6,
-    title: "Google Africa Scholarship Program",
+    name: "Google Africa Scholarship Program 6",
     createdAt: "Dec 12, 2022",
-    image: programsIcon
+    image: programsIcon,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!"
   },
   {
     id: 7,
-    title: "Google Africa Scholarship Program",
+    name: "Google Africa Scholarship Program 7",
     createdAt: "Dec 12, 2022",
-    image: programsIcon
+    image: programsIcon,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!"
   },
   {
     id: 8,
-    title: "Google Africa Scholarship Program",
+    name: "Google Africa Scholarship Program 8",
     createdAt: "Dec 12, 2022",
-    image: programsIcon
+    image: programsIcon,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!"
   },
   {
     id: 9,
-    title: "Google Africa Scholarship Program",
+    name: "Google Africa Scholarship Program 9",
     createdAt: "Dec 12, 2022",
-    image: programsIcon
+    image: programsIcon,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!"
   },
   {
     id: 10,
-    title: "Google Africa Scholarship Program",
+    name: "Google Africa Scholarship Program 10",
     createdAt: "Dec 12, 2022",
-    image: programsIcon
+    image: programsIcon,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!"
   }
 ];

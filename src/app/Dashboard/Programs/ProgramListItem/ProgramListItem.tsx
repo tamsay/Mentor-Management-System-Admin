@@ -15,7 +15,7 @@ import "./ProgramListActiveItem.scss";
 type ProgramListItemProps = {
   data: {
     image: string;
-    title: string;
+    name: string;
     createdAt: string;
   };
 };
@@ -28,12 +28,12 @@ const ProgramListItem: React.FC<ProgramListItemProps> = ({ data }) => {
           {data?.image ? (
             <img className={cx(styles.icon)} src={data?.image} alt='icon' />
           ) : (
-            <span className={cx(styles.initials)}>{initialsCase(data?.title)}</span>
+            <span className={cx(styles.initials)}>{initialsCase(data?.name)}</span>
           )}
         </div>
 
         <div className={cx(styles.mainContent, "flexCol")}>
-          <h5 className={cx(styles.title)}>{data?.title}</h5>
+          <h5 className={cx(styles.title)}>{data?.name}</h5>
           <div className={cx(styles.metaData, "flexRow")}>
             <div className={cx(styles.info, "flexRow")}>
               <CalendarIcon />

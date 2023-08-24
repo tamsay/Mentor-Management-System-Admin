@@ -10,29 +10,34 @@ import styles from "./ProgramDetails.module.scss";
 import Button from "@/components/Button/Button";
 import DeleteNotificationModal from "@/components/Modals/DeleteNotification/DeleteNotification";
 
-import deleteArchiveIcon from "@/assets/icons/clear-list-reversed.svg";
-import clockIcon from "@/assets/icons/clock-icon.svg";
-import headerIcon from "@/assets/icons/google-filled-icon.svg";
+import DeleteArchiveIcon from "@/assets/icons/clear-list-reversed.svg";
+import ClockIcon from "@/assets/icons/clock-icon.svg";
 import mentorsIcon from "@/assets/icons/mentor-icon-green.png";
 import mentorManagersIcon from "@/assets/icons/mentor-manager-icon-green.png";
 import reportIcon from "@/assets/icons/task-report-icon-green.png";
-import calendarIcon from "@/assets/icons/tasks-overview-calendar-icon.svg";
+import CalendarIcon from "@/assets/icons/tasks-overview-calendar-icon.svg";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
 import { getProgramDetails } from "@/redux/Programs/ProgramsSlice";
 
 import formatDate from "@/helpers/formatDate";
+import { initialsCase } from "@/helpers/textTransform";
 
-function ProgramDetails() {
+import { programsListArray } from "@/constants/testData";
+
+const ProgramDetails = ({ params }: { params: { id: string } }) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const params = usePathname();
   const programId = params.id;
 
   const displayModal = useAppSelector((state) => state.modal.show);
   const modalName = useAppSelector((state) => state.modal.modalName);
-  const programDetails = useAppSelector((state) => state.programs.getProgramDetailsData);
+  // const programDetails = useAppSelector((state) => state.programs.getProgramDetailsData);
+  const programDetails = programsListArray.find((item) => item.id === Number(programId));
+  console.log(programId, "programId");
+
+  console.log(programDetails, "programDetails");
 
   useEffect(() => {
     dispatch(getProgramDetails(programId));
@@ -92,20 +97,22 @@ function ProgramDetails() {
         <>
           <div className={cx(styles.header, "flexCol")}>
             <div className={cx(styles.wrapper, "flexRow-align-center")}>
-              <Image
-                className={cx(styles.icon, styles.programIcon)}
-                src={programDetails?.programmePicture || headerIcon}
-                alt='program-icon'
-              />
+              <div className={cx(styles.iconDiv, "flexRow-fully-centered")}>
+                {programDetails?.image ? (
+                  <img className={cx(styles.icon, styles.programIcon)} src={programDetails?.image} alt='program-icon' />
+                ) : (
+                  <span className={cx(styles.initials)}>{initialsCase(programDetails?.name)}</span>
+                )}
+              </div>
               <div className={cx(styles.mainContent, "flexCol")}>
                 <h5 className={cx(styles.title)}>{programDetails?.name}</h5>
                 <div className={cx(styles.metaData, "flexRow")}>
                   <div className={cx(styles.info, "flexRow")}>
-                    <Image className={cx(styles.icon)} src={calendarIcon} alt='calendar-icon' />
+                    <CalendarIcon className={cx(styles.icon)} alt='calendar-icon' />
                     <span className={cx(styles.value)}>{formatDate(programDetails?.createdAt)}</span>
                   </div>
                   <div className={cx(styles.info, "flexRow")}>
-                    <Image className={cx(styles.icon)} src={clockIcon} alt='clock-icon' />
+                    <ClockIcon className={cx(styles.icon)} alt='clock-icon' />
                     <span className={cx(styles.value)}>
                       {new Date(programDetails?.createdAt).toLocaleTimeString([], {
                         hour: "2-digit",
@@ -144,18 +151,16 @@ function ProgramDetails() {
 
           <div className={cx(styles.btnGroup, "flexRow")}>
             <button onClick={() => handleDeleteTask()} className={cx(styles.deleteBtn, "flexRow-align-center")}>
-              <Image src={deleteArchiveIcon} alt='delete-archive-icon' /> <span>Delete/Archive Program</span>
+              <DeleteArchiveIcon alt='delete-archive-icon' /> <span>Delete/Archive Program</span>
             </button>
             <Button title='Edit Program' onClick={() => router.push(`/dashboard/programs/edit-program/${programId}`)} />
           </div>
         </>
       )}
 
-      <p>howdy</p>
-
       {displayModal && modalName === "programDeleteNotification" ? <DeleteNotificationModal show size='md' /> : null}
     </div>
   );
-}
+};
 
 export default ProgramDetails;
