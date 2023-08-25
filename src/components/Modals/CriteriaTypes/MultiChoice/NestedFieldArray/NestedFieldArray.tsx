@@ -1,13 +1,14 @@
 import React from "react";
-import { Controller,useFieldArray } from "react-hook-form";
+import { Controller, useFieldArray } from "react-hook-form";
 import cx from "classnames";
 import PropTypes from "prop-types";
+
 import styles from "./NestedFieldArray.module.scss";
 
 import InputField from "@/components/Input/Input";
 
-import addIcon from "@/assets/icons/add-icon-thin.svg";
-import removeIcon from "@/assets/icons/minus-icon-thin.svg";
+import AddIcon from "@/assets/icons/add-icon-thin.svg";
+import RemoveIcon from "@/assets/icons/minus-icon-thin.svg";
 
 const NestedFieldArray = ({ nestIndex, control, errors }) => {
   const { fields, remove, append } = useFieldArray({
@@ -35,16 +36,18 @@ const NestedFieldArray = ({ nestIndex, control, errors }) => {
                     type='text'
                     marginbottom='0rem'
                     border='none'
-                    error={errors?.criteria &&
+                    error={
+                      errors?.criteria &&
                       errors?.criteria[nestIndex] &&
                       errors?.criteria[nestIndex]?.options &&
-                      errors?.criteria[nestIndex]?.options[optionIndex]?.option?.message}
+                      errors?.criteria[nestIndex]?.options[optionIndex]?.option?.message
+                    }
                   />
                 )}
               />
             </div>
 
-            <Image onClick={() => remove(optionIndex)} src={removeIcon} alt='remove-icon' />
+            <RemoveIcon onClick={() => remove(optionIndex)} alt='remove-icon' />
           </div>
         );
       })}
@@ -59,7 +62,7 @@ const NestedFieldArray = ({ nestIndex, control, errors }) => {
         }}
         className={cx(styles.addMore, "flexRow-align-center")}
       >
-        <Image src={addIcon} alt='add-icon' />
+        <AddIcon alt='add-icon' />
         <span>{Array.isArray(fields) && fields.length > 0 ? "Add more options" : "Add Option"}</span>
       </div>
     </div>

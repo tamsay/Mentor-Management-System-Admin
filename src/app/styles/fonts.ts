@@ -19,7 +19,7 @@ const muktaMedium = Mukta({
 });
 
 const muktaSemiBold = Mukta({
-  weight: "600",
+  weight: "500",
   subsets: ["latin"],
   variable: "--muktaSemiBold"
 });

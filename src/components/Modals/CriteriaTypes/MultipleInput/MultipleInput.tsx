@@ -10,8 +10,8 @@ import styles from "./MultipleInput.module.scss";
 import Button from "@/components/Button/Button";
 import InputField from "@/components/Input/Input";
 
-import addIcon from "@/assets/icons/add-icon.svg";
-import removeIcon from "@/assets/icons/minus-icon.svg";
+import AddIcon from "@/assets/icons/add-icon.svg";
+import RemoveIcon from "@/assets/icons/minus-icon.svg";
 
 import { getCriteriaFromStorage, saveCriteriaToStorage } from "@/redux/Criteria/CriteriaSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -126,7 +126,7 @@ function MultipleInput({ show, size, modalName }) {
 
                   {!modalData?.edit && (
                     <div className={cx(styles.deleteFormGroupDiv, "flexRow-right-centered")}>
-                      <Image onClick={() => remove(index)} src={removeIcon} alt='minus-icon' />
+                      <RemoveIcon onClick={() => remove(index)} alt='minus-icon' />
                       <span>Delete question</span>
                     </div>
                   )}
@@ -149,7 +149,7 @@ function MultipleInput({ show, size, modalName }) {
                 }}
                 className={cx(styles.appendDiv, "flexRow-align-center")}
               >
-                <Image src={addIcon} alt='add-icon' />
+                <AddIcon alt='add-icon' />
                 <span>{errors?.criteria?.root?.message ? "Add question" : "Add another question"}</span>
               </div>
             )}

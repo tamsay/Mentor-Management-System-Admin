@@ -45,6 +45,8 @@ const CreateCriteria = () => {
     dispatch(getCriteriaFromStorage());
   }, [dispatch]);
 
+  console.log(criteriaData, "criteriaData from localstorage create page");
+
   useEffect(() => {
     if (!criteriaData) {
       setDisableCreateBtn(true);

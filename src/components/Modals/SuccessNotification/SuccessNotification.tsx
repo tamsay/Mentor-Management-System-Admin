@@ -1,7 +1,9 @@
 import React from "react";
 import cx from "classnames";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import PropTypes from "prop-types";
+
 import ModalContainer from "../ModalContainer/ModalContainer";
 import styles from "./SuccessNotification.module.scss";
 

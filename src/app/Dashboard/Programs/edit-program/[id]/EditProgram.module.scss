@@ -21,7 +21,7 @@
         font-size: 1.5rem;
       }
 
-      img {
+      svg {
         cursor: pointer;
       }
     }
@@ -50,6 +50,27 @@
               object-position: center;
               cursor: pointer;
               border: 0.25px solid var(--imageBorderColor);
+            }
+
+            span {
+              width: 5.5rem;
+              height: 5.5rem;
+              border-radius: 50%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              flex-wrap: wrap;
+              white-space: wrap;
+              padding: 0.25rem;
+              font-size: 1rem;
+              color: var(--black2TextColor);
+              font-family: var(--muktaRegular);
+              margin: 0;
+              line-height: 1.25rem;
+              cursor: pointer;
+              border: 0.25px solid var(--imageBorderColor);
+              background-color: var(--green3Color);
             }
           }
 
@@ -132,14 +153,13 @@
       width: 100%;
       justify-content: flex-end;
       gap: 1rem;
-      min-height: 3rem;
+      min-height: 2rem;
 
       .searchWrapper {
         flex-grow: 1;
       }
 
       .closeIcon {
-        width: 1rem;
         cursor: pointer;
       }
     }
@@ -172,6 +192,7 @@
 
     .mainSection {
       gap: 2.5rem;
+      padding-top: 0.625rem;
 
       .formWrapper {
         form {

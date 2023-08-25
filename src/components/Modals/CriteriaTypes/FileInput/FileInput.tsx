@@ -11,8 +11,8 @@ import NestedArray from "./NestedFieldArray/NestedFieldArray";
 import Button from "@/components/Button/Button";
 import InputField from "@/components/Input/Input";
 
-import addIcon from "@/assets/icons/add-icon.svg";
-import removeIcon from "@/assets/icons/minus-icon.svg";
+import AddIcon from "@/assets/icons/add-icon.svg";
+import RemoveIcon from "@/assets/icons/minus-icon.svg";
 
 import { getCriteriaFromStorage, saveCriteriaToStorage } from "@/redux/Criteria/CriteriaSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -129,7 +129,7 @@ function FileInput({ show, size, modalName }) {
                         onClick={() => handleRemoveGroup(index)}
                         className={cx(styles.deleteFormGroupDiv, "flexRow-right-centered")}
                       >
-                        <Image src={removeIcon} alt='minus-icon' />
+                        <RemoveIcon alt='minus-icon' />
                         <span>Delete request</span>
                       </div>
                     )}
@@ -152,7 +152,7 @@ function FileInput({ show, size, modalName }) {
                 }}
                 className={cx(styles.appendDiv, "flexRow-align-center")}
               >
-                <Image src={addIcon} alt='add-icon' />
+                <AddIcon alt='add-icon' />
                 <span>{errors?.criteria?.root?.message ? "Add request" : "Add another request"}</span>
               </div>
             )}

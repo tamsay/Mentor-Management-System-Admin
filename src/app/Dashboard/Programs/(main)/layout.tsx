@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 
 import ProgramListItem from "../ProgramListItem/ProgramListItem";
-import styles from "./layout.module.scss";
+import styles from "./ProgramsLayout.module.scss";
 
 import Button from "@/components/Button/Button";
 import Filter from "@/components/Filter/Filter";

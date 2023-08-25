@@ -24,6 +24,7 @@ import { getProgramDetails } from "@/redux/Programs/ProgramsSlice";
 import formatDate from "@/helpers/formatDate";
 import { initialsCase } from "@/helpers/textTransform";
 
+// to be removed when the endpoint is fixed
 import { programsListArray } from "@/constants/testData";
 
 const ProgramDetails = ({ params }: { params: { id: string } }) => {

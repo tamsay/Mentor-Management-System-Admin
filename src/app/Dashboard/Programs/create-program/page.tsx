@@ -8,12 +8,11 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import PersonelComponent from "../PersonelComponent/PersonelComponent";
 import styles from "./CreateProgram.module.scss";
-import PersonelComponent from "./PersonelComponent/PersonelComponent";
 
 import Button from "@/components/Button/Button";
 import InputField from "@/components/Input/Input";
-// import Filter from "@/components/Filter/Filter";
 import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
 import Search from "@/components/Search/Search";
 import SelectionSideBar from "@/components/SelectionSideBar/SelectionSideBar";

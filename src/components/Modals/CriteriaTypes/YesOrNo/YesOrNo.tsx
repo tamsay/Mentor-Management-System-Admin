@@ -10,8 +10,8 @@ import styles from "./YesOrNo.module.scss";
 import Button from "@/components/Button/Button";
 import InputField from "@/components/Input/Input";
 
-import addIcon from "@/assets/icons/add-icon.svg";
-import removeIcon from "@/assets/icons/minus-icon-thin.svg";
+import AddIcon from "@/assets/icons/add-icon.svg";
+import RemoveIcon from "@/assets/icons/minus-icon-thin.svg";
 
 import { getCriteriaFromStorage, saveCriteriaToStorage } from "@/redux/Criteria/CriteriaSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -102,7 +102,7 @@ function YesOrNo({ show, size, modalName }) {
                   />
 
                   <div className={cx(styles.deleteFormGroupDiv, "flexRow-right-centered")}>
-                    <Image onClick={() => remove(index)} src={removeIcon} alt='minus-icon' />
+                    <RemoveIcon onClick={() => remove(index)} alt='minus-icon' />
                   </div>
                 </section>
               );
@@ -122,7 +122,7 @@ function YesOrNo({ show, size, modalName }) {
                 }}
                 className={cx(styles.appendDiv, "flexRow-align-center")}
               >
-                <Image src={addIcon} alt='add-icon' />
+                <AddIcon alt='add-icon' />
                 <span>{errors?.criteria?.root?.message ? "Add question" : "Add another question"}</span>
               </div>
             )}

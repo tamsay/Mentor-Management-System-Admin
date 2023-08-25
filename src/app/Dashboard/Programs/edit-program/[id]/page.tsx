@@ -1,12 +1,14 @@
+"use client";
+
 import React, { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { Controller, useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
 import cx from "classnames";
 import Image from "next/image";
-import PersonelComponent from "@/pages/Dashboard/Tasks/PersonelComponent/PersonelComponent";
+import { usePathname, useRouter } from "next/navigation";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import PersonelComponent from "../../PersonelComponent/PersonelComponent";
 import styles from "./EditProgram.module.scss";
 
 import Button from "@/components/Button/Button";
@@ -17,9 +19,9 @@ import SelectionSideBar from "@/components/SelectionSideBar/SelectionSideBar";
 import TextArea from "@/components/TextArea/TextArea";
 
 import ClearListIcon from "@/assets/icons/clear-list-icon.svg";
-import closeIconAlt from "@/assets/icons/close-icon.svg";
-import closeIcon from "@/assets/icons/undo-icon.svg";
-import successImage from "@/assets/images/create-task-success-image.svg";
+import CloseIconAlt from "@/assets/icons/close-icon.svg";
+import CloseIcon from "@/assets/icons/undo-icon.svg";
+import SuccessImage from "@/assets/images/create-task-success-image.svg";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
@@ -28,10 +30,13 @@ import { editProgram, getProgramDetails } from "@/redux/Programs/ProgramsSlice";
 
 import { editProgramSchema } from "@/helpers/validation";
 
-function EditProgram() {
+// to be removed when the endpoint is fixed
+import { programsListArray } from "@/constants/testData";
+
+function EditProgram({ params }: { params: { id: string } }) {
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const params = useParams();
+  const pathname = usePathname();
   const programId = params.id;
 
   const [openSideBar, setOpenSideBar] = useState({
@@ -42,13 +47,15 @@ function EditProgram() {
 
   const displayModal = useAppSelector((state) => state.modal.show);
   const modalName = useAppSelector((state) => state.modal.modalName);
-  const programDetails = useAppSelector((state) => state.programs.getProgramDetailsData);
+  // const programDetails = useAppSelector((state) => state.programs.getProgramDetailsData);
+  const programDetails = programsListArray.find((item) => item.id === Number(programId));
   const allUserProfilesData = useAppSelector((state) => state.profile.getAllUserProfilesData);
   const editProgramLoading = useAppSelector((state) => state.loading.editProgramLoading);
 
-  const [selectedMentorManagers, setSelectedMentorManagers] = useState(programDetails?.managers || []);
+  const [selectedMentorManagers, setSelectedMentorManagers] = useState(programDetails?.mentorManagers || []);
   const [selectedMentors, setSelectedMentors] = useState(programDetails?.mentors || []);
-  const criteriaData = JSON.parse(localStorage.getItem("criteria")) || {};
+  let tempCriteriaData = localStorage.getItem("criteria");
+  const criteriaData = tempCriteriaData ? JSON.parse(tempCriteriaData) : {};
   console.log(criteriaData, "criteria data here");
 
   useEffect(() => {
@@ -75,12 +82,12 @@ function EditProgram() {
       name: programDetails?.name || "",
       description: programDetails?.description || ""
     });
-    setSelectedMentorManagers(programDetails?.managers || []);
+    setSelectedMentorManagers(programDetails?.mentorManagers || []);
     setSelectedMentors(programDetails?.mentors || []);
   }, [
     programDetails?.criteria,
     programDetails?.description,
-    programDetails?.managers,
+    programDetails?.mentorManagers,
     programDetails?.mentors,
     programDetails?.name,
     reset
@@ -173,12 +180,7 @@ function EditProgram() {
           closeSelectElement={closeSelectElement}
           setCloseSelectElement={setCloseSelectElement}
         /> */}
-        <Image
-          src={closeIcon}
-          className={cx(styles.closeIcon)}
-          alt='close-icon'
-          onClick={() => setOpenSideBar({ open: false })}
-        />
+        <CloseIcon className={cx(styles.closeIcon)} alt='close-icon' onClick={() => setOpenSideBar({ open: false })} />
       </div>
     );
 
@@ -230,7 +232,7 @@ function EditProgram() {
 
   const handleEditCriteria = (e) => {
     e.preventDefault();
-    router.push("edit-criteria");
+    router.push(`${pathname}/edit-criteria`);
   };
 
   const handleClearList = (category) => {
@@ -265,23 +267,19 @@ function EditProgram() {
       <div className={cx(styles.mainSection, "flexCol")}>
         <div className={cx(styles.heading, "flexRow-space-between")}>
           <h3 className={cx(styles.title)}>Edit Program</h3>
-          <Image src={closeIconAlt} alt='close-icon' onClick={() => router.push("/dashboard/programs")} />
+          <CloseIconAlt alt='close-icon' onClick={() => router.push("/dashboard/programs")} />{" "}
         </div>
 
         <div className={cx(styles.formWrapper, "flexCol")}>
           <form onSubmit={handleSubmit((data) => handleEditProgram(data))}>
             <div className={cx(styles.headerWrapper, "flexRow")}>
               <div className={cx(styles.leftSection, styles.imageDiv)}>
-                {programDetails.programmePicture || uploadedFile?.imagePreviewUrl ? (
+                {uploadedFile?.imagePreviewUrl || programDetails.image ? (
                   <Image
                     {...getRootProps({ onDragOver: handleDragOver, onClick: handleDropzoneClick })}
-                    src={
-                      programDetails.programmePicture
-                        ? programDetails.programmePicture
-                        : uploadedFile?.imagePreviewUrl
-                        ? uploadedFile?.imagePreviewUrl
-                        : null
-                    }
+                    src={uploadedFile?.imagePreviewUrl ? uploadedFile?.imagePreviewUrl : programDetails.image}
+                    width={100}
+                    height={100}
                     alt='profile-image'
                   />
                 ) : (

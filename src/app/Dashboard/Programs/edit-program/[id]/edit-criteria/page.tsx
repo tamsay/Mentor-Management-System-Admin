@@ -19,9 +19,9 @@ import SingleInputModal from "@/components/Modals/CriteriaTypes/SingleInput/Sing
 import YesOrNoModal from "@/components/Modals/CriteriaTypes/YesOrNo/YesOrNo";
 import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
 
-import backIcon from "@/assets/icons/close-icon.svg";
-import editIcon from "@/assets/icons/edit-icon-thin.svg";
-import deleteIcon from "@/assets/icons/minus-icon-thin.svg";
+import BackIcon from "@/assets/icons/close-icon.svg";
+import EditIcon from "@/assets/icons/edit-icon-thin.svg";
+import DeleteIcon from "@/assets/icons/minus-icon-thin.svg";
 import successImage from "@/assets/images/default-success-notification-image.png";
 
 import { getCriteriaFromStorage, saveCriteriaToStorage } from "@/redux/Criteria/CriteriaSlice";
@@ -45,6 +45,8 @@ const EditCriteria = () => {
   useEffect(() => {
     dispatch(getCriteriaFromStorage());
   }, [dispatch]);
+
+  console.log(criteriaData, "criteriaData from localstorage edit page");
 
   useEffect(() => {
     if (!criteriaData) {
@@ -147,8 +149,8 @@ const EditCriteria = () => {
             <p className={cx(styles.title)}>{element?.question}</p>
             <InputField type='text' placeholder='Single input response here' readOnly marginbottom={"0.5rem"} />
             <div className={cx(styles.btnGroup, "flexRow-right-centered")}>
-              <Image onClick={() => handleEditGroup(category, element?.id)} src={editIcon} alt='edit-icon' />
-              <Image onClick={() => handleDeleteGroup(category, element?.id)} src={deleteIcon} alt='delete-icon' />
+              <EditIcon onClick={() => handleEditGroup(category, element?.id)} alt='edit-icon' />
+              <DeleteIcon onClick={() => handleDeleteGroup(category, element?.id)} alt='delete-icon' />
             </div>
           </div>
         );
@@ -177,8 +179,8 @@ const EditCriteria = () => {
                 );
               })}
             <div className={cx(styles.btnGroup, "flexRow-right-centered")}>
-              <Image onClick={() => handleEditGroup(category, element?.id)} src={editIcon} alt='edit-icon' />
-              <Image onClick={() => handleDeleteGroup(category, element?.id)} src={deleteIcon} alt='delete-icon' />
+              <EditIcon onClick={() => handleEditGroup(category, element?.id)} alt='edit-icon' />
+              <DeleteIcon onClick={() => handleDeleteGroup(category, element?.id)} alt='delete-icon' />
             </div>
           </div>
         );
@@ -204,8 +206,8 @@ const EditCriteria = () => {
               </div>
             </div>
             <div className={cx(styles.btnGroup, "flexRow-right-centered")}>
-              <Image onClick={() => handleEditGroup(category, element?.id)} src={editIcon} alt='edit-icon' />
-              <Image onClick={() => handleDeleteGroup(category, element?.id)} src={deleteIcon} alt='delete-icon' />
+              <EditIcon onClick={() => handleEditGroup(category, element?.id)} alt='edit-icon' />
+              <DeleteIcon onClick={() => handleDeleteGroup(category, element?.id)} alt='delete-icon' />
             </div>
           </div>
         );
@@ -226,9 +228,8 @@ const EditCriteria = () => {
                   <div key={index} className={cx(styles.wrapper, "flexRow-align-center")}>
                     <p className={cx(styles.fileName)}>{`${input?.option}`}</p>
                     <div className={cx(styles.rightGroup, "flexRow-align-center")}>
-                      <Image
+                      <DeleteIcon
                         onClick={() => handleDeleteSubGroup(category, element?.id, index)}
-                        src={deleteIcon}
                         alt='delete-icon'
                       />
                     </div>
@@ -236,8 +237,8 @@ const EditCriteria = () => {
                 );
               })}
             <div className={cx(styles.btnGroup, "flexRow-right-centered")}>
-              <Image onClick={() => handleEditGroup(category, element?.id)} src={editIcon} alt='edit-icon' />
-              <Image onClick={() => handleDeleteGroup(category, element?.id)} src={deleteIcon} alt='delete-icon' />
+              <EditIcon onClick={() => handleEditGroup(category, element?.id)} alt='edit-icon' />
+              <DeleteIcon onClick={() => handleDeleteGroup(category, element?.id)} alt='delete-icon' />
             </div>
           </div>
         );
@@ -259,9 +260,8 @@ const EditCriteria = () => {
                     <p className={cx(styles.fileName)}>{`${input?.fileName}.${input?.fileType}`}</p>
                     <div className={cx(styles.rightGroup, "flexRow-align-center")}>
                       <span>Choose</span>
-                      <Image
+                      <DeleteIcon
                         onClick={() => handleDeleteSubGroup(category, element?.id, index)}
-                        src={deleteIcon}
                         alt='delete-icon'
                       />
                     </div>
@@ -269,8 +269,8 @@ const EditCriteria = () => {
                 );
               })}
             <div className={cx(styles.btnGroup, "flexRow-right-centered")}>
-              <Image onClick={() => handleEditGroup(category, element?.id)} src={editIcon} alt='edit-icon' />
-              <Image onClick={() => handleDeleteGroup(category, element?.id)} src={deleteIcon} alt='delete-icon' />
+              <EditIcon onClick={() => handleEditGroup(category, element?.id)} alt='edit-icon' />
+              <DeleteIcon onClick={() => handleDeleteGroup(category, element?.id)} alt='delete-icon' />
             </div>
           </div>
         );
@@ -299,12 +299,7 @@ const EditCriteria = () => {
     <div className={cx(styles.editCriteriaContainer, "flexCol")}>
       <div className={cx(styles.heading, "flexRow-space-between")}>
         <h3 className={cx(styles.title)}>Criteria Setup</h3>
-        <Image
-          onClick={() => router.push("/dashboard/programs/edit-program/1")}
-          src={backIcon}
-          className={cx(styles.backIcon)}
-          alt='close-icon'
-        />
+        <BackIcon onClick={() => router.back()} className={cx(styles.backIcon)} alt='close-icon' />
       </div>
       <div className={cx(styles.body, "flexCol")}>
         {displayInstructions ? (

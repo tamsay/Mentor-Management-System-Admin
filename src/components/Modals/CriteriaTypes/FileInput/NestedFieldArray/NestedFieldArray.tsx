@@ -1,14 +1,15 @@
 import React from "react";
-import { Controller,useFieldArray } from "react-hook-form";
+import { Controller, useFieldArray } from "react-hook-form";
 import cx from "classnames";
 import PropTypes from "prop-types";
+
 import styles from "./NestedFieldArray.module.scss";
 
 import InputField from "@/components/Input/Input";
 import SelectField from "@/components/Select/Select";
 
-import addIcon from "@/assets/icons/add-icon-thin.svg";
-import removeIcon from "@/assets/icons/minus-icon-thin.svg";
+import AddIcon from "@/assets/icons/add-icon-thin.svg";
+import RemoveIcon from "@/assets/icons/minus-icon-thin.svg";
 
 const NestedFieldArray = ({ nestIndex, control, errors }) => {
   const { fields, remove, append } = useFieldArray({
@@ -49,10 +50,12 @@ const NestedFieldArray = ({ nestIndex, control, errors }) => {
                       type='text'
                       marginbottom='1.5rem'
                       border='transparent'
-                      error={errors?.criteria &&
+                      error={
+                        errors?.criteria &&
                         errors?.criteria[nestIndex] &&
                         errors?.criteria[nestIndex]?.options &&
-                        errors?.criteria[nestIndex]?.options[optionIndex]?.fileName?.message}
+                        errors?.criteria[nestIndex]?.options[optionIndex]?.fileName?.message
+                      }
                     />
                   )}
                 />
@@ -69,10 +72,12 @@ const NestedFieldArray = ({ nestIndex, control, errors }) => {
                       defaultSelect='File Type'
                       options={fileTypesOptions}
                       marginbottom='1.5rem'
-                      error={errors?.criteria &&
+                      error={
+                        errors?.criteria &&
                         errors?.criteria[nestIndex] &&
                         errors?.criteria[nestIndex]?.options &&
-                        errors?.criteria[nestIndex]?.options[optionIndex]?.fileType?.message}
+                        errors?.criteria[nestIndex]?.options[optionIndex]?.fileType?.message
+                      }
                       border='#e6e6e6'
                     />
                   )}
@@ -80,7 +85,7 @@ const NestedFieldArray = ({ nestIndex, control, errors }) => {
               </div>
             </div>
 
-            <Image onClick={() => remove(optionIndex)} src={removeIcon} alt='remove-icon' />
+            <RemoveIcon onClick={() => remove(optionIndex)} alt='remove-icon' />
           </div>
         );
       })}
@@ -95,7 +100,7 @@ const NestedFieldArray = ({ nestIndex, control, errors }) => {
         }}
         className={cx(styles.addMore, "flexRow-align-center")}
       >
-        <Image src={addIcon} alt='add-icon' />
+        <AddIcon alt='add-icon' />
         <span>{Array.isArray(fields) && fields.length > 0 ? "Add more fields" : "Add Field"}</span>
       </div>
     </div>

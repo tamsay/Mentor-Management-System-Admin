@@ -203,7 +203,10 @@ export const programsListArray = [
     createdAt: "Dec 12, 2022",
     image: programsIcon,
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!"
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!",
+    mentors: mentorsArray,
+    reports: taskReportArray,
+    mentorManagers: mentorManagersArray
   },
   {
     id: 3,
@@ -211,7 +214,10 @@ export const programsListArray = [
     createdAt: "Dec 12, 2022",
     image: programsIcon,
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!"
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!",
+    mentors: mentorsArray,
+    reports: taskReportArray,
+    mentorManagers: mentorManagersArray
   },
   {
     id: 4,
@@ -219,7 +225,10 @@ export const programsListArray = [
     createdAt: "Dec 12, 2022",
     image: programsIcon,
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!"
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!",
+    mentors: mentorsArray,
+    reports: taskReportArray,
+    mentorManagers: mentorManagersArray
   },
   {
     id: 5,
@@ -227,7 +236,10 @@ export const programsListArray = [
     createdAt: "Dec 12, 2022",
     image: programsIcon,
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!"
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!",
+    mentors: mentorsArray,
+    reports: taskReportArray,
+    mentorManagers: mentorManagersArray
   },
   {
     id: 6,
@@ -235,7 +247,10 @@ export const programsListArray = [
     createdAt: "Dec 12, 2022",
     image: programsIcon,
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!"
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!",
+    mentors: mentorsArray,
+    reports: taskReportArray,
+    mentorManagers: mentorManagersArray
   },
   {
     id: 7,
@@ -243,7 +258,10 @@ export const programsListArray = [
     createdAt: "Dec 12, 2022",
     image: programsIcon,
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!"
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!",
+    mentors: mentorsArray,
+    reports: taskReportArray,
+    mentorManagers: mentorManagersArray
   },
   {
     id: 8,
@@ -251,7 +269,10 @@ export const programsListArray = [
     createdAt: "Dec 12, 2022",
     image: programsIcon,
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!"
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!",
+    mentors: mentorsArray,
+    reports: taskReportArray,
+    mentorManagers: mentorManagersArray
   },
   {
     id: 9,
@@ -259,7 +280,10 @@ export const programsListArray = [
     createdAt: "Dec 12, 2022",
     image: programsIcon,
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!"
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!",
+    mentors: mentorsArray,
+    reports: taskReportArray,
+    mentorManagers: mentorManagersArray
   },
   {
     id: 10,
@@ -267,6 +291,9 @@ export const programsListArray = [
     createdAt: "Dec 12, 2022",
     image: programsIcon,
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!"
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!",
+    mentors: mentorsArray,
+    reports: taskReportArray,
+    mentorManagers: mentorManagersArray
   }
 ];
