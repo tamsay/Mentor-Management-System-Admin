@@ -352,7 +352,7 @@ function EditProgram({ params }: { params: { id: string } }) {
 
               <div className={cx(styles.wrapper, "flexRow-align-center")}>
                 <div className={cx(styles.leftSide, "flexCol")}>
-                  <h6 className={cx(styles.title)}>Set Criteria</h6>
+                  <h6 className={cx(styles.title)}>Edit Criteria</h6>
                   <div className={cx(styles.statsDiv, "flexRow")}>
                     <span className={cx(styles.stats)}>
                       {criteriaData && Object.keys(criteriaData).length} selected

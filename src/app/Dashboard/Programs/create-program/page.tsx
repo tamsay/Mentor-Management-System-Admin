@@ -46,8 +46,8 @@ function CreateProgram() {
   const [collapseInput, setCollapseInput] = useState(true);
   const [selectedMentorManagers, setSelectedMentorManagers] = useState([]);
   const [selectedMentors, setSelectedMentors] = useState([]);
-  // const criteriaData = JSON.parse(localStorage.getItem("criteria")) || {};
-  const criteriaData = {};
+  const tempCriteriaData = localStorage.getItem("criteria");
+  const criteriaData = tempCriteriaData ? JSON.parse(tempCriteriaData) : {};
   console.log(criteriaData, "criteria data here");
 
   // const [closeSelectElement, setCloseSelectElement] = useState(false);

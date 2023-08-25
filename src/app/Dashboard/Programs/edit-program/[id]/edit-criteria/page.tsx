@@ -81,7 +81,7 @@ const EditCriteria = () => {
       showModal({
         name: "successNotification",
         modalData: {
-          title: "Criteria Created Successfully!",
+          title: "Criteria Modified Successfully!",
           image: successImage,
           redirectUrl: "/dashboard/programs/edit-program/1"
         }
@@ -330,7 +330,7 @@ const EditCriteria = () => {
               <div className={cx(styles.submitBtnDiv, "flexRow")}>
                 <Button
                   onClick={handleSubmit((data) => handleCreateCriteria(data))}
-                  title='Create Criteria'
+                  title='Save'
                   btnType='primary'
                   disabled={disableCreateBtn}
                 />
