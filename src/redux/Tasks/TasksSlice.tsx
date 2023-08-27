@@ -1,4 +1,6 @@
 import { toast } from "react-toastify";
+import { createSlice } from "@reduxjs/toolkit";
+
 import {
   createTaskApi,
   deleteTaskApi,
@@ -9,8 +11,8 @@ import {
   getMonthlyTasksApi,
   getTaskDetailsApi,
   getWeeklyTasksApi,
-  getYearlyTasksApi} from "../api/tasks";
-import { createSlice } from "@reduxjs/toolkit";
+  getYearlyTasksApi
+} from "../api/tasks";
 
 import {
   createTaskLoading,
@@ -22,8 +24,8 @@ import {
   getMonthlyTasksLoading,
   getTaskDetailsLoading,
   getWeeklyTasksLoading,
-  getYearlyTasksLoading} from "@/redux/Loading/LoadingSlice";
-
+  getYearlyTasksLoading
+} from "@/redux/Loading/LoadingSlice";
 
 const initialState = {
   error: false,
@@ -138,11 +140,11 @@ export const editTask = (data) => async (dispatch) => {
   }
 };
 
-export const getAllTasks = (data) => async (dispatch) => {
+export const getAllTasks = () => async (dispatch) => {
   dispatch(getAllTasksLoading(true));
 
   try {
-    const response = await getAllTasksApi(data);
+    const response = await getAllTasksApi();
     dispatch(getAllTasksLoading(false));
     dispatch(getAllTasksAction(response?.data?.data));
     return { success: true };

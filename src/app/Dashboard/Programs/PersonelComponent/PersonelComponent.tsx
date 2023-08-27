@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import cx from "classnames";
 import Image from "next/image";
-import PropTypes from "prop-types";
 
 import styles from "./PersonelComponent.module.scss";
 
@@ -10,7 +9,13 @@ import CheckIcon from "@/assets/icons/check-icon.svg";
 
 import { initialsCase, titleCase } from "@/helpers/textTransform";
 
-function PersonelComponent({ data, checked, handleChecked }) {
+type PersonelComponentProps = {
+  data: Mentor | MentorManager;
+  checked: boolean;
+  handleChecked: (id: string) => void;
+};
+
+const PersonelComponent: React.FC<PersonelComponentProps> = ({ data, checked, handleChecked }) => {
   const [toggleIcon, setToggleIcon] = useState(false);
 
   useEffect(() => {
@@ -24,8 +29,8 @@ function PersonelComponent({ data, checked, handleChecked }) {
 
   return (
     <div className={cx(styles.personelCompContainer, "flexRow-align-center")}>
-      {data?.profilePicture ? (
-        <Image className={cx(styles.avatar)} src={data?.profilePicture} alt='user-image' />
+      {data?.image ? (
+        <Image className={cx(styles.avatar)} src={data?.image} alt='user-image' />
       ) : (
         <span className={cx(styles.avatarText, "flexRow-fully-centered")}>
           {initialsCase(`${data?.firstName} ${data?.lastName}`)}
@@ -33,10 +38,10 @@ function PersonelComponent({ data, checked, handleChecked }) {
       )}
       <div className={cx(styles.userInfo, "flexCol")}>
         <h5 className={cx(styles.name)}>{`${titleCase(data?.firstName)} ${titleCase(data?.lastName)}`}</h5>
-        <p className={cx(styles.designation)}>{data?.headline}</p>
+        <p className={cx(styles.designation)}>{data?.designation}</p>
         <div className={cx(styles.positionTags, "flexRow")}>
-          {data?.roles &&
-            data?.roles.map((tag, index) => (
+          {data?.positionTags &&
+            data?.positionTags.map((tag, index) => (
               <span key={index} className={cx(styles.tag)}>
                 {tag}
               </span>
@@ -50,12 +55,6 @@ function PersonelComponent({ data, checked, handleChecked }) {
       )}
     </div>
   );
-}
-
-PersonelComponent.propTypes = {
-  data: PropTypes.object.isRequired,
-  checked: PropTypes.bool,
-  handleChecked: PropTypes.func
 };
 
 export default PersonelComponent;

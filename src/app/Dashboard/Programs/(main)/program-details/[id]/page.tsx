@@ -46,13 +46,11 @@ const ProgramDetails = ({ params }: { params: { id: string } }) => {
 
   const programDetailsData = [
     {
-      // icon: <ReportIcon />,
       icon: mentorManagersIcon,
       value: Array.isArray(programDetails?.mentorManagers) && programDetails?.mentorManagers.length,
       caption: "Mentor Managers assigned to this program"
     },
     {
-      // icon: <ReportIcon />,
       icon: mentorsIcon,
       value: Array.isArray(programDetails?.mentors) && programDetails?.mentors.length,
       caption: "Mentors assigned to this program"

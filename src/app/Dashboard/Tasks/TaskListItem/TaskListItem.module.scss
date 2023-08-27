@@ -17,6 +17,17 @@
 
     .icon {
       width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+    }
+
+    .avatarText {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background-color: var(--green4Color);
+      font-size: 1.125rem;
+      font-family: var(--muktaSemiBold);
     }
 
     .mainContent {
@@ -82,6 +93,7 @@
 
       .icon {
         width: 1.75rem;
+        height: 1.75rem;
       }
 
       .mainContent {

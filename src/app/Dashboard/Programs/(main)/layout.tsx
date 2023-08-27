@@ -14,7 +14,6 @@ import GenericSideBar from "@/components/GenericSideBar/GenericSideBar";
 import Search from "@/components/Search/Search";
 
 import backIcon from "@/assets/icons/back-icon.svg?url";
-import EmptySelectionIcon from "@/assets/icons/empty-selection-icon.svg";
 import SubMenuIcon from "@/assets/icons/sub-menu-icon.svg";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -174,7 +173,7 @@ const Layout = ({ children }) => {
             </div>
             <h3 className={cx(styles.title)}>Programs</h3>
           </div>
-          <Button title='Create New Program' onClick={() => router.push("programs/create-program")} />
+          <Button title='Create New Program' onClick={() => router.push("/dashboard/programs/create-program")} />
         </section>
 
         <div className={cx(styles.content)}>{children}</div>

@@ -1,4 +1,6 @@
 import { toast } from "react-toastify";
+import { createSlice } from "@reduxjs/toolkit";
+
 import {
   createProgramApi,
   deleteProgramApi,
@@ -11,7 +13,6 @@ import {
   getArchivedProgramsApi,
   getProgramDetailsApi
 } from "../api/programs";
-import { createSlice } from "@reduxjs/toolkit";
 
 import {
   createProgramLoading,
@@ -25,7 +26,6 @@ import {
   getArchivedProgramsLoading,
   getProgramDetailsLoading
 } from "@/redux/Loading/LoadingSlice";
-
 
 const initialState = {
   error: false,

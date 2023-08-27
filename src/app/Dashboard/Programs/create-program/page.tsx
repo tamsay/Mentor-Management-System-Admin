@@ -24,15 +24,16 @@ import CloseIcon from "@/assets/icons/undo-icon.svg";
 import SuccessImage from "@/assets/images/create-task-success-image.svg";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { getAllMentorManagers } from "@/redux/MentorManagers/MentorManagersSlice";
+import { getAllMentors } from "@/redux/Mentors/MentorsSlice";
 import { showModal } from "@/redux/Modal/ModalSlice";
 import { getAllUserProfiles } from "@/redux/Profile/ProfileSlice";
 import { createProgram } from "@/redux/Programs/ProgramsSlice";
 
 import { createProgramSchema } from "@/helpers/validation";
 
-// import { getAllMentors } from "@/redux/Mentors/MentorsSlice";
-// import { getAllMentorManagers } from "@/redux/MentorManagers/MentorManagersSlice";
-// import programAvatar from "@/assets/images/program-avatar.svg";
+// temp values for mentor and mentor manager arrays
+import { mentorManagersArray, mentorsArray } from "@/constants/testData";
 
 function CreateProgram() {
   const router = useRouter();
@@ -48,20 +49,18 @@ function CreateProgram() {
   const [selectedMentors, setSelectedMentors] = useState([]);
   const tempCriteriaData = localStorage.getItem("criteria");
   const criteriaData = tempCriteriaData ? JSON.parse(tempCriteriaData) : {};
-  console.log(criteriaData, "criteria data here");
 
   // const [closeSelectElement, setCloseSelectElement] = useState(false);
 
   const displayModal = useAppSelector((state) => state.modal.show);
   const modalName = useAppSelector((state) => state.modal.modalName);
   const createProgramLoading = useAppSelector((state) => state.loading.createProgramLoading);
-  const allUserProfilesData = useAppSelector((state) => state.profile.getAllUserProfilesData);
-  // const allMentorsData = useAppSelector((state) => state.mentors.getAllMentorsData);
-  // const allMentorManagersData = useAppSelector((state) => state.mentorManagers.getAllMentorManagersData);
+  const allMentorsData = useAppSelector((state) => state.mentors.getAllMentorsData);
+  const allMentorManagersData = useAppSelector((state) => state.mentorManagers.getAllMentorManagersData);
 
   useEffect(() => {
-    // dispatch(getAllMentors());
-    // dispatch(getAllMentorManagers());
+    dispatch(getAllMentors());
+    dispatch(getAllMentorManagers());
     dispatch(getAllUserProfiles({ page: 1, pageSize: 10 }));
   }, [dispatch]);
 
@@ -132,9 +131,7 @@ function CreateProgram() {
     // Added to prevent console errors
   };
 
-  const getListComponents = (data, selectedUsers) => {
-    console.log(data, "data");
-    console.log(selectedUsers, "selected users");
+  const getListComponents = (data, selectedUsers, type) => {
     const listItems =
       Array.isArray(data) &&
       data.map((item, index) => {
@@ -152,38 +149,34 @@ function CreateProgram() {
       });
 
     const headerComponent = (
-      <div className={cx(styles.filterAndSearchDiv, "flexRow-align-center")}>
-        <div className={cx(styles.searchWrapper)}>
-          <Search
-            inputPlaceholder={
-              openSideBar?.category === "mentor-manager" ? "Search for Mentor Manager" : "Search for Mentor"
-            }
-            onChange={handleSearchInput}
-            collapseInput={collapseInput}
-            setCollapseInput={setCollapseInput}
-            closeSelectElement={handleCloseSelectElement}
+      <>
+        <div className={cx(styles.filterAndSearchDiv, "flexRow-align-center")}>
+          <div className={cx(styles.searchWrapper)}>
+            <Search
+              inputPlaceholder={
+                openSideBar?.category === "mentorManager" ? "Search for Mentor Manager" : "Search for Mentor"
+              }
+              onChange={handleSearchInput}
+              collapseInput={collapseInput}
+              setCollapseInput={setCollapseInput}
+              closeSelectElement={handleCloseSelectElement}
+            />
+          </div>
+          <CloseIcon
+            className={cx(styles.closeIcon)}
+            alt='close-icon'
+            onClick={() => setOpenSideBar({ open: false })}
           />
         </div>
-        {/* <Filter
-          dropdownItems={[
-            { name: "All", id: 1 },
-            { name: "Mentors", id: 2 },
-            { name: "Mentor Managers", id: 3 }
-          ]}
-          selectedFilterItem={handleSelectedFilterItem}
-          closeSearchInput={handleCloseSearchInput}
-          closeSelectElement={closeSelectElement}
-          setCloseSelectElement={setCloseSelectElement}
-        /> */}
-        <CloseIcon className={cx(styles.closeIcon)} alt='close-icon' onClick={() => setOpenSideBar({ open: false })} />
-      </div>
+        <p style={{ fontWeight: "bold" }}>{type === "mentor" ? "Select Mentor(s)" : "Select Mentor Manager(s)"}</p>
+      </>
     );
 
     return { listItems, headerComponent };
   };
 
   const handleSelectedItem = (itemId) => {
-    if (openSideBar.category === "mentor-manager") {
+    if (openSideBar.category === "mentorManager") {
       if (selectedMentorManagers.find((userId) => userId === itemId)) {
         let filteredMentorManagers = selectedMentorManagers.filter((id) => id !== itemId);
         setSelectedMentorManagers(filteredMentorManagers);
@@ -241,23 +234,6 @@ function CreateProgram() {
   const handleSideBarMenuClick = () => {
     // This is added to remove the warning of unused function in the selection sidebar component
   };
-
-  const getUsers = (category) => {
-    if (category === "mentorManager") {
-      return (
-        Array.isArray(allUserProfilesData) &&
-        allUserProfilesData.filter((item) => item.roles.find((role) => role.toLowerCase() === "manager"))
-      );
-    }
-    if (category === "mentor") {
-      return (
-        Array.isArray(allUserProfilesData) &&
-        allUserProfilesData.filter((item) => item.roles.find((role) => role.toLowerCase() === "mentor"))
-      );
-    }
-  };
-
-  console.log(uploadedFile, "uploaded file");
 
   return (
     <div className={cx(styles.createProgramContainer, "flexRow")}>
@@ -333,7 +309,7 @@ function CreateProgram() {
                     <ClearListIcon onClick={() => handleClearList("mentorManager")} />
                   </div>
                 </div>
-                <Button title='Select' size='small' onClick={(e) => handleOpenSideBar(e, true, "mentor-manager")} />
+                <Button title='Select' size='small' onClick={(e) => handleOpenSideBar(e, true, "mentorManager")} />
               </div>
 
               <div className={cx(styles.wrapper, "flexRow-align-center")}>
@@ -374,18 +350,18 @@ function CreateProgram() {
         </div>
       </div>
 
-      {openSideBar.open && openSideBar.category === "mentor-manager" ? (
+      {openSideBar.open && openSideBar.category === "mentorManager" ? (
         <div className={cx(styles.sideBarSection)}>
           <SelectionSideBar
             selectedMenuItem={handleSideBarMenuClick}
-            data={getListComponents(getUsers("mentorManager"), selectedMentorManagers)}
+            data={getListComponents(mentorManagersArray, selectedMentorManagers, "mentorManager")}
           />
         </div>
       ) : openSideBar.open && openSideBar.category === "mentor" ? (
         <div className={cx(styles.sideBarSection)}>
           <SelectionSideBar
             selectedMenuItem={handleSideBarMenuClick}
-            data={getListComponents(getUsers("mentor"), selectedMentors)}
+            data={getListComponents(mentorsArray, selectedMentors, "mentor")}
           />
         </div>
       ) : null}

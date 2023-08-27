@@ -1,7 +1,10 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 import cx from "classnames";
 import { formatDistanceToNow } from "date-fns";
+import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 
 import styles from "./TaskDetails.module.scss";
 
@@ -22,10 +25,11 @@ import { deleteTask, getAllTasks, getTaskDetails } from "@/redux/Tasks/TasksSlic
 import arrayToString from "@/helpers/arrayToString";
 import { capitalizeFirstWord } from "@/helpers/textTransform";
 
-function TaskDetails() {
+import { tasksListArray } from "@/constants/testData";
+
+function TaskDetails({ params }: { params: { id: string } }) {
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const params = useParams();
   const taskId = params.id;
 
   const [toggleBody, setToggleBody] = useState({
@@ -35,7 +39,8 @@ function TaskDetails() {
 
   const displayModal = useAppSelector((state) => state.modal.show);
   const modalName = useAppSelector((state) => state.modal.modalName);
-  const taskDetails = useAppSelector((state) => state.tasks.getTaskDetailsData);
+  // const taskDetails = useAppSelector((state) => state.tasks.getTaskDetailsData);
+  const taskDetails = tasksListArray.find((item) => item.id === taskId);
   const errorDetails = useAppSelector((state) => state.tasks.error);
   const deleteTaskLoading = useAppSelector((state) => state.loading.deleteTaskLoading);
 

@@ -8,8 +8,8 @@ export const editTaskApi = async (data) => {
   return await axios.put(`/UserTask/task/${data?.id}`, data);
 };
 
-export const getAllTasksApi = async (data) => {
-  return await axios.get("/UserTask/get-tasks", data);
+export const getAllTasksApi = async () => {
+  return await axios.get("/UserTask/get-tasks");
 };
 
 export const getCompletedTasksApi = async (data) => {

@@ -1,14 +1,16 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import cx from "classnames";
 import { formatDistanceToNow } from "date-fns";
+import Image from "next/image";
+import { useParams } from "next/navigation";
 import PropTypes from "prop-types";
+
 import styles from "./TaskListItem.module.scss";
 
-import calendarIcon from "@/assets/icons/tasks-overview-calendar-icon.svg";
+import calendarIcon from "@/assets/icons/tasks-overview-calendar-icon.svg?url";
 import cardIcon from "@/assets/icons/tasks-overview-card-icon.svg";
 
-import { capitalizeFirstWord } from "@/helpers/textTransform";
+import { capitalizeFirstWord, initialsCase } from "@/helpers/textTransform";
 
 function TaskListItem({ data }) {
   const { id } = useParams();
@@ -16,7 +18,11 @@ function TaskListItem({ data }) {
   return (
     <div className={cx(styles.taskListItemContainer, "flexCol", id === data?.id.toString() && styles.activeItem)}>
       <div className={cx(styles.body, "flexRow-align-center")}>
-        <Image className={cx(styles.icon)} src={cardIcon} alt='icon' />
+        {data?.image ? (
+          <Image className={cx(styles.icon)} src={data?.image} alt='icon' width={100} height={100} />
+        ) : (
+          <span className={cx(styles.avatarText, "flexRow-fully-centered")}>{initialsCase(`${data?.title}`)}</span>
+        )}
         <div className={cx(styles.mainContent, "flexCol")}>
           <h5 className={cx(styles.title)}>{data?.title}</h5>
           <div className={cx(styles.metaData, "flexRow")}>

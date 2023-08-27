@@ -9,6 +9,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import PersonelComponent from "../../PersonelComponent/PersonelComponent";
+// import { ProgramDetails } from "../../types";
 import styles from "./EditProgram.module.scss";
 
 import Button from "@/components/Button/Button";
@@ -21,9 +22,11 @@ import TextArea from "@/components/TextArea/TextArea";
 import ClearListIcon from "@/assets/icons/clear-list-icon.svg";
 import CloseIconAlt from "@/assets/icons/close-icon.svg";
 import CloseIcon from "@/assets/icons/undo-icon.svg";
-import SuccessImage from "@/assets/images/create-task-success-image.svg";
+import SuccessImage from "@/assets/images/create-task-success-image.svg?url";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { getAllMentorManagers } from "@/redux/MentorManagers/MentorManagersSlice";
+import { getAllMentors } from "@/redux/Mentors/MentorsSlice";
 import { showModal } from "@/redux/Modal/ModalSlice";
 import { getAllUserProfiles } from "@/redux/Profile/ProfileSlice";
 import { editProgram, getProgramDetails } from "@/redux/Programs/ProgramsSlice";
@@ -31,8 +34,7 @@ import { editProgram, getProgramDetails } from "@/redux/Programs/ProgramsSlice";
 import { editProgramSchema } from "@/helpers/validation";
 
 // to be removed when the endpoint is fixed
-import { programsListArray } from "@/constants/testData";
-
+import { mentorManagersArray, mentorsArray, programsListArray } from "@/constants/testData";
 function EditProgram({ params }: { params: { id: string } }) {
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -47,13 +49,13 @@ function EditProgram({ params }: { params: { id: string } }) {
 
   const displayModal = useAppSelector((state) => state.modal.show);
   const modalName = useAppSelector((state) => state.modal.modalName);
-  // const programDetails = useAppSelector((state) => state.programs.getProgramDetailsData);
-  const programDetails = programsListArray.find((item) => item.id === Number(programId));
+  // const programDetails = useAppSelector((state) => state.programs.getProgramDetailsData) as ProgramDetails;
+  const programDetails = programsListArray.find((item) => item.id === programId) as unknown as ProgramDetails;
   const allUserProfilesData = useAppSelector((state) => state.profile.getAllUserProfilesData);
   const editProgramLoading = useAppSelector((state) => state.loading.editProgramLoading);
 
-  const [selectedMentorManagers, setSelectedMentorManagers] = useState(programDetails?.mentorManagers || []);
-  const [selectedMentors, setSelectedMentors] = useState(programDetails?.mentors || []);
+  const [selectedMentorManagers, setSelectedMentorManagers] = useState(programDetails.mentorManagers || []);
+  const [selectedMentors, setSelectedMentors] = useState(programDetails.mentors || []);
   let tempCriteriaData = localStorage.getItem("criteria");
   const criteriaData = tempCriteriaData ? JSON.parse(tempCriteriaData) : {};
   console.log(criteriaData, "criteria data here");
@@ -79,37 +81,38 @@ function EditProgram({ params }: { params: { id: string } }) {
 
   useEffect(() => {
     reset({
-      name: programDetails?.name || "",
-      description: programDetails?.description || ""
+      name: programDetails.name || "",
+      description: programDetails.description || ""
     });
-    setSelectedMentorManagers(programDetails?.mentorManagers || []);
-    setSelectedMentors(programDetails?.mentors || []);
+    setSelectedMentorManagers(programDetails.mentorManagers || []);
+    setSelectedMentors(programDetails.mentors || []);
   }, [
-    programDetails?.criteria,
-    programDetails?.description,
-    programDetails?.mentorManagers,
-    programDetails?.mentors,
-    programDetails?.name,
+    programDetails.criteria,
+    programDetails.description,
+    programDetails.mentorManagers,
+    programDetails.mentors,
+    programDetails.name,
     reset
   ]);
 
-  const handleEditProgram = async (data) => {
-    // let formattedMentorManagerIds = selectedMentorManagers.map((id) => {
-    //   return { mentorManagerId: id };
-    // });
-    // let formattedMentorIds = selectedMentors.map((id) => {
-    //   return { programsMentorId: id };
-    // });
+  const handleEditProgram = async (data: { name: string; description: string }) => {
+    let formattedMentorManagerIds = selectedMentorManagers.map((user) => {
+      user.id;
+    });
+    let formattedMentorIds = selectedMentors.map((user) => {
+      user.id;
+    });
+
     let payload = {
       ...data,
       id: programId,
-      programmePicture: uploadedFile?.imagePreviewUrl || programDetails?.programmePicture,
-      archivedBy: programDetails?.archivedBy || "", // this will be replaced later - it ought to be done at the backend
-      createdBy: programDetails?.createdBy || "", // this will be replaced later - it ought to be done at the backend
+      image: uploadedFile?.imagePreviewUrl || programDetails.image,
+      archivedBy: programDetails.archivedBy || "", // this will be replaced later - it ought to be done at the backend
+      createdBy: programDetails.createdBy || "", // this will be replaced later - it ought to be done at the backend
       status: 1, // this will be replaced later - it ought to be done at the backend
       criteria: JSON.stringify(localStorage.getItem("criteria")) || "",
-      managers: [],
-      mentors: []
+      mentorManagers: formattedMentorManagerIds,
+      mentors: formattedMentorIds
     };
 
     let response = await dispatch(editProgram(payload));
@@ -119,7 +122,7 @@ function EditProgram({ params }: { params: { id: string } }) {
           name: "successNotification",
           modalData: {
             title: "Program Edited Successfully!",
-            image: successImage,
+            image: SuccessImage,
             redirectUrl: "/dashboard/programs"
           }
         })
@@ -128,12 +131,12 @@ function EditProgram({ params }: { params: { id: string } }) {
     }
   };
 
-  const handleOpenSideBar = (e, open, category) => {
+  const handleOpenSideBar = (e: { preventDefault: () => void }, open: boolean, category: string) => {
     e.preventDefault();
     setOpenSideBar({ open, category });
   };
 
-  const handleSearchInput = (e) => {
+  const handleSearchInput = (e: { target: { value: any } }) => {
     console.log(e.target.value);
   };
 
@@ -141,7 +144,11 @@ function EditProgram({ params }: { params: { id: string } }) {
     // Added to prevent console errors
   };
 
-  const getListComponents = (data, selectedUsers) => {
+  const getListComponents = (
+    data: Mentor[] | MentorManager[],
+    selectedUsers: Mentor[] | MentorManager[],
+    type: string
+  ) => {
     const listItems =
       Array.isArray(data) &&
       data.map((item, index) => {
@@ -150,7 +157,7 @@ function EditProgram({ params }: { params: { id: string } }) {
             <PersonelComponent
               key={index}
               data={item}
-              checked={selectedUsers.some((userId) => userId === item?.id)}
+              checked={selectedUsers.some((user: { id: any }) => user?.id === item?.id)}
               handleChecked={handleSelectedItem}
             />
           ),
@@ -159,49 +166,47 @@ function EditProgram({ params }: { params: { id: string } }) {
       });
 
     const headerComponent = (
-      <div className={cx(styles.filterAndSearchDiv, "flexRow-align-center")}>
-        <div className={cx(styles.searchWrapper)}>
-          <Search
-            inputPlaceholder='Search for mentor...'
-            onChange={handleSearchInput}
-            collapseInput={collapseInput}
-            setCollapseInput={setCollapseInput}
-            closeSelectElement={handleCloseSelectElement}
+      <>
+        <div className={cx(styles.filterAndSearchDiv, "flexRow-align-center")}>
+          <div className={cx(styles.searchWrapper)}>
+            <Search
+              inputPlaceholder={
+                openSideBar?.category === "mentorManager" ? "Search for Mentor Manager" : "Search for Mentor"
+              }
+              onChange={handleSearchInput}
+              collapseInput={collapseInput}
+              setCollapseInput={setCollapseInput}
+              closeSelectElement={handleCloseSelectElement}
+            />
+          </div>
+          <CloseIcon
+            className={cx(styles.closeIcon)}
+            alt='close-icon'
+            onClick={() => setOpenSideBar({ ...openSideBar, open: false })}
           />
         </div>
-        {/* <Filter
-          dropdownItems={[
-            { name: "All", id: 1 },
-            { name: "Mentors", id: 2 },
-            { name: "Mentor Managers", id: 3 }
-          ]}
-          selectedFilterItem={handleSelectedFilterItem}
-          closeSearchInput={handleCloseSearchInput}
-          closeSelectElement={closeSelectElement}
-          setCloseSelectElement={setCloseSelectElement}
-        /> */}
-        <CloseIcon className={cx(styles.closeIcon)} alt='close-icon' onClick={() => setOpenSideBar({ open: false })} />
-      </div>
+        <p style={{ fontWeight: "bold" }}>{type === "mentor" ? "Select Mentor(s)" : "Select Mentor Manager(s)"}</p>
+      </>
     );
 
     return { listItems, headerComponent };
   };
 
-  const handleSelectedItem = (itemId) => {
-    if (openSideBar.category === "mentor-manager") {
-      if (selectedMentorManagers.find((userId) => userId === itemId)) {
-        let filteredMentorManagers = selectedMentorManagers.filter((id) => id !== itemId);
+  const handleSelectedItem = (itemId: string) => {
+    if (openSideBar.category === "mentorManager") {
+      if (selectedMentorManagers.find((user) => user.id === itemId)) {
+        let filteredMentorManagers = selectedMentorManagers.filter((user) => user.id !== itemId);
         setSelectedMentorManagers(filteredMentorManagers);
       } else {
-        setSelectedMentorManagers([...selectedMentorManagers, `${itemId}`]);
+        setSelectedMentorManagers([...selectedMentorManagers, mentorManagersArray.find((user) => user.id === itemId)]);
       }
     }
     if (openSideBar.category === "mentor") {
-      if (selectedMentors.find((userId) => userId === itemId)) {
-        let filteredMentors = selectedMentors.filter((id) => id !== itemId);
+      if (selectedMentors.find((user) => user.id === itemId)) {
+        let filteredMentors = selectedMentors.filter((user) => user.id !== itemId);
         setSelectedMentors(filteredMentors);
       } else {
-        setSelectedMentors([...selectedMentors, `${itemId}`]);
+        setSelectedMentors([...selectedMentors, mentorsArray.find((user) => user.id === itemId)]);
       }
     }
   };
@@ -211,7 +216,7 @@ function EditProgram({ params }: { params: { id: string } }) {
     imagePreviewUrl: ""
   });
 
-  const onDrop = useCallback((acceptedFiles) => {
+  const onDrop = useCallback((acceptedFiles: any[]) => {
     let file = acceptedFiles[0];
     const reader = new FileReader();
     reader.onloadend = () => {
@@ -222,20 +227,20 @@ function EditProgram({ params }: { params: { id: string } }) {
 
   const { getRootProps } = useDropzone({ onDrop, accept: "image/*" });
 
-  const handleDragOver = (e) => {
+  const handleDragOver = (e: { preventDefault: () => void }) => {
     e.preventDefault();
   };
 
-  const handleDropzoneClick = (e) => {
+  const handleDropzoneClick = (e: { preventDefault: () => void }) => {
     e.preventDefault();
   };
 
-  const handleEditCriteria = (e) => {
+  const handleEditCriteria = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     router.push(`${pathname}/edit-criteria`);
   };
 
-  const handleClearList = (category) => {
+  const handleClearList = (category: string) => {
     if (category === "mentorManager") {
       setSelectedMentorManagers([]);
     } else if (category === "mentor") {
@@ -245,21 +250,6 @@ function EditProgram({ params }: { params: { id: string } }) {
 
   const handleSideBarMenuClick = () => {
     // This is added to remove the warning of unused function in the selection sidebar component
-  };
-
-  const getUsers = (category) => {
-    if (category === "mentorManager") {
-      return (
-        Array.isArray(allUserProfilesData) &&
-        allUserProfilesData.filter((item) => item.roles.find((role) => role.toLowerCase() === "manager"))
-      );
-    }
-    if (category === "mentor") {
-      return (
-        Array.isArray(allUserProfilesData) &&
-        allUserProfilesData.filter((item) => item.roles.find((role) => role.toLowerCase() === "mentor"))
-      );
-    }
   };
 
   return (
@@ -336,7 +326,7 @@ function EditProgram({ params }: { params: { id: string } }) {
                     <ClearListIcon onClick={() => handleClearList("mentorManager")} />
                   </div>
                 </div>
-                <Button title='Select' size='small' onClick={(e) => handleOpenSideBar(e, true, "mentor-manager")} />
+                <Button title='Select' size='small' onClick={(e) => handleOpenSideBar(e, true, "mentorManager")} />
               </div>
 
               <div className={cx(styles.wrapper, "flexRow-align-center")}>
@@ -377,18 +367,18 @@ function EditProgram({ params }: { params: { id: string } }) {
         </div>
       </div>
 
-      {openSideBar.open && openSideBar.category === "mentor-manager" ? (
+      {openSideBar.open && openSideBar.category === "mentorManager" ? (
         <div className={cx(styles.sideBarSection)}>
           <SelectionSideBar
             selectedMenuItem={handleSideBarMenuClick}
-            data={getListComponents(getUsers("mentorManager"), selectedMentorManagers)}
+            data={getListComponents(mentorManagersArray, selectedMentorManagers, "mentorManager")}
           />
         </div>
       ) : openSideBar.open && openSideBar.category === "mentor" ? (
         <div className={cx(styles.sideBarSection)}>
           <SelectionSideBar
             selectedMenuItem={handleSideBarMenuClick}
-            data={getListComponents(getUsers("mentor"), selectedMentors)}
+            data={getListComponents(mentorsArray, selectedMentors, "mentor")}
           />
         </div>
       ) : null}

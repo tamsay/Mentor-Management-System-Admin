@@ -1,33 +1,39 @@
-import React, { useEffect, useState } from "react";
-import { Outlet, useNavigate, useParams } from "react-router-dom";
-import cx from "classnames";
+"use client";
 
-import TaskListItem from "./TaskListItem/TaskListItem";
-import styles from "./Tasks.module.scss";
+import React, { useEffect, useState } from "react";
+import cx from "classnames";
+import Image from "next/image";
+import { useParams, useRouter } from "next/navigation";
+
+import TaskListItem from "../TaskListItem/TaskListItem";
+import styles from "./TasksLayout.module.scss";
 
 import Button from "@/components/Button/Button";
 import Filter from "@/components/Filter/Filter";
 import GenericSideBar from "@/components/GenericSideBar/GenericSideBar";
 import Search from "@/components/Search/Search";
 
-import backIcon from "@/assets/icons/back-icon.svg";
-import emptySelectionIcon from "@/assets/icons/empty-selection-icon.svg";
-import subMenuIcon from "@/assets/icons/sub-menu-icon.svg";
+import backIcon from "@/assets/icons/back-icon.svg?url";
+import SubMenuIcon from "@/assets/icons/sub-menu-icon.svg";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { getAllTasks, getCompletedTasks, getInprogressTasks } from "@/redux/Tasks/TasksSlice";
 
+import { tasksListArray } from "@/constants/testData";
+
 import useIsMobile from "@/hooks/useIsMobile";
 
-function Tasks() {
+const Layout = ({ children }) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const params = useParams();
   const isMobile = useIsMobile();
   const [selectedMenuId, setSelectedMenuId] = useState(params.id);
   const [openSideBar, setOpenSideBar] = useState(false);
+  const [tasksArray, setTasksArray] = useState([]);
 
-  const allTasksData = useAppSelector((state) => state.tasks.getAllTasksData);
+  // const allTasksData = useAppSelector((state) => state.tasks.getAllTasksData);
+  const allTasksData = tasksListArray;
   const allCompletedTasksData = useAppSelector((state) => state.tasks.getCompletedTasksData);
   const allInprogressTasksData = useAppSelector((state) => state.tasks.getInprogressTasksData);
   const allTasksDataLoading = useAppSelector((state) => state.loading.getAllTasksLoading);
@@ -39,30 +45,9 @@ function Tasks() {
     setSelectedMenuId(params.id);
   }, [dispatch, params.id]);
 
-  const [taskData, setTaskData] = useState(allTasksData);
-  const [taskDataLoading, setTaskDataLoading] = useState(allTasksDataLoading);
-  const [filterValue, setFilterValue] = useState("all");
-
   useEffect(() => {
-    if (filterValue === "all") {
-      setTaskData(allTasksData);
-      setTaskDataLoading(allTasksDataLoading);
-    } else if (filterValue === "completed") {
-      setTaskData(allCompletedTasksData);
-      setTaskDataLoading(allCompletedTasksDataLoading);
-    } else if (filterValue === "in-progress") {
-      setTaskData(allInprogressTasksData);
-      setTaskDataLoading(allInprogressTasksDataLoading);
-    }
-  }, [
-    allTasksData,
-    allCompletedTasksData,
-    allInprogressTasksData,
-    allTasksDataLoading,
-    allCompletedTasksDataLoading,
-    allInprogressTasksDataLoading,
-    filterValue
-  ]);
+    setTasksArray(allTasksData);
+  }, [allTasksData]);
 
   useEffect(() => {
     isMobile ? setOpenSideBar(false) : setOpenSideBar(true);
@@ -148,8 +133,33 @@ function Tasks() {
 
   const handleSelectedMenuItem = (id) => {
     setSelectedMenuId(id);
-    router.push(`task-details/${id}`);
+    router.push(`/dashboard/tasks/task-details/${id}`);
   };
+
+  const [taskData, setTaskData] = useState(allTasksData);
+  const [taskDataLoading, setTaskDataLoading] = useState(allTasksDataLoading);
+  const [filterValue, setFilterValue] = useState("all");
+
+  useEffect(() => {
+    if (filterValue === "all") {
+      setTaskData(allTasksData);
+      setTaskDataLoading(allTasksDataLoading);
+    } else if (filterValue === "completed") {
+      setTaskData(allCompletedTasksData);
+      setTaskDataLoading(allCompletedTasksDataLoading);
+    } else if (filterValue === "in-progress") {
+      setTaskData(allInprogressTasksData);
+      setTaskDataLoading(allInprogressTasksDataLoading);
+    }
+  }, [
+    allTasksData,
+    allCompletedTasksData,
+    allInprogressTasksData,
+    allTasksDataLoading,
+    allCompletedTasksDataLoading,
+    allInprogressTasksDataLoading,
+    filterValue
+  ]);
 
   return (
     <div className={cx(styles.tasksContainer, "flexRow")}>
@@ -168,12 +178,7 @@ function Tasks() {
         <section className={cx(styles.heading, "flexRow-space-between")}>
           <div className={cx(styles.titleAndToggler, "flexRow")}>
             <div className={cx(styles.togglerDiv, "flexCol-fully-centered")}>
-              <Image
-                className={cx(styles.toggler)}
-                src={subMenuIcon}
-                alt='toggler'
-                onClick={() => setOpenSideBar(!openSideBar)}
-              />
+              <SubMenuIcon className={cx(styles.toggler)} alt='toggler' onClick={() => setOpenSideBar(!openSideBar)} />
               <small className={cx(styles.togglerText)}>MENU</small>
             </div>
             <h3 className={cx(styles.title)}>Tasks</h3>
@@ -181,20 +186,10 @@ function Tasks() {
           <Button title='Create New Task' onClick={() => router.push("create-task")} />
         </section>
 
-        <div className={cx(styles.content)}>
-          {selectedMenuId ? (
-            <Outlet />
-          ) : (
-            <div className={cx(styles.emptySelectionDiv, "flexCol-fully-centered")}>
-              <Image src={emptySelectionIcon} alt='empty-selection-icon' />
-              <p>No item selected yet </p>
-              <p>Select an item from the list to view task details</p>
-            </div>
-          )}
-        </div>
+        <div className={cx(styles.content)}>{children}</div>
       </section>
     </div>
   );
-}
+};
 
-export default Tasks;
+export default Layout;

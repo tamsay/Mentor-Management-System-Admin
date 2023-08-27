@@ -47,10 +47,10 @@ const isAxiosError = (error: any): error is AxiosError => {
   return (error as AxiosError).isAxiosError === true;
 };
 
-export const getAllUserProfiles = (data: Record<string, any>) => async (dispatch: AppDispatch) => {
+export const getAllUserProfiles = () => async (dispatch: AppDispatch) => {
   dispatch(getAllUserProfilesLoading(true));
   try {
-    const response = await getAllUserProfilesApi(data);
+    const response = await getAllUserProfilesApi();
     dispatch(getAllUserProfilesLoading(false));
     dispatch(getAllUserProfilesAction(response?.data?.data));
     return { success: true };
