@@ -377,7 +377,14 @@ export const tasksListArray = [
   {
     id: "1",
     title: "Task 1",
-    createdAt: "Dec 12, 2022",
-    image: programsIcon
+    createdAt: "August 12, 2023",
+    image: programsIcon,
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+    criteria: {},
+    archivedBy: null,
+    createdBy: null,
+    mentors: mentorsArray,
+    reports: taskReportArray,
+    mentorManagers: mentorManagersArray
   }
 ];

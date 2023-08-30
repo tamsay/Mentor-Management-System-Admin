@@ -42,8 +42,7 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     dispatch(getAllTasks());
-    setSelectedMenuId(params.id);
-  }, [dispatch, params.id]);
+  }, [dispatch]);
 
   useEffect(() => {
     setTasksArray(allTasksData);
@@ -66,8 +65,8 @@ const Layout = ({ children }) => {
 
   const getSideBarData = () => {
     let listItems =
-      Array.isArray(taskData) &&
-      taskData.map((item, index) => {
+      Array.isArray(tasksArray) &&
+      tasksArray.map((item, index) => {
         return {
           component: <TaskListItem key={index} data={item} />,
           id: item.id
@@ -120,46 +119,28 @@ const Layout = ({ children }) => {
     console.log(data);
   };
 
-  const handleSelectedFilterItem = (value) => {
-    setFilterValue(value);
-    router.push("/dashboard/tasks");
-    value === "all"
-      ? dispatch(getAllTasks())
-      : value === "completed"
-      ? dispatch(getCompletedTasks())
-      : dispatch(getInprogressTasks());
-    setSelectedMenuId(null);
+  const handleSelectedFilterItem = (data) => {
+    console.log(data);
+    switch (data) {
+      case "all":
+        setTasksArray(allTasksData);
+        break;
+      case "completed":
+        console.log(allCompletedTasksData);
+        setTasksArray(allCompletedTasksData);
+        break;
+      case "in-progress":
+        setTasksArray(allInprogressTasksData);
+        break;
+      default:
+        break;
+    }
   };
 
   const handleSelectedMenuItem = (id) => {
     setSelectedMenuId(id);
     router.push(`/dashboard/tasks/task-details/${id}`);
   };
-
-  const [taskData, setTaskData] = useState(allTasksData);
-  const [taskDataLoading, setTaskDataLoading] = useState(allTasksDataLoading);
-  const [filterValue, setFilterValue] = useState("all");
-
-  useEffect(() => {
-    if (filterValue === "all") {
-      setTaskData(allTasksData);
-      setTaskDataLoading(allTasksDataLoading);
-    } else if (filterValue === "completed") {
-      setTaskData(allCompletedTasksData);
-      setTaskDataLoading(allCompletedTasksDataLoading);
-    } else if (filterValue === "in-progress") {
-      setTaskData(allInprogressTasksData);
-      setTaskDataLoading(allInprogressTasksDataLoading);
-    }
-  }, [
-    allTasksData,
-    allCompletedTasksData,
-    allInprogressTasksData,
-    allTasksDataLoading,
-    allCompletedTasksDataLoading,
-    allInprogressTasksDataLoading,
-    filterValue
-  ]);
 
   return (
     <div className={cx(styles.tasksContainer, "flexRow")}>
@@ -169,7 +150,7 @@ const Layout = ({ children }) => {
             data={getSideBarData()}
             selectedMenuItem={handleSelectedMenuItem}
             closeGenericSideBar={() => setOpenSideBar(false)}
-            loading={taskDataLoading}
+            loading={allTasksDataLoading || allCompletedTasksDataLoading || allInprogressTasksDataLoading}
           />
         </div>
       )}
@@ -183,7 +164,7 @@ const Layout = ({ children }) => {
             </div>
             <h3 className={cx(styles.title)}>Tasks</h3>
           </div>
-          <Button title='Create New Task' onClick={() => router.push("create-task")} />
+          <Button title='Create New Task' onClick={() => router.push("/dashboard/tasks/create-task")} />
         </section>
 
         <div className={cx(styles.content)}>{children}</div>

@@ -3,20 +3,27 @@ import cx from "classnames";
 import { formatDistanceToNow } from "date-fns";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import PropTypes from "prop-types";
 
 import styles from "./TaskListItem.module.scss";
 
 import calendarIcon from "@/assets/icons/tasks-overview-calendar-icon.svg?url";
-import cardIcon from "@/assets/icons/tasks-overview-card-icon.svg";
 
 import { capitalizeFirstWord, initialsCase } from "@/helpers/textTransform";
 
-function TaskListItem({ data }) {
+type TaskListItemProps = {
+  data: {
+    id: string;
+    image: string;
+    title: string;
+    createdAt: string;
+  };
+};
+
+const TaskListItem: React.FC<TaskListItemProps> = ({ data }) => {
   const { id } = useParams();
 
   return (
-    <div className={cx(styles.taskListItemContainer, "flexCol", id === data?.id.toString() && styles.activeItem)}>
+    <div className={cx(styles.taskListItemContainer, "flexCol", id === data.id && styles.activeItem)}>
       <div className={cx(styles.body, "flexRow-align-center")}>
         {data?.image ? (
           <Image className={cx(styles.icon)} src={data?.image} alt='icon' width={100} height={100} />
@@ -36,10 +43,6 @@ function TaskListItem({ data }) {
       </div>
     </div>
   );
-}
-
-TaskListItem.propTypes = {
-  data: PropTypes.object
 };
 
 export default TaskListItem;

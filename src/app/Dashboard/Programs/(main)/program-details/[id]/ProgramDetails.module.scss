@@ -168,6 +168,12 @@
       font-family: var(--muktaRegular);
       gap: 0.5rem;
       cursor: pointer;
+
+      svg {
+        path {
+          stroke: var(--primaryRedColor);
+        }
+      }
     }
   }
 }

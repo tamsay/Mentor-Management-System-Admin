@@ -8,14 +8,15 @@ import { usePathname, useRouter } from "next/navigation";
 import styles from "./ProgramDetails.module.scss";
 
 import Button from "@/components/Button/Button";
-import DeleteNotificationModal from "@/components/Modals/DeleteNotification/DeleteNotification";
+import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
 
-import DeleteArchiveIcon from "@/assets/icons/clear-list-reversed.svg";
 import ClockIcon from "@/assets/icons/clock-icon.svg";
+import DeleteIcon from "@/assets/icons/delete-icon-red.svg";
 import mentorsIcon from "@/assets/icons/mentor-icon-green.png";
 import mentorManagersIcon from "@/assets/icons/mentor-manager-icon-green.png";
 import reportIcon from "@/assets/icons/task-report-icon-green.png";
 import CalendarIcon from "@/assets/icons/tasks-overview-calendar-icon.svg";
+import successImage from "@/assets/images/task-delete-success.png";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
@@ -35,7 +36,7 @@ const ProgramDetails = ({ params }: { params: { id: string } }) => {
   const displayModal = useAppSelector((state) => state.modal.show);
   const modalName = useAppSelector((state) => state.modal.modalName);
   // const programDetails = useAppSelector((state) => state.programs.getProgramDetailsData);
-  const programDetails = programsListArray.find((item) => item.id === Number(programId));
+  const programDetails = programsListArray.find((item) => item.id === programId);
   console.log(programId, "programId");
 
   console.log(programDetails, "programDetails");
@@ -73,7 +74,9 @@ const ProgramDetails = ({ params }: { params: { id: string } }) => {
     //       name: "programDeleteNotification",
     //       modalData: {
     //         title: "Program Deleted Successfully",
-    //         type: "program"
+    //         type: "program",
+    //         redirectUrl: "/dashboard/programs",
+    //         image: successImage
     //       }
     //     })
     //   );
@@ -84,7 +87,9 @@ const ProgramDetails = ({ params }: { params: { id: string } }) => {
         name: "programDeleteNotification",
         modalData: {
           title: "Program Deleted Successfully",
-          type: "program"
+          type: "program",
+          redirectUrl: "/dashboard/programs",
+          image: successImage
         }
       })
     );
@@ -150,14 +155,14 @@ const ProgramDetails = ({ params }: { params: { id: string } }) => {
 
           <div className={cx(styles.btnGroup, "flexRow")}>
             <button onClick={() => handleDeleteTask()} className={cx(styles.deleteBtn, "flexRow-align-center")}>
-              <DeleteArchiveIcon alt='delete-archive-icon' /> <span>Delete/Archive Program</span>
+              <DeleteIcon alt='delete-icon' /> <span>Delete Program</span>
             </button>
             <Button title='Edit Program' onClick={() => router.push(`/dashboard/programs/edit-program/${programId}`)} />
           </div>
         </>
       )}
 
-      {displayModal && modalName === "programDeleteNotification" ? <DeleteNotificationModal show size='md' /> : null}
+      {displayModal && modalName === "programDeleteNotification" ? <SuccessNotificationModal show size='md' /> : null}
     </div>
   );
 };

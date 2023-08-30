@@ -36,13 +36,12 @@ const Layout = ({ children }) => {
   const allProgramsData = programsListArray;
   const allActiveProgramsData = useAppSelector((state) => state.programs.getActiveProgramsData);
   const allArchivedProgramsData = useAppSelector((state) => state.programs.getArchivedProgramsData);
-
-  console.log(allArchivedProgramsData);
+  const allProgramsDataLoading = useAppSelector((state) => state.loading.getAllProgramsLoading);
+  const allActiveProgramsDataLoading = useAppSelector((state) => state.loading.getActiveProgramsLoading);
+  const allArchivedProgramsDataLoading = useAppSelector((state) => state.loading.getArchivedProgramsLoading);
 
   useEffect(() => {
-    dispatch(getAllPrograms());
     dispatch(getActivePrograms());
-    dispatch(getArchivedPrograms());
   }, [dispatch]);
 
   useEffect(() => {
@@ -57,16 +56,14 @@ const Layout = ({ children }) => {
   const [closeSelectElement, setCloseSelectElement] = useState(false);
 
   const handleCloseSearchInput = (e) => {
-    console.log(e, "handle close input");
     setCollapseInput(true);
   };
 
   const handleCloseSelectElement = (e) => {
-    console.log(e, "handle close select");
     setCloseSelectElement(true);
   };
 
-  const getMenuItems = () => {
+  const getSideBarData = () => {
     let listItems =
       Array.isArray(programsArray) &&
       programsArray.map((item, index) => {
@@ -143,10 +140,6 @@ const Layout = ({ children }) => {
     }
   };
 
-  // const handleCloseSidebar = () => {
-  //   setOpenSideBar({ open: false, category: "" });
-  // };
-
   const handleSelectedMenuItem = (id) => {
     setSelectedMenuId(id);
     router.push(`/dashboard/programs/program-details/${id}`);
@@ -157,9 +150,10 @@ const Layout = ({ children }) => {
       {openSideBar && (
         <div className={cx(styles.sidebarWrapper)}>
           <GenericSideBar
-            data={getMenuItems()}
+            data={getSideBarData()}
             selectedMenuItem={handleSelectedMenuItem}
             closeGenericSideBar={() => setOpenSideBar(false)}
+            loading={allProgramsDataLoading || allActiveProgramsDataLoading || allArchivedProgramsDataLoading}
           />
         </div>
       )}

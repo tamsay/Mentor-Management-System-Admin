@@ -9,21 +9,21 @@ import { usePathname, useRouter } from "next/navigation";
 import styles from "./TaskDetails.module.scss";
 
 import Button from "@/components/Button/Button";
-import DeleteNotificationModal from "@/components/Modals/DeleteNotification/DeleteNotification";
+import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
 
-import deleteIcon from "@/assets/icons/delete-icon-red.svg";
+import DeleteIcon from "@/assets/icons/delete-icon-red.svg";
 import mentorsIcon from "@/assets/icons/mentor-icon-green.png";
 import mentorManagersIcon from "@/assets/icons/mentor-manager-icon-green.png";
 import reportIcon from "@/assets/icons/task-report-icon-green.png";
-import calendarIcon from "@/assets/icons/tasks-overview-calendar-icon.svg";
-import headerIcon from "@/assets/icons/tasks-overview-card-icon.svg";
+import CalendarIcon from "@/assets/icons/tasks-overview-calendar-icon.svg";
+import successImage from "@/assets/images/task-delete-success.png";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
 import { deleteTask, getAllTasks, getTaskDetails } from "@/redux/Tasks/TasksSlice";
 
 import arrayToString from "@/helpers/arrayToString";
-import { capitalizeFirstWord } from "@/helpers/textTransform";
+import { capitalizeFirstWord, initialsCase } from "@/helpers/textTransform";
 
 import { tasksListArray } from "@/constants/testData";
 
@@ -79,12 +79,24 @@ function TaskDetails({ params }: { params: { id: string } }) {
           modalData: {
             title: "Task Deleted Successfully",
             type: "task",
-            redirectUrl: "/dashboard/tasks"
+            redirectUrl: "/dashboard/tasks",
+            image: successImage
           }
         })
       );
       dispatch(getAllTasks());
     }
+    dispatch(
+      showModal({
+        name: "taskDeleteNotification",
+        modalData: {
+          title: "Task Deleted Successfully",
+          type: "task",
+          redirectUrl: "/dashboard/tasks",
+          image: successImage
+        }
+      })
+    );
   };
 
   const handleToggleBody = (index) => {
@@ -107,11 +119,18 @@ function TaskDetails({ params }: { params: { id: string } }) {
         <>
           <div className={cx(styles.header, "flexCol")}>
             <div className={cx(styles.wrapper, "flexRow-align-center")}>
-              <Image className={cx(styles.icon)} src={headerIcon} alt='task-icon' />
+              <div className={cx(styles.iconDiv, "flexRow-fully-centered")}>
+                {taskDetails?.image ? (
+                  <img className={cx(styles.icon, styles.taskIcon)} src={taskDetails?.image} alt='task-icon' />
+                ) : (
+                  <span className={cx(styles.initials)}>{initialsCase(taskDetails?.title)}</span>
+                )}
+              </div>
+
               <div className={cx(styles.mainContent, "flexCol")}>
                 <h5 className={cx(styles.title)}>{taskDetails?.title}</h5>
                 <div className={cx(styles.metaData, "flexRow")}>
-                  <Image className={cx(styles.dateIcon)} src={calendarIcon} alt='calendar-icon' />
+                  <CalendarIcon className={cx(styles.dateIcon)} alt='calendar-icon' />
                   <span className={cx(styles.date)}>
                     {" "}
                     {taskDetails?.createdAt &&
@@ -167,7 +186,7 @@ function TaskDetails({ params }: { params: { id: string } }) {
                 onClick={() => handleDeleteTask()}
                 className={cx(styles.deleteBtn, "flexRow-align-center")}
               >
-                <Image src={deleteIcon} alt='delete-icon' /> <span>Delete</span>
+                <DeleteIcon alt='delete-icon' /> <span>Delete Task</span>
               </button>
             )}
             <Button title='Edit Task' onClick={() => router.push(`/dashboard/tasks/edit-task/${taskId}`)} />
@@ -179,7 +198,7 @@ function TaskDetails({ params }: { params: { id: string } }) {
         </div>
       )}
 
-      {displayModal && modalName === "taskDeleteNotification" ? <DeleteNotificationModal show size='md' /> : null}
+      {displayModal && modalName === "taskDeleteNotification" ? <SuccessNotificationModal show size='md' /> : null}
     </div>
   );
 }

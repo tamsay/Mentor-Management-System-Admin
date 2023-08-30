@@ -1,6 +1,8 @@
+"use client";
+
 import React from "react";
 import cx from "classnames";
-import Image from "next/image";
+import { useParams } from "next/navigation";
 
 import styles from "./ProgramListItem.module.scss";
 
@@ -10,10 +12,9 @@ import CalendarIcon from "@/assets/icons/tasks-overview-calendar-icon.svg";
 import formatDate from "@/helpers/formatDate";
 import { initialsCase } from "@/helpers/textTransform";
 
-import "./ProgramListActiveItem.scss";
-
 type ProgramListItemProps = {
   data: {
+    id: string;
     image: string;
     name: string;
     createdAt: string;
@@ -21,8 +22,10 @@ type ProgramListItemProps = {
 };
 
 const ProgramListItem: React.FC<ProgramListItemProps> = ({ data }) => {
+  const { id } = useParams();
+
   return (
-    <div className={cx(styles.programListItemContainer, "flexCol")}>
+    <div className={cx(styles.programListItemContainer, "flexCol", id === data.id && styles.activeItem)}>
       <div className={cx(styles.body, "flexRow-align-center")}>
         <div className={cx(styles.iconDiv, "flexRow-fully-centered")}>
           {data?.image ? (
