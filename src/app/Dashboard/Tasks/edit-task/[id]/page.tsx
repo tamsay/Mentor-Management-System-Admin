@@ -1,11 +1,13 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import cx from "classnames";
 import { useRouter } from "next/navigation";
-import PersonelComponent from "@/pages/Dashboard/Tasks/PersonelComponent/PersonelComponent";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import styles from "./CreateTask.module.scss";
+import PersonelComponent from "../../PersonelComponent/PersonelComponent";
+import styles from "./EditTask.module.scss";
 
 import Button from "@/components/Button/Button";
 import InputField from "@/components/Input/Input";
@@ -14,24 +16,28 @@ import Search from "@/components/Search/Search";
 import SelectionSideBar from "@/components/SelectionSideBar/SelectionSideBar";
 import TextArea from "@/components/TextArea/TextArea";
 
-import { ReactComponent as ClearListIcon } from "@/assets/icons/clear-list-icon.svg";
-import closeIconAlt from "@/assets/icons/close-icon.svg";
-import closeIcon from "@/assets/icons/undo-icon.svg";
-import successImage from "@/assets/images/create-task-success-image.svg";
+import ClearListIcon from "@/assets/icons/clear-list-icon.svg";
+import CloseIconAlt from "@/assets/icons/close-icon.svg";
+import CloseIcon from "@/assets/icons/undo-icon.svg";
+import successImage from "@/assets/images/create-task-success-image.svg?url";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { getAllMentorManagers } from "@/redux/MentorManagers/MentorManagersSlice";
+import { getAllMentors } from "@/redux/Mentors/MentorsSlice";
 import { showModal } from "@/redux/Modal/ModalSlice";
 import { getAllUserProfiles } from "@/redux/Profile/ProfileSlice";
-import { createTask } from "@/redux/Tasks/TasksSlice";
+import { editTask, getTaskDetails } from "@/redux/Tasks/TasksSlice";
 
-import { createTaskSchema } from "@/helpers/validation";
+import { editTaskSchema } from "@/helpers/validation";
 
-// import { getAllMentors } from "@/redux/Mentors/MentorsSlice";
-// import { getAllMentorManagers } from "@/redux/MentorManagers/MentorManagersSlice";
+// to be removed when the endpoint is fixed
+import { mentorManagersArray, mentorsArray, programsListArray, tasksListArray } from "@/constants/testData";
 
-function CreateTask() {
-  const router = useRouter();
+const EditTask = ({ params }: { params: { id: string } }) => {
+  const taskId = params.id;
   const dispatch = useAppDispatch();
+  const router = useRouter();
+
   const [openSideBar, setOpenSideBar] = useState({
     open: false,
     category: ""
@@ -42,62 +48,84 @@ function CreateTask() {
 
   const displayModal = useAppSelector((state) => state.modal.show);
   const modalName = useAppSelector((state) => state.modal.modalName);
-  // const allMentorsData = useAppSelector((state) => state.mentors.getAllMentorsData);
-  // const allMentorManagersData = useAppSelector((state) => state.mentorManagers.getAllMentorManagersData);
-  const createTaskLoading = useAppSelector((state) => state.loading.createTaskLoading);
+  // const taskDetails = useAppSelector((state) => state.tasks.getTaskDetailsData);
+  const taskDetails = tasksListArray.find((task) => task.id === taskId);
+  const allMentorsData = useAppSelector((state) => state.mentors.getAllMentorsData);
+  const allMentorManagersData = useAppSelector((state) => state.mentorManagers.getAllMentorManagersData);
+  const editTaskLoading = useAppSelector((state) => state.loading.editTaskLoading);
 
   const allUserProfilesData = useAppSelector((state) => state.profile.getAllUserProfilesData);
 
   useEffect(() => {
-    // dispatch(getAllMentors());
-    // dispatch(getAllMentorManagers());
+    dispatch(getAllMentors());
+    dispatch(getAllMentorManagers());
     dispatch(getAllUserProfiles());
   }, [dispatch]);
 
-  const resolver = yupResolver(createTaskSchema);
+  useEffect(() => {
+    dispatch(getTaskDetails(taskId));
+  }, [dispatch, taskId]);
 
-  const defaultValues = {
-    title: "",
-    description: ""
-  };
+  const resolver = yupResolver(editTaskSchema);
 
   const {
     handleSubmit,
     formState: { errors },
     control,
     reset
-  } = useForm({ defaultValues, resolver, mode: "all" });
+  } = useForm({ resolver, mode: "all" });
 
-  const handleCreateTask = async (data) => {
-    let formattedMentorManagerIds = selectedMentorManagers.map((id) => {
-      return { mentorManagerId: id };
+  useEffect(() => {
+    reset({
+      title: taskDetails?.title,
+      description: taskDetails?.description
     });
-    let formattedMentorIds = selectedMentors.map((id) => {
-      return { programsMentorId: id };
+    setSelectedMentorManagers(taskDetails.mentorManagers || []);
+    setSelectedMentors(taskDetails.mentors || []);
+  }, [reset, taskDetails.mentorManagers, taskDetails.mentors, taskDetails?.title, taskDetails?.description]);
+
+  const handleEditTask = async (data: { name: string; description: string }) => {
+    let formattedMentorManagerIds = selectedMentorManagers.map((user) => {
+      user.id;
+    });
+    let formattedMentorIds = selectedMentors.map((user) => {
+      user.id;
     });
 
     let payload = {
       ...data,
-      status: 3, // this would be changed later
-      managers: formattedMentorManagerIds,
+      id: taskId,
+      mentorManagers: formattedMentorManagerIds,
       mentors: formattedMentorIds
     };
-    const response = await dispatch(createTask(payload));
 
-    if (response?.success) {
-      reset();
+    const response = await dispatch(editTask(payload));
+    if (response.success) {
       setSelectedMentorManagers([]);
       setSelectedMentors([]);
+
       dispatch(
         showModal({
           name: "successNotification",
           modalData: {
-            title: "Task created successfully",
-            image: successImage
+            title: "Task updated successfully",
+            image: successImage,
+            redirectUrl: "/dashboard/tasks"
           }
         })
       );
     }
+
+    dispatch(
+      showModal({
+        name: "successNotification",
+        modalData: {
+          title: "Task updated successfully",
+          image: successImage,
+          redirectUrl: "/dashboard/tasks"
+        }
+      })
+    );
   };
 
   const handleOpenSideBar = (e, open, category) => {
@@ -110,13 +138,13 @@ function CreateTask() {
   };
 
   const getListComponents = (data, selectedUsers) => {
-    const listItems = data.map((item) => {
+    let listItems = data.map((item) => {
       return {
         component: (
           <PersonelComponent
             key={item?.id}
             data={item}
-            checked={selectedUsers.some((userId) => userId === item?.id)}
+            checked={selectedUsers.some((userId) => userId.id === item?.id)}
             handleChecked={handleSelectedItem}
           />
         ),
@@ -128,13 +156,13 @@ function CreateTask() {
       <div className={cx(styles.filterAndSearchDiv, "flexRow-align-center")}>
         {collapseInput && (
           <h6 className={cx(styles.title)}>
-            {openSideBar?.category === "mentor-manager" ? "Add Mentor Manager(s)" : "Add Mentor(s)"}
+            {openSideBar?.category === "mentorManager" ? "Select Mentor Manager(s)" : "Select Mentor(s)"}
           </h6>
         )}
         <div className={cx(styles.searchWrapper)}>
           <Search
             inputPlaceholder={
-              openSideBar?.category === "mentor-manager" ? "Search for Mentor Manager" : "Search for Mentor"
+              openSideBar?.category === "mentorManager" ? "Search for Mentor Manager" : "Search for Mentor"
             }
             onChange={handleSearchInput}
             collapseInput={collapseInput}
@@ -142,11 +170,10 @@ function CreateTask() {
           />
         </div>
 
-        <Image
-          src={closeIcon}
+        <CloseIcon
           className={cx(styles.closeIcon)}
           alt='close-icon'
-          onClick={() => setOpenSideBar({ open: false })}
+          onClick={() => setOpenSideBar({ ...openSideBar, open: false })}
         />
       </div>
     );
@@ -154,21 +181,21 @@ function CreateTask() {
     return { listItems, headerComponent };
   };
 
-  const handleSelectedItem = (itemId) => {
-    if (openSideBar.category === "mentor-manager") {
-      if (selectedMentorManagers.find((userId) => userId === itemId)) {
-        let filteredMentorManagers = selectedMentorManagers.filter((id) => id !== itemId);
+  const handleSelectedItem = (itemId: string) => {
+    if (openSideBar.category === "mentorManager") {
+      if (selectedMentorManagers.find((user) => user.id === itemId)) {
+        let filteredMentorManagers = selectedMentorManagers.filter((user) => user.id !== itemId);
         setSelectedMentorManagers(filteredMentorManagers);
       } else {
-        setSelectedMentorManagers([...selectedMentorManagers, `${itemId}`]);
+        setSelectedMentorManagers([...selectedMentorManagers, mentorManagersArray.find((user) => user.id === itemId)]);
       }
     }
     if (openSideBar.category === "mentor") {
-      if (selectedMentors.find((userId) => userId === itemId)) {
-        let filteredMentors = selectedMentors.filter((id) => id !== itemId);
+      if (selectedMentors.find((user) => user.id === itemId)) {
+        let filteredMentors = selectedMentors.filter((user) => user.id !== itemId);
         setSelectedMentors(filteredMentors);
       } else {
-        setSelectedMentors([...selectedMentors, `${itemId}`]);
+        setSelectedMentors([...selectedMentors, mentorsArray.find((user) => user.id === itemId)]);
       }
     }
   };
@@ -185,31 +212,16 @@ function CreateTask() {
     }
   };
 
-  const getUsers = (category) => {
-    if (category === "mentorManager") {
-      return (
-        Array.isArray(allUserProfilesData) &&
-        allUserProfilesData.filter((item) => item.roles.find((role) => role.toLowerCase() === "manager"))
-      );
-    }
-    if (category === "mentor") {
-      return (
-        Array.isArray(allUserProfilesData) &&
-        allUserProfilesData.filter((item) => item.roles.find((role) => role.toLowerCase() === "mentor"))
-      );
-    }
-  };
-
   return (
-    <div className={cx(styles.createTaskContainer, "flexRow")}>
+    <div className={cx(styles.editTaskContainer, "flexRow")}>
       <div className={cx(styles.mainSection, "flexCol")}>
         <div className={cx(styles.heading, "flexRow-space-between")}>
-          <h3 className={cx(styles.title)}>New Task</h3>
-          <Image onClick={() => router.push("/dashboard/tasks")} src={closeIconAlt} alt='close-icon' />
+          <h3 className={cx(styles.title)}>Edit Task</h3>
+          <CloseIconAlt onClick={() => router.push("/dashboard/tasks")} alt='close-icon' />
         </div>
 
         <div className={cx(styles.formWrapper, "flexCol")}>
-          <form onSubmit={handleSubmit((data) => handleCreateTask(data))}>
+          <form onSubmit={handleSubmit((data) => handleEditTask(data))}>
             <label htmlFor='title'>Title</label>
             <Controller
               name='title'
@@ -231,7 +243,7 @@ function CreateTask() {
               render={({ field }) => (
                 <TextArea
                   {...field}
-                  placeholder='Enter task description'
+                  placeholder={"Enter task description"}
                   minHeight='150px'
                   error={errors?.description && errors?.description?.message}
                 />
@@ -243,18 +255,22 @@ function CreateTask() {
                 <div className={cx(styles.leftSide, "flexCol")}>
                   <h6 className={cx(styles.title)}>Add Mentor Manager</h6>
                   <div className={cx(styles.statsDiv, "flexRow")}>
-                    <span className={cx(styles.stats)}>{selectedMentorManagers.length} selected</span>
+                    <span className={cx(styles.stats)}>
+                      {Array.isArray(selectedMentorManagers) && selectedMentorManagers.length} selected
+                    </span>
                     <ClearListIcon onClick={() => handleClearList("mentorManager")} />
                   </div>
                 </div>
-                <Button title='Select' size='small' onClick={(e) => handleOpenSideBar(e, true, "mentor-manager")} />
+                <Button title='Select' size='small' onClick={(e) => handleOpenSideBar(e, true, "mentorManager")} />
               </div>
 
               <div className={cx(styles.wrapper, "flexRow-align-center")}>
                 <div className={cx(styles.leftSide, "flexCol")}>
                   <h6 className={cx(styles.title)}>Add Mentor</h6>
                   <div className={cx(styles.statsDiv, "flexRow")}>
-                    <span className={cx(styles.stats)}>{selectedMentors.length} selected</span>
+                    <span className={cx(styles.stats)}>
+                      {Array.isArray(selectedMentors) && selectedMentors.length} selected
+                    </span>
                     <ClearListIcon onClick={() => handleClearList("mentor")} />
                   </div>
                 </div>
@@ -264,10 +280,10 @@ function CreateTask() {
 
             <div className={cx(styles.submitBtnDiv, "flexRow")}>
               <Button
-                onClick={handleSubmit((data) => handleCreateTask(data))}
-                loading={createTaskLoading}
-                disabled={createTaskLoading}
-                title='Create Task'
+                onClick={handleSubmit((data) => handleEditTask(data))}
+                loading={editTaskLoading}
+                disabled={editTaskLoading}
+                title='Update Task'
                 btnType='primary'
               />
             </div>
@@ -275,18 +291,18 @@ function CreateTask() {
         </div>
       </div>
 
-      {openSideBar.open && openSideBar.category === "mentor-manager" ? (
+      {openSideBar.open && openSideBar.category === "mentorManager" ? (
         <div className={cx(styles.sideBarSection)}>
           <SelectionSideBar
             selectedMenuItem={handleSideBarMenuClick}
-            data={getListComponents(getUsers("mentorManager"), selectedMentorManagers)}
+            data={getListComponents(mentorManagersArray, selectedMentorManagers)}
           />
         </div>
       ) : openSideBar.open && openSideBar.category === "mentor" ? (
         <div className={cx(styles.sideBarSection)}>
           <SelectionSideBar
             selectedMenuItem={handleSideBarMenuClick}
-            data={getListComponents(getUsers("mentor"), selectedMentors)}
+            data={getListComponents(mentorsArray, selectedMentors)}
           />
         </div>
       ) : null}
@@ -294,6 +310,6 @@ function CreateTask() {
       {displayModal && modalName === "successNotification" ? <SuccessNotificationModal show size='md' /> : null}
     </div>
   );
-}
+};
 
-export default CreateTask;
+export default EditTask;

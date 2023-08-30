@@ -21,7 +21,7 @@ import TextArea from "@/components/TextArea/TextArea";
 import ClearListIcon from "@/assets/icons/clear-list-icon.svg";
 import CloseIconAlt from "@/assets/icons/close-icon.svg";
 import CloseIcon from "@/assets/icons/undo-icon.svg";
-import SuccessImage from "@/assets/images/create-task-success-image.svg";
+import successImage from "@/assets/images/create-task-success-image.svg";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { getAllMentorManagers } from "@/redux/MentorManagers/MentorManagersSlice";
@@ -90,17 +90,18 @@ function CreateProgram() {
       programmePicture: uploadedFile?.imagePreviewUrl || "",
       status: 1, // this will be replaced later - it ought to be done at the backend
       criteria: JSON.stringify(localStorage.getItem("criteria")) || "",
-      managers: formattedMentorManagerIds,
+      mentorManagers: formattedMentorManagerIds,
       mentors: formattedMentorIds
     };
     const response = await dispatch(createProgram(payload));
+
     if (response.success) {
       dispatch(
         showModal({
           name: "successNotification",
           modalData: {
             title: "Program Created Successfully!",
-            image: SuccessImage,
+            image: successImage,
             redirectUrl: "/dashboard/programs"
           }
         })
@@ -131,7 +132,7 @@ function CreateProgram() {
     // Added to prevent console errors
   };
 
-  const getListComponents = (data, selectedUsers, type) => {
+  const getListComponents = (data, selectedUsers) => {
     const listItems =
       Array.isArray(data) &&
       data.map((item, index) => {
@@ -151,6 +152,9 @@ function CreateProgram() {
     const headerComponent = (
       <>
         <div className={cx(styles.filterAndSearchDiv, "flexRow-align-center")}>
+          <h6 className={cx(styles.title)}>
+            {openSideBar?.category === "mentorManager" ? "Select Mentor Manager(s)" : "Select Mentor(s)"}
+          </h6>
           <div className={cx(styles.searchWrapper)}>
             <Search
               inputPlaceholder={
@@ -168,7 +172,6 @@ function CreateProgram() {
             onClick={() => setOpenSideBar({ open: false })}
           />
         </div>
-        <p style={{ fontWeight: "bold" }}>{type === "mentor" ? "Select Mentor(s)" : "Select Mentor Manager(s)"}</p>
       </>
     );
 
@@ -354,14 +357,14 @@ function CreateProgram() {
         <div className={cx(styles.sideBarSection)}>
           <SelectionSideBar
             selectedMenuItem={handleSideBarMenuClick}
-            data={getListComponents(mentorManagersArray, selectedMentorManagers, "mentorManager")}
+            data={getListComponents(mentorManagersArray, selectedMentorManagers)}
           />
         </div>
       ) : openSideBar.open && openSideBar.category === "mentor" ? (
         <div className={cx(styles.sideBarSection)}>
           <SelectionSideBar
             selectedMenuItem={handleSideBarMenuClick}
-            data={getListComponents(mentorsArray, selectedMentors, "mentor")}
+            data={getListComponents(mentorsArray, selectedMentors)}
           />
         </div>
       ) : null}

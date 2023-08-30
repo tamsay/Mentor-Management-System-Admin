@@ -155,6 +155,10 @@
       gap: 1rem;
       min-height: 2rem;
 
+      .title {
+        margin: 0;
+      }
+
       .searchWrapper {
         flex-grow: 1;
       }

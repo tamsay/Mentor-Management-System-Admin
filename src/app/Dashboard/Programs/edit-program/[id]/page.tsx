@@ -22,7 +22,7 @@ import TextArea from "@/components/TextArea/TextArea";
 import ClearListIcon from "@/assets/icons/clear-list-icon.svg";
 import CloseIconAlt from "@/assets/icons/close-icon.svg";
 import CloseIcon from "@/assets/icons/undo-icon.svg";
-import SuccessImage from "@/assets/images/create-task-success-image.svg?url";
+import successImage from "@/assets/images/create-task-success-image.svg?url";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { getAllMentorManagers } from "@/redux/MentorManagers/MentorManagersSlice";
@@ -61,8 +61,8 @@ function EditProgram({ params }: { params: { id: string } }) {
   console.log(criteriaData, "criteria data here");
 
   useEffect(() => {
-    // dispatch(getAllMentors());
-    // dispatch(getAllMentorManagers());
+    dispatch(getAllMentors());
+    dispatch(getAllMentorManagers());
     dispatch(getAllUserProfiles());
   }, [dispatch]);
 
@@ -122,7 +122,7 @@ function EditProgram({ params }: { params: { id: string } }) {
           name: "successNotification",
           modalData: {
             title: "Program Edited Successfully!",
-            image: SuccessImage,
+            image: successImage,
             redirectUrl: "/dashboard/programs"
           }
         })
@@ -144,11 +144,7 @@ function EditProgram({ params }: { params: { id: string } }) {
     // Added to prevent console errors
   };
 
-  const getListComponents = (
-    data: Mentor[] | MentorManager[],
-    selectedUsers: Mentor[] | MentorManager[],
-    type: string
-  ) => {
+  const getListComponents = (data: Mentor[] | MentorManager[], selectedUsers: Mentor[] | MentorManager[]) => {
     const listItems =
       Array.isArray(data) &&
       data.map((item, index) => {
@@ -166,27 +162,29 @@ function EditProgram({ params }: { params: { id: string } }) {
       });
 
     const headerComponent = (
-      <>
-        <div className={cx(styles.filterAndSearchDiv, "flexRow-align-center")}>
-          <div className={cx(styles.searchWrapper)}>
-            <Search
-              inputPlaceholder={
-                openSideBar?.category === "mentorManager" ? "Search for Mentor Manager" : "Search for Mentor"
-              }
-              onChange={handleSearchInput}
-              collapseInput={collapseInput}
-              setCollapseInput={setCollapseInput}
-              closeSelectElement={handleCloseSelectElement}
-            />
-          </div>
-          <CloseIcon
-            className={cx(styles.closeIcon)}
-            alt='close-icon'
-            onClick={() => setOpenSideBar({ ...openSideBar, open: false })}
+      <div className={cx(styles.filterAndSearchDiv, "flexRow-align-center")}>
+        {collapseInput && (
+          <h6 className={cx(styles.title)}>
+            {openSideBar?.category === "mentor-manager" ? "Select Mentor Manager(s)" : "Select Mentor(s)"}
+          </h6>
+        )}
+        <div className={cx(styles.searchWrapper)}>
+          <Search
+            inputPlaceholder={
+              openSideBar?.category === "mentorManager" ? "Search for Mentor Manager" : "Search for Mentor"
+            }
+            onChange={handleSearchInput}
+            collapseInput={collapseInput}
+            setCollapseInput={setCollapseInput}
+            closeSelectElement={handleCloseSelectElement}
           />
         </div>
-        <p style={{ fontWeight: "bold" }}>{type === "mentor" ? "Select Mentor(s)" : "Select Mentor Manager(s)"}</p>
-      </>
+        <CloseIcon
+          className={cx(styles.closeIcon)}
+          alt='close-icon'
+          onClick={() => setOpenSideBar({ ...openSideBar, open: false })}
+        />
+      </div>
     );
 
     return { listItems, headerComponent };
@@ -371,14 +369,14 @@ function EditProgram({ params }: { params: { id: string } }) {
         <div className={cx(styles.sideBarSection)}>
           <SelectionSideBar
             selectedMenuItem={handleSideBarMenuClick}
-            data={getListComponents(mentorManagersArray, selectedMentorManagers, "mentorManager")}
+            data={getListComponents(mentorManagersArray, selectedMentorManagers)}
           />
         </div>
       ) : openSideBar.open && openSideBar.category === "mentor" ? (
         <div className={cx(styles.sideBarSection)}>
           <SelectionSideBar
             selectedMenuItem={handleSideBarMenuClick}
-            data={getListComponents(mentorsArray, selectedMentors, "mentor")}
+            data={getListComponents(mentorsArray, selectedMentors)}
           />
         </div>
       ) : null}

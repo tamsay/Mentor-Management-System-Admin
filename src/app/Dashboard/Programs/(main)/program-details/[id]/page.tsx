@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import cx from "classnames";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
@@ -22,6 +22,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
 import { getProgramDetails } from "@/redux/Programs/ProgramsSlice";
 
+import arrayToString from "@/helpers/arrayToString";
 import formatDate from "@/helpers/formatDate";
 import { initialsCase } from "@/helpers/textTransform";
 
@@ -32,6 +33,11 @@ const ProgramDetails = ({ params }: { params: { id: string } }) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const programId = params.id;
+
+  const [toggleBody, setToggleBody] = useState({
+    index: null,
+    open: false
+  });
 
   const displayModal = useAppSelector((state) => state.modal.show);
   const modalName = useAppSelector((state) => state.modal.modalName);
@@ -49,19 +55,26 @@ const ProgramDetails = ({ params }: { params: { id: string } }) => {
     {
       icon: mentorManagersIcon,
       value: Array.isArray(programDetails?.mentorManagers) && programDetails?.mentorManagers.length,
-      caption: "Mentor Managers assigned to this program"
+      caption: "Mentor Managers assigned to this program",
+      data:
+        Array.isArray(programDetails.mentors) &&
+        programDetails?.mentors.map((item) => `${item?.firstName} ${item?.lastName}`)
     },
     {
       icon: mentorsIcon,
       value: Array.isArray(programDetails?.mentors) && programDetails?.mentors.length,
-      caption: "Mentors assigned to this program"
+      caption: "Mentors assigned to this program",
+      data:
+        Array.isArray(programDetails.mentors) &&
+        programDetails?.mentors.map((item) => `${item?.firstName} ${item?.lastName}`)
     },
     {
       // icon: <ReportIcon />,
       icon: reportIcon,
       value: Array.isArray(programDetails?.reports) && programDetails?.reports.length,
       caption: "Program / Reports",
-      count: Array.isArray(programDetails?.reports) && programDetails?.reports.length
+      count: Array.isArray(programDetails?.reports) && programDetails?.reports.length,
+      data: Array.isArray(programDetails.reports) && programDetails?.reports.map((item) => item?.title)
     }
   ];
 
@@ -93,6 +106,20 @@ const ProgramDetails = ({ params }: { params: { id: string } }) => {
         }
       })
     );
+  };
+
+  const handleToggleBody = (index) => {
+    if (toggleBody.index === index) {
+      setToggleBody({
+        index: null,
+        open: false
+      });
+    } else {
+      setToggleBody({
+        index: index,
+        open: true
+      });
+    }
   };
 
   return (
@@ -135,19 +162,30 @@ const ProgramDetails = ({ params }: { params: { id: string } }) => {
 
             {programDetailsData.map((item, index) => {
               return (
-                <div className={cx(styles.summaryDiv, "flexRow")} key={index}>
-                  <div className={cx(styles.iconDiv, "flexRow")}>
-                    <Image src={item.icon} alt='icon' />
-                  </div>
-                  <div className={cx(styles.summary, "flexRow")}>
-                    <span className={cx(styles.summaryValue)}>{item.value}</span>
-                    <span className={cx(styles.caption)}>{item.caption}</span>
-                    <div>
-                      <span className={cx(styles.count)}>{item.count}</span>
+                <div className={cx(styles.summaryDiv, "flexCol")} key={index}>
+                  <div className={cx(styles.heading, "flexRow")}>
+                    <div className={cx(styles.iconDiv, "flexRow")}>
+                      <Image src={item.icon} alt='icon' />
                     </div>
-                  </div>
+                    <div className={cx(styles.summary, "flexRow")}>
+                      <span className={cx(styles.summaryValue)}>{item.value}</span>
+                      <span className={cx(styles.caption)}>{item.caption}</span>
+                      <div>
+                        <span className={cx(styles.count)}>{item.count}</span>
+                      </div>
+                    </div>
 
-                  <Button onClick={() => console.log("hey")} title='View' size='small' />
+                    <Button onClick={() => handleToggleBody(index)} title='View' size='small' />
+                  </div>
+                  {toggleBody.open && toggleBody.index === index && (
+                    <div className={cx(styles.body, "flexCol")}>
+                      {Array.isArray(item.data) && item.data.length > 0 ? (
+                        <div>{arrayToString(item?.data)}</div>
+                      ) : (
+                        <div>No Data Found</div>
+                      )}
+                    </div>
+                  )}
                 </div>
               );
             })}

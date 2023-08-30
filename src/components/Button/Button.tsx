@@ -1,9 +1,8 @@
 import React from "react";
 import cx from "classnames";
-import Image from "next/image";
 import styled from "styled-components";
 
-import imageLoader from "@/assets/icons/loading.svg";
+import ImageLoader from "@/assets/icons/loading.svg";
 
 type ButtonProps = {
   title: string;
@@ -88,7 +87,7 @@ function Button(props: ButtonProps) {
       className={cx("flexRow")}
     >
       {loading ? (
-        <Image src={imageLoader} height='16' width='60' alt='loading' />
+        <ImageLoader height='16' width='60' alt='loading' />
       ) : (
         <>
           <span style={{ marginRight: "0.5rem" }} className={cx("flexRow")}>

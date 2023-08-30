@@ -1,4 +1,4 @@
-.editTaskContainer {
+.createTaskContainer {
   gap: 1rem;
   padding: 1rem 0.5rem;
   position: relative;
@@ -6,6 +6,17 @@
 
   .sideBarSection {
     width: auto;
+
+    .noUserFound {
+      width: 100%;
+
+      h6 {
+        font-family: var(--muktaSemiBold);
+        font-size: 1rem;
+        color: var(--black2TextColor);
+        margin: 0;
+      }
+    }
 
     .filterAndSearchDiv {
       width: 100%;
@@ -25,7 +36,7 @@
       }
 
       .closeIcon {
-        width: 1rem;
+        width: auto;
         cursor: pointer;
       }
     }
@@ -39,6 +50,8 @@
     padding-right: 0.5rem;
 
     .heading {
+      position: sticky;
+      top: 0;
       align-items: flex-end;
 
       .title {
@@ -55,6 +68,9 @@
     }
 
     .formWrapper {
+      overflow-y: auto;
+      padding-right: 0.5rem;
+
       form {
         label {
           font-family: var(--muktaBold);
@@ -116,7 +132,7 @@
 }
 
 @media all and (min-width: 768px) {
-  .editTaskContainer {
+  .createTaskContainer {
     padding: 2rem;
 
     .mainSection {
@@ -134,7 +150,9 @@
 }
 
 @media all and (min-width: 992px) {
-  .editTaskContainer {
+  .createTaskContainer {
+    padding: 1rem 2rem;
+
     .mainSection {
       gap: 2.5rem;
       padding-top: 0.875rem;

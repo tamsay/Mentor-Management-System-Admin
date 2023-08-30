@@ -8,7 +8,7 @@ import styles from "./page.module.scss";
 
 import EmptySelectionIcon from "@/assets/icons/empty-selection-icon.svg";
 
-const Programs = () => {
+const Tasks = () => {
   const selectedMenuId = useParams()?.id;
   const pathname = usePathname();
   const router = useRouter();
@@ -32,4 +32,4 @@ const Programs = () => {
   );
 };
 
-export default Programs;
+export default Tasks;
