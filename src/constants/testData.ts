@@ -4,6 +4,7 @@ import mentorManagerImage from "@/assets/images/mentor-manager-thumbnail.svg?url
 import mentorImage from "@/assets/images/sample-profile-image.svg?url";
 
 const programsIcon = "https://picsum.photos/200/300?random=1";
+import reportsIcon from "@/assets/icons/reports-overview-card-icon.svg?url";
 
 export const mentorsArray = [
   {
@@ -386,5 +387,63 @@ export const tasksListArray = [
     mentors: mentorsArray,
     reports: taskReportArray,
     mentorManagers: mentorManagersArray
+  }
+];
+
+export const reportsListArray = [
+  {
+    id: "1",
+    title: "Google Africa Scholarship Program 1",
+    createdAt: "Dec 12, 2022",
+    image: reportsIcon,
+    achievements:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!",
+    createdBy: "John Doe",
+    blockers: "All blockers here plus some lorem",
+    recommendations: "recommendations will come here"
+  },
+  {
+    id: "2",
+    title: "Google Africa Scholarship Program 2",
+    createdAt: "Dec 12, 2022",
+    image: reportsIcon,
+    achievements:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!",
+    createdBy: "John Doe",
+    blockers: "All blockers here plus some lorem",
+    recommendations: "recommendations will come here"
+  },
+  {
+    id: "3",
+    title: "Google Africa Scholarship Program 3",
+    createdAt: "Dec 12, 2022",
+    image: reportsIcon,
+    achievements:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!",
+    createdBy: "John Doe",
+    blockers: "All blockers here plus some lorem",
+    recommendations: "recommendations will come here"
+  },
+  {
+    id: "4",
+    title: "Google Africa Scholarship Program 4",
+    createdAt: "Dec 12, 2022",
+    image: reportsIcon,
+    achievements:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!",
+    createdBy: "John Doe",
+    blockers: "All blockers here plus some lorem",
+    recommendations: "recommendations will come here"
+  },
+  {
+    id: "5",
+    title: "Google Africa Scholarship Program 5",
+    createdAt: "Dec 12, 2022",
+    image: reportsIcon,
+    achievements:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit ullam pariatur minima! Deserunt facilis amet enim ex nam asperiores totam, tempore voluptatem obcaecati hic impedit beatae incidunt numquam molestiae minus!",
+    createdBy: "John Doe",
+    blockers: "All blockers here plus some lorem",
+    recommendations: "recommendations will come here"
   }
 ];

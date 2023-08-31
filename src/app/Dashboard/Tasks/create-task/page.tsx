@@ -19,7 +19,7 @@ import TextArea from "@/components/TextArea/TextArea";
 import ClearListIcon from "@/assets/icons/clear-list-icon.svg";
 import CloseIconAlt from "@/assets/icons/close-icon.svg";
 import CloseIcon from "@/assets/icons/undo-icon.svg";
-import successImage from "@/assets/images/create-task-success-image.svg?.url";
+import successImage from "@/assets/images/create-task-success-image.svg?url";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { getAllMentorManagers } from "@/redux/MentorManagers/MentorManagersSlice";

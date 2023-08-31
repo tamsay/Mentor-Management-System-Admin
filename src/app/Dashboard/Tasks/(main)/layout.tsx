@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import cx from "classnames";
 import Image from "next/image";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import TaskListItem from "../TaskListItem/TaskListItem";
 import styles from "./TasksLayout.module.scss";
@@ -26,9 +26,7 @@ import useIsMobile from "@/hooks/useIsMobile";
 const Layout = ({ children }) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const params = useParams();
   const isMobile = useIsMobile();
-  const [selectedMenuId, setSelectedMenuId] = useState(params.id);
   const [openSideBar, setOpenSideBar] = useState(false);
   const [tasksArray, setTasksArray] = useState([]);
 
@@ -138,7 +136,6 @@ const Layout = ({ children }) => {
   };
 
   const handleSelectedMenuItem = (id) => {
-    setSelectedMenuId(id);
     router.push(`/dashboard/tasks/task-details/${id}`);
   };
 

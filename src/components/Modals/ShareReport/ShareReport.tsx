@@ -1,14 +1,14 @@
 import React from "react";
 import { toast } from "react-toastify";
 import cx from "classnames";
-import PropTypes from "prop-types";
+import Image from "next/image";
 
 import ModalContainer from "../ModalContainer/ModalContainer";
 import styles from "./ShareReport.module.scss";
 
 import Button from "@/components/Button/Button";
 
-import modalImage from "@/assets/images/share-report-modal-image.svg";
+import modalImage from "@/assets/images/share-report-modal-image.svg?url";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { hideModal } from "@/redux/Modal/ModalSlice";
@@ -42,7 +42,7 @@ function ShareReport({ show, size, modalName }) {
     <ModalContainer show={show} size={size} modalName={modalName}>
       <div className={cx(styles.modalWrapper, "flexCol")}>
         <div className={cx(styles.modalHeader, "flexCol")}>
-          <h6 className={cx(styles.headerTitle)}>{modalData}</h6>
+          <h6 className={cx(styles.headerTitle)}>{modalData.title}</h6>
         </div>
 
         <div className={cx(styles.modalBody, "flexCol")}>
@@ -59,11 +59,5 @@ function ShareReport({ show, size, modalName }) {
     </ModalContainer>
   );
 }
-
-ShareReport.propTypes = {
-  show: PropTypes.bool,
-  size: PropTypes.string,
-  modalName: PropTypes.string
-};
 
 export default ShareReport;

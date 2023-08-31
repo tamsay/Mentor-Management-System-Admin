@@ -1,38 +1,39 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { Outlet, useNavigate, useParams } from "react-router-dom";
-import cx from "classnames";
-import SwitcherTab from "@/pages/Dashboard/Reports/SwitcherTab/SwitcherTab";
+"use client";
 
-import ReportListItem from "./ReportListItem/ReportListItem";
-import styles from "./Reports.module.scss";
+import React, { useEffect, useMemo, useState } from "react";
+import cx from "classnames";
+import { useRouter } from "next/navigation";
+
+import ReportListItem from "../ReportListItem/ReportListItem";
+import SwitcherTab from "../SwitcherTab/SwitcherTab";
+import styles from "./ReportsLayout.module.scss";
 
 import Filter from "@/components/Filter/Filter";
 import Search from "@/components/Search/Search";
 import SelectionSideBar from "@/components/SelectionSideBar/SelectionSideBar";
 
-import emptySelectionIcon from "@/assets/icons/empty-selection-icon.svg";
-import subMenuIcon from "@/assets/icons/sub-menu-icon.svg";
-import closeIcon from "@/assets/icons/undo-icon.svg";
+import SubMenuIcon from "@/assets/icons/sub-menu-icon.svg";
+import CloseIcon from "@/assets/icons/undo-icon.svg";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { getAllUserProfiles } from "@/redux/Profile/ProfileSlice";
 import { getAllReports, getMonthlyReports, getWeeklyReports, getYearlyReports } from "@/redux/Reports/ReportsSlice";
 
+import { reportsListArray } from "@/constants/testData";
+
 import useIsMobile from "@/hooks/useIsMobile";
 
-function Reports() {
+const Layout = ({ children }) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const params = useParams();
   const isMobile = useIsMobile();
-  const [selectedMenuId, setSelectedMenuId] = useState(params.id);
   const [reportDataArray, setReportDataArray] = useState([]);
 
   const allProfilesData = useAppSelector((state) => state.profile.getAllUserProfilesData);
 
   // This allReportsData will be used when the endpoint is fixed and it returns the actual needed values
   // const allReportsData = useAppSelector((state) => state.reports.getAllReportsData);
-  const allReportsData = useAppSelector((state) => state.reports.getYearlyReportsData); // This is a temporary fix
+  const allReportsData = reportsListArray;
   const allMonthlyReportsData = useAppSelector((state) => state.reports.getMonthlyReportsData); // This is a temporary fix
   const allYearlyReportsData = useAppSelector((state) => state.reports.getYearlyReportsData); // This is a temporary fix
   const allWeeklyReportsData = useAppSelector((state) => state.reports.getWeeklyReportsData); // This is a temporary fix
@@ -60,15 +61,25 @@ function Reports() {
     dispatch(getWeeklyReports());
     dispatch(getYearlyReports());
     dispatch(getMonthlyReports());
-    setSelectedMenuId(params.id);
     dispatch(getAllUserProfiles());
-  }, [navigate, dispatch, params.id]);
+
+    // You'll have to make 8 API calls here
+    // dispatch(getAllProgramReports());
+    // dispatch(getWeeklyProgramReports());
+    // dispatch(getMonthlyProgramReports());
+    // dispatch(getYearlyProgramReports());
+    // dispatch(getAllTaskReports());
+    // dispatch(getWeeklyTaskReports());
+    // dispatch(getMonthlyTaskReports());
+    // dispatch(getYearlyTaskReports());
+  }, [dispatch]);
 
   useEffect(() => {
+    // Everything here is a temp fix until backend endpoints are ready
     if (activeTab === "programReport") {
-      Array.isArray(allReportsData) && setReportDataArray(allReportsData.filter((item) => item.type === "program"));
+      Array.isArray(allReportsData) && setReportDataArray(allReportsData);
     } else if (activeTab === "taskReport") {
-      Array.isArray(allReportsData) && setReportDataArray(allReportsData.filter((item) => item.type === "task"));
+      Array.isArray(allReportsData) && setReportDataArray(allReportsData);
     }
   }, [activeTab, allReportsData]);
 
@@ -158,7 +169,7 @@ function Reports() {
       Array.isArray(data) &&
       data.map((item, index) => {
         return {
-          component: <ReportListItem key={index} data={item} userProfiles={allProfilesData} />,
+          component: <ReportListItem key={index} data={item} />,
           id: item.id
         };
       });
@@ -192,12 +203,7 @@ function Reports() {
           />
 
           {isMobile && (
-            <Image
-              onClick={() => setOpenSideBar(!openSideBar)}
-              src={closeIcon}
-              className={cx(styles.closeIcon)}
-              alt='close-icon'
-            />
+            <CloseIcon onClick={() => setOpenSideBar(!openSideBar)} className={cx(styles.closeIcon)} alt='close-icon' />
           )}
         </div>
       </div>
@@ -207,14 +213,8 @@ function Reports() {
   };
 
   const handleSelectedItem = (item) => {
-    setSelectedMenuId(() => {
-      return item;
-    });
     isMobile && handleCloseSideBar();
-
-    // temporary fix for the report details
-    let reportData = reportDataArray.find((report) => report.id === item);
-    router.push(`report-details/${item}`, { state: { data: reportData } });
+    router.push(`/dashboard/reports/report-details/${item}`);
   };
 
   return (
@@ -240,9 +240,8 @@ function Reports() {
       <div className={cx(styles.content, "flexCol")}>
         <div className={cx(styles.heading, "flexRow")}>
           <div className={cx(styles.togglerDiv, "flexCol-fully-centered")}>
-            <Image
+            <SubMenuIcon
               className={cx(styles.toggler)}
-              src={subMenuIcon}
               alt='toggler'
               onClick={(e) => handleOpenSideBar(e, true, reportsCategoryArray[0].key)}
             />
@@ -251,20 +250,10 @@ function Reports() {
           {/* <Button onClick={() => router.push("create-report")} title='Compose Report' /> */}
         </div>
 
-        <div style={{ height: selectedMenuId ? "auto" : "100%" }} className={cx(styles.contentBody, "flexCol")}>
-          {selectedMenuId ? (
-            <Outlet />
-          ) : (
-            <div className={cx(styles.emptySelectionDiv, "flexCol-fully-centered")}>
-              <Image src={emptySelectionIcon} alt='empty-selection-icon' />
-              <p>No item selected yet </p>
-              <p>Select an item from the list to view report details</p>
-            </div>
-          )}
-        </div>
+        <div className={cx(styles.content)}>{children}</div>
       </div>
     </div>
   );
-}
+};
 
-export default Reports;
+export default Layout;

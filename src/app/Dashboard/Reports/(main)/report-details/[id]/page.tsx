@@ -1,7 +1,11 @@
+"use client";
+
 import React, { useEffect, useRef, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
 import cx from "classnames";
 import html2pdf from "html2pdf.js";
+// import { getReportDetails } from "@/redux/Reports/ReportsSlice";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import styles from "./ReportDetails.module.scss";
 
@@ -9,25 +13,23 @@ import Button from "@/components/Button/Button";
 import ShareReportModal from "@/components/Modals/ShareReport/ShareReport";
 import SuccessNotificationModal from "@/components/Modals/SuccessNotification/SuccessNotification";
 
-import closeIcon from "@/assets/icons/close-icon.svg";
+import CloseIcon from "@/assets/icons/close-icon.svg";
 import reportIcon from "@/assets/icons/reports-overview-card-icon.svg";
 import successImage from "@/assets/images/default-success-notification-image.png";
 
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { showModal } from "@/redux/Modal/ModalSlice";
 
-// import { getReportDetails } from "@/redux/Reports/ReportsSlice";
 import formatDate from "@/helpers/formatDate";
 
-const ReportDetails = () => {
+import { reportsListArray } from "@/constants/testData";
+
+const ReportDetails = ({ params }: { params: { id: string } }) => {
   const dispatch = useAppDispatch();
   const contentRef = useRef();
   const btnGroupRef = useRef();
-  const params = useParams();
   const reportId = params.id;
   const router = useRouter();
-
-  const [userFullName, setUserFullName] = useState("");
 
   const displayModal = useAppSelector((state) => state.modal.show);
   const modalName = useAppSelector((state) => state.modal.modalName);
@@ -35,22 +37,16 @@ const ReportDetails = () => {
   // const reportDetails = useAppSelector((state) => state.reports.getReportDetailsData);
 
   // Temporary fix for report details. It will be removed when the endpoint is fixed
-  const location = useLocation();
-  const reportDetails = location?.state?.data;
+  const reportDetails = reportsListArray.find((report) => report.id === reportId);
 
   useEffect(() => {
     // dispatch(getReportDetails(reportId));
   }, [dispatch, reportId]);
 
-  useEffect(() => {
-    let user = Array.isArray(userProfiles) && userProfiles.find((profile) => profile.id === reportDetails?.createdBy);
-    setUserFullName(`${user?.firstName} ${user?.lastName}`);
-  }, [userProfiles, reportDetails?.createdBy]);
-
   const authorMetaData = {
     id: reportId,
-    title: reportDetails?.reportTitle,
-    author: userFullName,
+    title: reportDetails?.title,
+    author: reportDetails?.createdBy,
     date: reportDetails?.createdAt ? formatDate(reportDetails?.createdAt) : ""
   };
 
@@ -61,7 +57,7 @@ const ReportDetails = () => {
     },
     blockers: {
       title: "Major Blockers",
-      content: reportDetails?.blocker
+      content: reportDetails?.blockers
     },
     recommendations: {
       title: "Major Recommendations",
@@ -74,7 +70,14 @@ const ReportDetails = () => {
   };
 
   const handleShareReport = () => {
-    dispatch(showModal({ name: "shareReport", modalData: "Share report via email" }));
+    dispatch(
+      showModal({
+        name: "shareReport",
+        modalData: {
+          title: "Share report via email"
+        }
+      })
+    );
   };
 
   const handleDownloadReport = () => {
@@ -106,7 +109,7 @@ const ReportDetails = () => {
     <div ref={contentRef} className={cx(styles.reportDetailsContainer, "flexCol")}>
       <div className={cx(styles.heading, "flexRow-space-between")}>
         <div className={cx(styles.body, "flexRow-align-center")}>
-          <Image className={cx(styles.icon)} src={reportIcon} alt='icon' />
+          <Image className={cx(styles.icon)} src={reportDetails?.image} alt='icon' />
           <div className={cx(styles.mainContent, "flexCol")}>
             <h5 className={cx(styles.title)}>{authorMetaData?.title}</h5>
             <div className={cx(styles.metaData, "flexRow-align-center")}>
@@ -116,12 +119,7 @@ const ReportDetails = () => {
           </div>
         </div>
 
-        <Image
-          className={cx(styles.closeIcon, "exclude")}
-          onClick={() => handleCloseReport()}
-          src={closeIcon}
-          alt='close-icon'
-        />
+        <CloseIcon className={cx(styles.closeIcon, "exclude")} onClick={() => handleCloseReport()} alt='close-icon' />
       </div>
 
       <div className={cx(styles.mainBody, "flexCol")}>
